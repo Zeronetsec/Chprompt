@@ -102,21 +102,19 @@ if [[ ! -d "$base" ]]; then
         --message="Created directory: ${GG}${base}${N}"
 fi
 
-echo -ne "\033[?25h\n"
-read -p "$(echo -e "${B}[*] ${N}Do you wan't to backup ${GG}${base}/chprompt${N}? (y/n) ")" chs
-echo -ne "\033[?25l\n"
+if [[ -d "$base/chprompt" ]]; then
+    echo -ne "\033[?25h\n"
+    read -p "$(echo -e "${B}[*] ${N}Do you wan't to backup ${GG}${base}/chprompt${N}? (y/n) ")" chs
+    echo -ne "\033[?25l\n"
 
-if [[ "$chs" == 'y' ]]; then
-    if [[ -d "$base/chprompt" ]]; then
+    if [[ "$chs" == 'y' ]]; then
         cd "$base"
         spinner \
             --command="command zip -r \"chprompt_${bkdate}.bak.zip\" \"chprompt\"" \
             --message="Backup: ${GG}${base}/chprompt ${DG}=> ${GG}${base}/chprompt_${bkdate}.bak.zip${N}"
         cd
     fi
-fi
 
-if [[ -d "$base/chprompt" ]]; then
     spinner \
         --command="command rm -rf \"${base}/chprompt\"" \
         --message="Removing: ${GG}old chprompt${N}"
