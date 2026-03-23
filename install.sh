@@ -17,7 +17,7 @@ function install() {
     echo -e "\n${B}[*] ${N}${desc}"
     eval "${cmd}" >/dev/null
     local status=$?
-    echo -e "    ${N}exit: ${GG}${status}${N}"
+    echo -e "    ${DG}└── ${N}exit: ${GG}${status}${N}"
 }
 
 function getinstall() {
