@@ -20,13 +20,30 @@ function chprompt() {
         command cut -d '/' -f 2
     )"
 
+    local faces=(
+        "(｡◕‿◕｡)"
+        "(≧◡≦)"
+        "ʕ•ᴥ•ʔ"
+        "(・ω・)"
+        "(๑˃ᴗ˂)ﻭ"
+        "(ง'̀-'́)ง"
+        "(=^･ω･^=)"
+    )
+
+    local delay=0.2
+    local duration=5
+    SECONDS=0
+    local tools="chprompt"
+    local version="1.0"
+    local homepage="https://github.com/Zeronetsec/Chprompt"
+
     case "$1" in
         "")
             echo -e "${R}[!] ${N}Invalid input!"
             echo -e "${R}[!] ${N}Try: ${GG}chprompt --help${N}"
             return 1
             ;;
-        "preview")
+        "--preview")
             if [[ ! -f "$path/${folder}_line/${file}.sh" ]]; then
                 echo -e "${R}[!] ${N}Prompt: ${GG}${folder}/${file} ${N}not found!"
                 return 1
@@ -36,7 +53,7 @@ function chprompt() {
             printf '\n'
             return 0
             ;;
-        "use")
+        "--use")
             if [[ ! -f "$path/${folder}_line/${file}.sh" ]]; then
                 echo -e "${R}[!] ${N}Prompt: ${GG}${folder}/${file} ${N}not found!"
                 return 1
@@ -49,17 +66,17 @@ function chprompt() {
             )
             return 0
             ;;
-        "inject")
+        "--inject")
             if [[ ! -f "$path/${folder}_line/${file}.sh" ]]; then
                 echo -e "${R}[!] ${N}Prompt: ${GG}${folder}/${file} ${N}not found!"
                 return 1
             fi
 
             command cat "$HOME/.bashrc" | \
-                command grep -vE '^\s*chprompt use */*' \
+                command grep -vE '^\s*chprompt --use */*' \
                 > "$PREFIX/tmp/chprompt_bashrc.tmp"
 
-            echo -e "chprompt use ${folder}/${file}" \
+            echo -e "chprompt --use ${folder}/${file}" \
                 >> "$PREFIX/tmp/chprompt_bashrc.tmp"
 
             command cat "$PREFIX/tmp/chprompt_bashrc.tmp" \
@@ -73,10 +90,18 @@ function chprompt() {
             )
             return 0
             ;;
+        "--uwu")
+            echo -ne "\033[?25l"
+            while (( SECONDS < duration )); do
+                for face in "${faces[@]}"; do
+                    (( SECONDS >= duration )) && break
+                    printf "\r%s\033[K" "$face"
+                    command sleep "$delay"
+                done
+            done
+            echo -ne "\033[?25h\n"
+            ;;
         "--version")
-            local tools="chprompt"
-            local version="1.0"
-            local homepage="https://github.com/Zeronetsec/Chprompt"
             echo -e "${N}Project: ${GG}${tools}${N}"
             echo -e "${N}Version: ${GG}${version}${N}"
             echo -e "${N}Homepage: ${GG}${homepage}${N}"
@@ -86,9 +111,9 @@ function chprompt() {
             echo -ne "${BB}Chprompt is a simple tool to switching the PS1 prompt${N}
 
 ${N}Usage:
-    ${GG}chprompt preview ${DG}<${CC}line/prompt_number${DG}> ${N}to preview prompt
-    ${GG}chprompt use ${DG}<${CC}line/prompt_number${DG}> ${N}to use prompt
-    ${GG}chprompt inject ${DG}<${CC}line/prompt_number${DG}> ${N}to inject prompt into ${CC}${HOME}/.bashrc${N}
+    ${GG}chprompt --preview ${DG}<${CC}line/prompt_number${DG}> ${N}to preview prompt
+    ${GG}chprompt --use ${DG}<${CC}line/prompt_number${DG}> ${N}to use prompt
+    ${GG}chprompt --inject ${DG}<${CC}line/prompt_number${DG}> ${N}to inject prompt into ${CC}${HOME}/.bashrc${N}
     ${GG}chprompt --version ${N}to show version
     ${GG}chprompt --help ${N}to show helper message
 
@@ -101,9 +126,9 @@ ${N}List:
     ${DG}* ${GG}6${DG}/${GG}1-$(command ls "$path/6_line/" | command wc -l)${N}
 
 ${N}Example:
-    ${GG}chprompt preview ${CC}2/10${N}
-    ${GG}chprompt use ${CC}2/10${N}
-    ${GG}chprompt inject ${CC}2/10${N}
+    ${GG}chprompt --preview ${CC}2/10${N}
+    ${GG}chprompt --use ${CC}2/10${N}
+    ${GG}chprompt --inject ${CC}2/10${N}
 "
             return 0
             ;;

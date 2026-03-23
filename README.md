@@ -12,15 +12,11 @@ Choose from over 100+ built-in prompt styles. <br>
 <details>
 <summary>Show Preview</summary>
 <br>
-<img src=".preview/preview_1.gif" width="500">
+<img src=".preview/preview_1.png" width="500">
 <br><br>
 <img src=".preview/preview_2.png" width="500">
 <br><br>
 <img src=".preview/preview_3.png" width="500">
-<br><br>
-<img src=".preview/preview_4.png" width="500">
-<br><br>
-<img src=".preview/preview_5.png" width="500">
 <br>
 </details>
 
@@ -49,6 +45,10 @@ Choose from over 100+ built-in prompt styles. <br>
         <td>Kali</td>
         <td>Rolling</td>
     </tr>
+    <tr>
+        <td>Alpine</td>
+        <td>3.23</td>
+    </tr>
 	<tr>
 		<td>Termux</td>
 		<td>0.118.3</td>
@@ -65,9 +65,9 @@ chmod +x install.sh
 
 ## Usage
 ``` bash
-chprompt preview <line>/<prompt_number>
-chprompt use <line>/<prompt_number>
-chprompt inject <line>/<prompt_number>
+chprompt --preview <line>/<prompt_number>
+chprompt --use <line>/<prompt_number>
+chprompt --inject <line>/<prompt_number>
 chprompt --help
 chprompt --version
 ```
