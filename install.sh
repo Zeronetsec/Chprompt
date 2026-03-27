@@ -89,7 +89,7 @@ fi
 
 if [[ -d "$base/chprompt" ]]; then
     echo -ne "\033[?25h\n"
-    read -p "$(echo -e "${N}Do you wan't to backup ${GG}${base}/chprompt${N}? (y/n) ")" chs
+    read -p "$(echo -e "${N}Do you want to backup ${GG}${base}/chprompt${N}? (y/n) ")" chs
     echo -ne "\033[?25l"
 
     if [[ "$chs" == 'y' ]]; then
@@ -120,7 +120,7 @@ if [[ ! -f "$bashrc" ]]; then
 fi
 
 echo -ne "\033[?25h\n"
-read -p "$(echo -e "${N}Do you wan't to backup ${GG}${bashrc}${N}? (y/n) ")" chs
+read -p "$(echo -e "${N}Do you want to backup ${GG}${bashrc}${N}? (y/n) ")" chs
 echo -ne "\033[?25l"
 
 if [[ "$chs" == 'y' ]]; then

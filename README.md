@@ -6,7 +6,7 @@
 
 # Chprompt
 Chprompt is a simple, lightweight, and zero-dependency tool to switch your Linux PS1 prompt instantly. <br>
-Choose from over 100+ built-in prompt styles. <br>
+Choose from over 100+ built-in prompt styles.
 
 ## Preview
 <details>
