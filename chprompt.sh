@@ -30,9 +30,14 @@ function chprompt() {
         "(=^･ω･^=)"
     )
 
+    local birth_date="03-10"
+    local today="$(command date '+%m-%d')"
+
     local delay=0.2
     local duration=5
+
     SECONDS=0
+
     local tools="chprompt"
     local version="1.0"
     local homepage="https://github.com/Zeronetsec/Chprompt"
@@ -108,6 +113,10 @@ function chprompt() {
             return 0
             ;;
         "--help")
+            if [[ "$today" == "$birth_date" ]]; then
+                echo -e "${R}› ${N}Happy birthday for ${GG}chprompt ${N}🎉"
+                printf '\n'
+            fi
             echo -ne "${BB}Chprompt is a simple tool to switching the PS1 prompt${N}
 
 ${N}Usage:
