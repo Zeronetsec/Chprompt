@@ -88,7 +88,9 @@ if [[ "$backup" == "true" && -d "$base/chprompt" ]]; then
         "command zip -r chprompt_${bkdate}.bak.zip chprompt" \
         "Backup: ${GG}${base}/chprompt ${DG}=> ${GG}${base}/chprompt_${bkdate}.bak.zip${N}"
     cd
+fi
 
+if [[ -d "$base/chprompt" ]]; then
     install \
         "command rm -rf ${base}/chprompt" \
         "Removing: ${GG}old chprompt${N}"
@@ -145,8 +147,9 @@ install \
     "command mv ${bashrc}.tmp ${bashrc}" \
     "Moving: ${GG}${bashrc}.tmp ${DG}=> ${GG}${bashrc}${N}"
 
-echo -e "\n${GG}[+] ${N}Chprompt installed!"
-echo -e "${GG}[+] ${N}Type: ${GG}source ~/.bashrc && chprompt --help ${N}to reload the shell configuration"
+printf '\n'
+echo -e "${GG}[+] ${N}Chprompt installed!"
+echo -e "${GG}[+] ${N}Usage: ${GG}source ~/.bashrc && chprompt --help ${N}to reload the shell configuration and show helper"
 printf '\n'
 exit 0
 
