@@ -11,6 +11,16 @@ base="$PREFIX/opt"
 bashrc="$HOME/.bashrc"
 bkdate="$(command date +%Y_%b_%d_%H_%M_%S)"
 
+path="$(
+    cd -- "$(
+        command dirname -- "${BASH_SOURCE[0]}"
+    )" &> /dev/null && pwd
+)"
+
+if [[ "$1" == "--backup" ]]; then
+    backup="true"
+fi
+
 function install() {
     local cmd="$1"
     local desc="$2"
@@ -43,26 +53,11 @@ function getinstall() {
     done
 }
 
-printf '\n'
-echo -e "${N}Enter path to your ${GG}chprompt ${N}folder"
-read -p "$(echo -e "${N}Path: ")" path
-declare -A varmap=(
-    ["~"]="$HOME"
-    ["\$HOME"]="$HOME"
-    ["\$PREFIX"]="$PREFIX"
-    ["\$PWD"]="$PWD"
-)
-
-for exp in "${!varmap[@]}"; do
-    path="${path/#$exp/${varmap[$exp]}}"
-done
-
 if [[ ! -d "$path" ]]; then
     echo -e "\n${R}[!] ${N}Folder: ${GG}${path} ${N}not found! \n"
     exit 1
 fi
 
-echo -ne "\033[?25l"
 echo -e "\n${B}[*] ${N}Installing: ${GG}Chprompt${N}"
 
 pack=(
@@ -87,18 +82,12 @@ if [[ ! -d "$base" ]]; then
         "Created directory: ${GG}${base}${N}"
 fi
 
-if [[ -d "$base/chprompt" ]]; then
-    echo -ne "\033[?25h\n"
-    read -p "$(echo -e "${N}Do you want to backup ${GG}${base}/chprompt${N}? (y/n) ")" chs
-    echo -ne "\033[?25l"
-
-    if [[ "$chs" == 'y' ]]; then
-        cd "$base"
-        install \
-            "command zip -r chprompt_${bkdate}.bak.zip chprompt" \
-            "Backup: ${GG}${base}/chprompt ${DG}=> ${GG}${base}/chprompt_${bkdate}.bak.zip${N}"
-        cd
-    fi
+if [[ "$backup" == "true" && -d "$base/chprompt" ]]; then
+    cd "$base"
+    install \
+        "command zip -r chprompt_${bkdate}.bak.zip chprompt" \
+        "Backup: ${GG}${base}/chprompt ${DG}=> ${GG}${base}/chprompt_${bkdate}.bak.zip${N}"
+    cd
 
     install \
         "command rm -rf ${base}/chprompt" \
@@ -119,11 +108,7 @@ if [[ ! -f "$bashrc" ]]; then
         "Touch: ${GG}${bashrc}${N}"
 fi
 
-echo -ne "\033[?25h\n"
-read -p "$(echo -e "${N}Do you want to backup ${GG}${bashrc}${N}? (y/n) ")" chs
-echo -ne "\033[?25l"
-
-if [[ "$chs" == 'y' ]]; then
+if [[ "$backup" == "true" ]]; then
     install \
         "command cp ${bashrc} ${bashrc}.${bkdate}.bak" \
         "Backup: ${GG}${bashrc} ${DG}=> ${GG}${bashrc}.${bkdate}.bak${N}"
@@ -162,7 +147,7 @@ install \
 
 echo -e "\n${GG}[+] ${N}Chprompt installed!"
 echo -e "${GG}[+] ${N}Type: ${GG}source ~/.bashrc && chprompt --help ${N}to reload the shell configuration"
-echo -ne "\033[?25h\n"
+printf '\n'
 exit 0
 
 # Copyright (c) 2026 Zeronetsec
