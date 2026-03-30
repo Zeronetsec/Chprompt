@@ -21,15 +21,15 @@ Choose from over 100+ built-in prompt styles.
 </details>
 
 ## Features
-- **Native PS1 Management:** Changes your prompt using native shell capabilities for maximum compatibility.
-- **Live Preview Mode:** Test and visualize each style instantly before applying changes.
-- **Session-Based Styling:** Apply a new look temporarily for your current terminal session only.
-- **Persistent Configuration:** Option to set your favorite style permanently across all future sessions.
+- Native PS1 Management
+- Live Preview Mode
+- Session-Based Styling
+- Persistent Configuration
 
 ## Disclaimer
-- **File Modification:** Chprompt modifies your .bashrc. While it is theoretically safe—as it filters line-by-line and creates a backup of your original .bashrc—please use it only if you are confident with these changes.
-- **Shell Compatibility:** This tool is specifically designed for Bash (.bashrc). Forcing it to run on Zsh (.zshrc) or other shells may lead to compatibility issues.
-- **Visual Requirements:** Some advanced prompt styles require Nerd Fonts to display icons and symbols correctly.
+Chprompt modifies your .bashrc. While it is theoretically safe—as it filters line-by-line and creates a backup of your original .bashrc—please use it only if you are confident with these changes. <br>
+This tool is specifically designed for Bash (.bashrc). Forcing it to run on Zsh (.zshrc) or other shells may lead to compatibility issues. <br>
+Some advanced prompt styles require Nerd Fonts to display icons and symbols correctly.
 
 ## Testing
 <table>
@@ -61,6 +61,9 @@ git clone https://github.com/Zeronetsec/Chprompt.git
 cd Chprompt
 chmod +x install.sh
 ./install.sh
+
+# for backup
+./install.sh --backup
 ```
 
 ## Usage
