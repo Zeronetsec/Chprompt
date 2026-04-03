@@ -27,33 +27,9 @@ Choose from over 100+ built-in prompt styles.
 - Persistent Configuration
 
 ## Disclaimer
-Chprompt modifies your .bashrc. While it is theoretically safe—as it filters line-by-line and creates a backup of your original .bashrc—please use it only if you are confident with these changes. <br>
+Chprompt modifies your **~/.bashrc**. While it is theoretically safe—as it filters line-by-line and creates a backup of your original **~/.bashrc**—please use it only if you are confident with these changes. <br>
 This tool is specifically designed for Bash (.bashrc). Forcing it to run on Zsh (.zshrc) or other shells may lead to compatibility issues. <br>
 Some advanced prompt styles require Nerd Fonts to display icons and symbols correctly.
-
-## Testing
-<table>
-	<tr>
-		<th>OS</th>
-		<th>Version</th>
-	</tr>
-    <tr>
-        <td>Debian</td>
-        <td>Trixie</td>
-    </tr>
-    <tr>
-        <td>Kali</td>
-        <td>Rolling</td>
-    </tr>
-    <tr>
-        <td>Alpine</td>
-        <td>3.23</td>
-    </tr>
-	<tr>
-		<td>Termux</td>
-		<td>0.118.3</td>
-	</tr>
-</table>
 
 ## Installation
 ```bash
@@ -71,8 +47,6 @@ chmod +x install.sh
 chprompt --preview <line>/<prompt_number>
 chprompt --use <line>/<prompt_number>
 chprompt --inject <line>/<prompt_number>
-chprompt --help
-chprompt --version
 ```
 
 ## License
