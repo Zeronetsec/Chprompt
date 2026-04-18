@@ -119,14 +119,14 @@ function chprompt() {
                 echo -e "${R}› ${N}Happy birthday for ${GG}chprompt ${N}🎉"
                 printf '\n'
             fi
-            echo -ne "${BB}Chprompt is a simple tool to switching the PS1 prompt${N}
+            echo -ne "${N}Usage: ${GG}chprompt ${CC}<command> [<args>]${N}
 
-${N}Usage:
-    ${GG}chprompt --preview ${DG}<${CC}line/prompt_number${DG}> ${N}to preview prompt
-    ${GG}chprompt --use ${DG}<${CC}line/prompt_number${DG}> ${N}to use prompt
-    ${GG}chprompt --inject ${DG}<${CC}line/prompt_number${DG}> ${N}to inject prompt into ${CC}${HOME}/.bashrc${N}
-    ${GG}chprompt --version ${N}to show version
-    ${GG}chprompt --help ${N}to show helper message
+${N}Available commands:
+    ${GG}--preview ${DG}<${CC}line/prompt_number${DG}> ${N}to preview prompt
+    ${GG}--use ${DG}<${CC}line/prompt_number${DG}> ${N}to use prompt
+    ${GG}--inject ${DG}<${CC}line/prompt_number${DG}> ${N}to inject prompt into ${CC}${HOME}/.bashrc${N}
+    ${GG}--version ${N}to show version
+    ${GG}--help ${N}to show helper message
 
 ${N}List:
     ${DG}* ${GG}1${DG}/${GG}1-$(command ls "$path/1_line/" | command wc -l)${N}
@@ -135,11 +135,6 @@ ${N}List:
     ${DG}* ${GG}4${GG}/${GG}1-$(command ls "$path/4_line/" | command wc -l)${N}
     ${DG}* ${GG}5${DG}/${GG}1-$(command ls "$path/5_line/" | command wc -l)${N}
     ${DG}* ${GG}6${DG}/${GG}1-$(command ls "$path/6_line/" | command wc -l)${N}
-
-${N}Example:
-    ${GG}chprompt --preview ${CC}2/10${N}
-    ${GG}chprompt --use ${CC}2/10${N}
-    ${GG}chprompt --inject ${CC}2/10${N}
 "
             return 0
             ;;
