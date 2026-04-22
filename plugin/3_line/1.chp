@@ -1,0 +1,45 @@
+# https://github.com/Zeronetsec/Chprompt
+
+[Preview]
+\033[0m\n
+\033[1;41;37m%space%
+$(command date +%T)%space%
+\033[49m
+\033[1;31m
+%space%>%space%
+\033[1;44;37m%space%
+$(command whoami)@$(command hostname)
+%space%\033[49m
+\033[0m\n
+\033[1;43;30m
+%space%PATH:%space%
+~/$(command basename "$(pwd)")
+%space%\033[49m
+\033[0m\n
+$(EXIT_CODE=$?; if [[ $EXIT_CODE -eq 0 ]]; then echo -e "\033[1;32mλ"; else echo -e "\033[1;31m✖ $EXIT_CODE"; fi)
+%space%\033[1;37m»
+\033[0m
+[END]
+
+[Execute]
+\[\033[0m\]\n
+\[\033[1;41;37m\]
+%space%\t%space%
+\[\033[49m\]
+\[\033[1;31m\]
+%space%>%space%
+\[\033[1;44;37m\]
+%space%\u@\h%space%
+\[\033[49m\]
+\[\033[0m\]\n
+\[\033[1;43;30m\]
+%space%PATH:%space%\w%space%
+\[\033[49m\]
+\[\033[0m\]\n
+$(EXIT_CODE=$?; if [[ $EXIT_CODE -eq 0 ]]; then echo -e "\[\033[1;32m\]λ"; else echo -e "\[\033[1;31m\]✖ $EXIT_CODE"; fi)
+%space%\[\033[1;37m\]»
+\[\033[0m\]
+%space%
+[END]
+
+# Copyright (c) 2026 Zeronetsec

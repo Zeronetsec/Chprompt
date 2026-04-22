@@ -1,0 +1,46 @@
+# https://github.com/Zeronetsec/Chprompt
+
+[Preview]
+\033[0m\n
+\033[1;35m╭─%space%
+\033[1;32m
+$(command whoami)@$(command hostname)
+%space%\033[1;30m
+($(command date +%T))\n
+\033[1;35m├─%space%
+\033[1;34mDirectory:%space%
+~/$(command basename "$(pwd)")\n
+\033[1;35m├─%space%
+\033[1;33mJobs:%space%
+$(jobs | command wc -l)
+%space%\033[1;31m|%space%
+\033[1;36mSH:%space%
+$(command basename "$SHELL")\n
+\033[1;35m├─%space%
+\033[1;37mMachine:%space%
+\033[1;32m$(command uname -m)\n
+\033[1;35m╰─>
+\033[0m
+[END]
+
+[Execute]
+\[\033[0m\]\n
+\[\033[1;35m\]╭─%space%
+\[\033[1;32m\]\u@\h%space%
+\[\033[1;30m\](\t)\n
+\[\033[1;35m\]├─%space%
+\[\033[1;34m\]Directory:%space%\w\n
+\[\033[1;35m\]├─%space%
+\[\033[1;33m\]Jobs:%space%\j%space%
+\[\033[1;31m\]|%space%
+\[\033[1;36m\]SH:%space%
+$(command basename "$SHELL")\n
+\[\033[1;35m\]├─%space%
+\[\033[1;37m\]Machine:%space%
+\[\033[1;32m\]$(command uname -m)\n
+\[\033[1;35m\]╰─>
+\[\033[0m\]
+%space%
+[END]
+
+# Copyright (c) 2026 Zeronetsec

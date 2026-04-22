@@ -1,0 +1,50 @@
+# https://github.com/Zeronetsec/Chprompt
+
+[Preview]
+\033[0m\n
+\033[48;5;235m
+\033[38;5;220m╔═▸╤═════════╤═╗
+\033[0m\n
+\033[38;5;45m║%space%
+\033[38;5;207mUSER:%space%
+$(command whoami)
+%space%%space%HOST:%space%
+$(command hostname)
+%space%%space%EXIT:%space%$?
+%space%%space%\033[38;5;45m║\n
+\033[38;5;207m║%space%
+\033[38;5;45mDIR:%space%%space%
+~/$(command basename "$(pwd)")
+%space%%space%\033[38;5;207m║\n
+\033[48;5;235m
+\033[38;5;220m╚═▸╤═════════╤═╝
+\033[0m\n
+\033[38;5;82m▸❯
+\033[0m
+[END]
+
+[Execute]
+\[\033[0m\]\n
+\[\033[48;5;235m\]
+\[\033[38;5;220m\]╔═▸╤═════════╤═╗
+\[\033[0m\]\n
+\[\033[38;5;45m\]║%space%
+\[\033[38;5;207m\]
+USER:%space%\u%space%%space%
+HOST:%space%\h%space%%space%
+EXIT:%space%
+$(echo -e "$?")
+%space%%space%\[\033[38;5;45m\]║\n
+\[\033[38;5;207m\]║%space%
+\[\033[38;5;45m\]
+DIR:%space%%space%\w%space%%space%
+\[\033[38;5;207m\]║\n
+\[\033[48;5;235m\]
+\[\033[38;5;220m\]╚═▸╤═════════╤═╝
+\[\033[0m\]\n
+\[\033[38;5;82m\]▸❯
+\[\033[0m\]
+%space%
+[END]
+
+# Copyright (c) 2026 Zeronetsec
