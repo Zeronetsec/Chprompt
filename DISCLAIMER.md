@@ -1,6 +1,6 @@
 <!-- https://github.com/Zeronetsec/Chprompt -->
 
-# Disclaimer
+# DISCLAIMER
 This tool is designed specifically for **Bash** environments. <br>
 Forcing it to run on other shells may lead to corruption or unintended damage to your shell configuration.
 
