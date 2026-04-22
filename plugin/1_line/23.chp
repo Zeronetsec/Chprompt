@@ -1,0 +1,24 @@
+# https://github.com/Zeronetsec/Chprompt
+
+[Preview]
+\033[0m\n
+\033[38;5;214m󱑒
+%space%$(command date +%T)
+%space%\033[38;5;141m
+%space%
+~/$(command basename "$(pwd)")
+%space%\033[38;5;141m
+\033[0m
+[END]
+
+[Execute]
+\[\033[0m\]\n
+\[\033[38;5;214m\]󱑒
+%space%\t%space%
+\[\033[38;5;141m\]
+%space%\w%space%
+\[\033[38;5;141m\]
+\[\033[0m\]%space%
+[END]
+
+# Copyright (c) 2026 Zeronetsec

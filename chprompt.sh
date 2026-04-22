@@ -1,149 +1,91 @@
 #!/usr/bin/env bash
-# Chprompt Project
+# https://github.com/Zeronetsec/Chprompt
 
 function chprompt() {
-    local N='\033[0m'
-    local R='\033[1;31m'
-    local DG='\033[1;90m'
-    local GG='\033[0;32m'
-    local BB='\033[0;34m'
-    local CC='\033[0;36m'
+    export chppath="${PREFIX}/opt/chprompt"
 
-    local path="$PREFIX/opt/chprompt/plugin"
-    local folder="$(
-        echo -e "$2" | \
-        command cut -d '/' -f 1
-    )"
-
-    local file="$(
-        echo -e "$2" | \
-        command cut -d '/' -f 2
-    )"
-
-    local faces=(
-        "(｡◕‿◕｡)"
-        "(≧◡≦)"
-        "ʕ•ᴥ•ʔ"
-        "(・ω・)"
-        "(๑˃ᴗ˂)ﻭ"
-        "(ง'̀-'́)ง"
-        "(=^･ω･^=)"
+    local require=(
+        "utils/color"
+        "utils/help"
+        "utils/uwu"
+        "utils/version"
+        "utils/list"
+        "utils/preview"
+        "utils/inject"
+        "utils/use"
+        "utils/getblock"
     )
 
-    local birth_date="03-10"
-    local today="$(command date '+%m-%d')"
-
-    local delay=0.2
-    local duration=5
-
-    SECONDS=0
-
-    local tools="Chprompt"
-    local version="v1.0"
-    local creator="Zeronetsec"
-    local homepage="https://github.com/Zeronetsec/Chprompt"
+    for chload in "${require[@]}"; do
+        source "${chppath}/${chload}.sh"
+    done
 
     case "$1" in
         "")
             echo -e "${R}[!] ${N}Invalid input!"
             echo -e "${R}[!] ${N}Try: ${GG}chprompt --help${N}"
-            return 1
+            ;;
+        "--list")
+            list
             ;;
         "--preview")
-            if [[ ! -f "$path/${folder}_line/${file}.sh" ]]; then
-                echo -e "${R}[!] ${N}Prompt: ${GG}${folder}/${file} ${N}not found!"
-                return 1
-            fi
-
-            command bash "$path/${folder}_line/${file}.sh"
-            printf '\n'
-            return 0
+            preview "${2}"
             ;;
         "--use")
-            if [[ ! -f "$path/${folder}_line/${file}.sh" ]]; then
-                echo -e "${R}[!] ${N}Prompt: ${GG}${folder}/${file} ${N}not found!"
-                return 1
-            fi
-
-            source <(
-                command cat "$path/${folder}_line/${file}.sh" | \
-                command grep -vE '^\s*#|^\s*$' | \
-                command grep 'export PS1='
-            )
-            return 0
+            use "${2}"
             ;;
         "--inject")
-            if [[ ! -f "$path/${folder}_line/${file}.sh" ]]; then
-                echo -e "${R}[!] ${N}Prompt: ${GG}${folder}/${file} ${N}not found!"
-                return 1
-            fi
-
-            command cat "$HOME/.bashrc" | \
-                command grep -vE '^\s*chprompt --use */*' \
-                > "$PREFIX/tmp/chprompt_bashrc.tmp"
-
-            echo -e "chprompt --use ${folder}/${file}" \
-                >> "$PREFIX/tmp/chprompt_bashrc.tmp"
-
-            command cat "$PREFIX/tmp/chprompt_bashrc.tmp" \
-                > "$HOME/.bashrc"
-
-            command rm -f "$PREFIX/tmp/chprompt_bashrc.tmp"
-            source <(
-                command cat "$path/${folder}_line/${file}.sh" | \
-                command grep -vE '^\s*#|^\s*$' | \
-                command grep 'export PS1='
-            )
-            return 0
+            inject "${2}"
             ;;
         "--uwu")
-            echo -ne "\033[?25l"
-            while (( SECONDS < duration )); do
-                for face in "${faces[@]}"; do
-                    (( SECONDS >= duration )) && break
-                    printf "\r%s\033[K" "$face"
-                    command sleep "$delay"
-                done
-            done
-            echo -ne "\033[?25h\n"
+            uwu
             ;;
         "--version")
-            echo -e "${N}Project: ${GG}${tools}${N}"
-            echo -e "${N}Version: ${GG}${version}${N}"
-            echo -e "${N}Creator: ${GG}${creator}${N}"
-            echo -e "${N}Homepage: ${GG}${homepage}${N}"
-            return 0
+            version
             ;;
         "--help")
-            if [[ "$today" == "$birth_date" ]]; then
-                echo -e "${R}› ${N}Happy birthday for ${GG}chprompt ${N}🎉"
-                printf '\n'
-            fi
-            echo -ne "${N}Usage: ${GG}chprompt ${CC}<command> [<args>]${N}
-
-${N}Available commands:
-    ${GG}--preview ${DG}<${CC}line/prompt_number${DG}> ${N}to preview prompt
-    ${GG}--use ${DG}<${CC}line/prompt_number${DG}> ${N}to use prompt
-    ${GG}--inject ${DG}<${CC}line/prompt_number${DG}> ${N}to inject prompt into ${CC}${HOME}/.bashrc${N}
-    ${GG}--version ${N}to show version
-    ${GG}--help ${N}to show helper message
-
-${N}List:
-    ${DG}* ${GG}1${DG}/${GG}1-$(command ls "$path/1_line/" | command wc -l)${N}
-    ${DG}* ${GG}2${DG}/${GG}1-$(command ls "$path/2_line/" | command wc -l)${N}
-    ${DG}* ${GG}3${DG}/${GG}1-$(command ls "$path/3_line/" | command wc -l)${N}
-    ${DG}* ${GG}4${GG}/${GG}1-$(command ls "$path/4_line/" | command wc -l)${N}
-    ${DG}* ${GG}5${DG}/${GG}1-$(command ls "$path/5_line/" | command wc -l)${N}
-    ${DG}* ${GG}6${DG}/${GG}1-$(command ls "$path/6_line/" | command wc -l)${N}
-"
-            return 0
+            helper
             ;;
         *)
-            echo -e "${R}[!] ${N}Invalid options: ${GG}${1}${N}"
+            echo -e "${R}[!] ${N}Invalid input: ${GG}${1}${N}"
             echo -e "${R}[!] ${N}Try: ${GG}chprompt --help${N}"
-            return 1
             ;;
     esac
+
+    unsetvar=(
+        "N"
+        "R"
+        "DG"
+        "GG"
+        "BB"
+        "CC"
+        "chppath"
+        "require"
+        "chload"
+    )
+
+    for itr in "${unsetvar[@]}"; do
+        unset "${itr}"
+    done
+
+    unsetfnc=(
+        "list"
+        "preview"
+        "use"
+        "inject"
+        "help"
+        "version"
+        "uwu"
+        "getblock"
+    )
+
+    for itr in "${unsetfnc[@]}"; do
+        unset -f "${itr}"
+    done
+
+    unset unsetvar
+    unset unsetfnc
+    unset itr
 }
 
 # Copyright (c) 2026 Zeronetsec

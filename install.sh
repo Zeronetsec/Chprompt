@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Chprompt Project
+# https://github.com/Zeronetsec/Chprompt
 
 N='\033[0m'
 R='\033[1;31m'

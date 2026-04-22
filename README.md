@@ -1,4 +1,4 @@
-<!-- Chprompt Project -->
+<!-- https://github.com/Zeronetsec/Chprompt -->
 
 [![version](https://img.shields.io/badge/Chprompt-Version%201.0-blue.svg?maxAge=259200)]()
 [![os](https://img.shields.io/badge/Supported%20OS-Linux-blue.svg)]()
@@ -15,9 +15,11 @@ Choose from over 100+ built-in prompt styles.
 - Persistent Configuration
 
 ## Disclaimer
-Chprompt modifies your **~/.bashrc**. While it is theoretically safe—as it filters line-by-line and creates a backup of your original **~/.bashrc**—please use it only if you are confident with these changes. <br>
-This tool is specifically designed for Bash (.bashrc). Forcing it to run on Zsh (.zshrc) or other shells may lead to compatibility issues. <br>
-Some advanced prompt styles require Nerd Fonts to display icons and symbols correctly.
+Please read the
+[DISCLAIMER](https://github.com/Zeronetsec/Chprompt/blob/main/DISCLAIMER.md)
+before use. <br>
+Use at your own risk. <br>
+This tool modifies your `~/.bashrc` and executes raw code in plugins.
 
 ## Installation
 ```bash
@@ -35,7 +37,9 @@ chmod +x install.sh
 chprompt --preview <line>/<prompt_number>
 chprompt --use <line>/<prompt_number>
 chprompt --inject <line>/<prompt_number>
+chprompt --list
 ```
+And more commands.
 
 ## License
 This project is licensed under the MIT License. <br>

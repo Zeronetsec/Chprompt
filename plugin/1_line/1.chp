@@ -1,0 +1,17 @@
+# https://github.com/Zeronetsec/Chprompt
+
+[Preview]
+\033[0m\n
+\033[0;37m
+Android%space%>
+\033[0m
+[END]
+
+[Execute]
+\[\033[0m\]\n
+\[\033[0;37m\]Android
+%space%>\[\033[0m\]
+%space%
+[END]
+
+# Copyright (c) 2026 Zeronetsec
