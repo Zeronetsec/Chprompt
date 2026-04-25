@@ -1,0 +1,23 @@
+# https://github.com/Zeronetsec/Chprompt
+
+[Preview]
+\033[0m\n
+\033[0;32m
+$(command whoami)@$(command hostname)
+\033[0m%space%
+\033[0;37m
+~/$(command basename "$(pwd)")
+\033[0\n
+>
+[END]
+
+[Execute]
+\[\033[0m\]\n
+\[\033[0;32m\]\u@\h
+\[\033[0m\]%space%
+\[\033[0;37m\]\w
+\[\033[0m\]\n
+>%space%
+[END]
+
+# Copyright (c) 2026 Zeronetsec

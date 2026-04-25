@@ -1,0 +1,36 @@
+# https://github.com/Zeronetsec/Chprompt
+
+[Preview]
+\033[0m\n
+\033[90m╭─[%space%
+$(command date +%T)
+%space%]%space%━%space%
+\033[1;37m
+$(command whoami)@$(command hostname)
+\033[90m\n
+╰─[%space%
+\033[1;37m
+~/$(command basename "$(pwd)")
+\033[90m%space%]%space%━%space%
+\033[0m
+$(EXIT_CODE=$?; if [[ $EXIT_CODE -eq 0 ]]; then echo -e "\033[1;32m✔"; else echo -e "\033[1;31m✖ ($EXIT_CODE)"; fi)
+\033[90m%space%›
+\033[0m
+[END]
+
+[Execute]
+\[\033[0m\]\n
+\[\033[90m\]
+╭─[%space%\t%space%]%space%━%space%
+\[\033[1;37m\]\u@\h
+\[\033[90m\]\n
+\[\033[90m\]╰─[%space%
+\[\033[1;37m\]\w
+\[\033[90m\]%space%]%space%━%space%
+\[\033[0m\]
+$(EXIT_CODE=$?; if [[ $EXIT_CODE -eq 0 ]]; then echo -e "\[\033[1;32m\]✔"; else echo -e "\[\033[1;31m\]✖ ($EXIT_CODE)"; fi)
+\[\033[90m\]%space%›
+\[\033[0m\]%space%
+[END]
+
+# Copyright (c) 2026 Zeronetsec
