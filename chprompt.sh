@@ -14,6 +14,9 @@ function chprompt() {
         "utils/inject"
         "utils/use"
         "utils/getblock"
+        "utils/chuser"
+        "utils/chhost"
+        "utils/reset"
     )
 
     for chload in "${require[@]}"; do
@@ -36,6 +39,17 @@ function chprompt() {
             ;;
         "--inject")
             inject "${2}"
+            ;;
+        "--chuser")
+            shift
+            chuser "${@}"
+            ;;
+        "--chhost")
+            shift
+            chhost "${@}"
+            ;;
+        "--reset")
+            resetplugin
             ;;
         "--uwu")
             uwu
@@ -77,6 +91,9 @@ function chprompt() {
         "version"
         "uwu"
         "getblock"
+        "chuser"
+        "chhost"
+        "resetplugin"
     )
 
     for itr in "${unsetfnc[@]}"; do

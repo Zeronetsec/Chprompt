@@ -104,6 +104,14 @@ install \
     "command chmod +x -R ${base}/chprompt" \
     "Setting up permission"
 
+install \
+    "
+        cd ${base}/chprompt
+        command zip -r plugin_backup.zip plugin
+        cd
+    " \
+    "Backup: ${GG}${base}/chprompt/plugin ${DG}=> ${GG}${base}/chprompt/plugin_backup.zip${N}"
+
 if [[ ! -f "$bashrc" ]]; then
     install \
         "command touch ${bashrc}" \
