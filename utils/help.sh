@@ -12,12 +12,15 @@ function helper() {
     echo -e "${N}Usage: ${GG}chprompt ${CC}<command> [<args>]${N}"
     printf '\n'
     echo -e "${N}Available commands:"
-    echo -e "    ${GG}--preview ${DG}<${CC}line/prompt_number${DG}> ${N}to preview prompt"
-    echo -e "    ${GG}--use ${DG}<${CC}line/prompt_number${DG}> ${N}to use prompt"
-    echo -e "    ${GG}--inject ${DG}<${CC}line/prompt_number${DG}> ${N}to inject prompt into ${CC}${shcfg}${N}"
-    echo -e "    ${GG}--list ${N}to list all available prompts number"
-    echo -e "    ${GG}--version ${N}to show version"
-    echo -e "    ${GG}--help ${N}to show helper message"
+    echo -e "    ${GG}--preview ${DG}<${CC}line/prompt_number${DG}> ${N}preview a specific prompt"
+    echo -e "    ${GG}--use ${DG}<${CC}line/prompt_number${DG}> ${N}set a specific prompt as active"
+    echo -e "    ${GG}--inject ${DG}<${CC}line/prompt_number${DG}> ${N}inject a prompt into the ${CC}~/.bashrc ${N}configuration"
+    echo -e "    ${GG}--chuser ${DG}<${CC}user${DG}> [<${CC}new_user${DG}>] ${N}replace username in all plugins"
+    echo -e "    ${GG}--chhost ${DG}<${CC}host${DG}> [<${CC}new_host${DG}>] ${N}replace hostname in all plugins"
+    echo -e "    ${GG}--reset ${N}restore plugins to default (removes custom plugins)"
+    echo -e "    ${GG}--list ${N}list all available prompt numbers"
+    echo -e "    ${GG}--version ${N}show version information"
+    echo -e "    ${GG}--help ${N}show this help message"
 
     return $?
 }

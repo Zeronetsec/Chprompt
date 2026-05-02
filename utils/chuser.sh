@@ -4,7 +4,7 @@ function chuser() {
     local target="${chppath}/plugin"
 
     if [[ -z "${1}" ]]; then
-        echo -e "${R}[!] ${N}Missing arguments!"
+        echo -e "${R}[!] ${N}Missing argument!"
         return 1
     fi
 

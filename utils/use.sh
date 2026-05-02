@@ -3,6 +3,11 @@
 function use() {
     local arg1="${1}"
 
+    if [[ -z "${arg1}" ]]; then
+        echo -e "${R}[!] ${N}Missing argument!"
+        return 1
+    fi
+
     local folder="$(
         echo -e "${arg1}" | \
         command cut -d '/' -f 1
