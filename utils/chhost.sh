@@ -10,12 +10,11 @@ function chhost() {
 
     if [[ -z "${2}" ]]; then
         local newhost="${1}"
-        local current_host="$(command hostname)"
-        echo -e "${B}[*] ${N}Replacing: ${GG}\\h ${N}and ${GG}${current_host} ${DG}=> ${GG}${newhost} ${N}on all plugins"
+        echo -e "${B}[*] ${N}Replacing: ${GG}\\h ${N}and ${GG}\$(command hostname) ${DG}=> ${GG}${newhost} ${N}on all plugins"
         command find "${target}" \
             -type f \
             -name "*.chp" \
-            -exec sed -Ei "s/\\\\h|${current_host}/${newhost}/g" {} +
+            -exec sed -Ei "s/\\\\h|\\\\\$\(command hostname\)/${newhost}/g" {} +
     else
         local old="${1}"
         local new="${2}"

@@ -10,12 +10,11 @@ function chuser() {
 
     if [[ -z "${2}" ]]; then
         local newuser="${1}"
-        local current_user="$(command whoami)"
-        echo -e "${B}[*] ${N}Replacing: ${GG}\\u ${N}and ${GG}${current_user} ${DG}=> ${GG}${newuser} ${N}on all plugins"
+        echo -e "${B}[*] ${N}Replacing: ${GG}\\u ${N}and ${GG}\$(command whoami) ${DG}=> ${GG}${newuser} ${N}on all plugins"
         command find "${target}" \
             -type f \
             -name "*.chp" \
-            -exec sed -Ei "s/\\\\u|${current_user}/${newuser}/g" {} +
+            -exec sed -Ei "s/\\\\u|\\\\\$\(command whoami\)/${newuser}/g" {} +
     else
         local old="${1}"
         local new="${2}"

@@ -69,6 +69,7 @@ function chprompt() {
     unsetvar=(
         "N"
         "R"
+        "B"
         "DG"
         "GG"
         "BB"
