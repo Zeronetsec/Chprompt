@@ -14,7 +14,7 @@ function chhost() {
         command find "${target}" \
             -type f \
             -name "*.chp" \
-            -exec sed -Ei "s/\\\\h|\\\\\$\(command hostname\)/${newhost}/g" {} +
+            -exec sed -Ei 's/\\h|\$\(command hostname\)/'"${newhost}"'/g' {} +
     else
         local old="${1}"
         local new="${2}"

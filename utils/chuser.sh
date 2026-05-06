@@ -14,7 +14,7 @@ function chuser() {
         command find "${target}" \
             -type f \
             -name "*.chp" \
-            -exec sed -Ei "s/\\\\u|\\\\\$\(command whoami\)/${newuser}/g" {} +
+            -exec sed -Ei 's/\\u|\$\(command whoami\)/'"${newuser}"'/g' {} +
     else
         local old="${1}"
         local new="${2}"
