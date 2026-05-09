@@ -4,7 +4,7 @@ function helper() {
     local birth_date="03-10"
     local today="$(command date '+%m-%d')"
 
-    if [[ "$today" == "$birth_date" ]]; then
+    if [[ "${today}" == "${birth_date}" ]]; then
         echo -e "${R}› ${N}Happy birthday for ${GG}chprompt ${N}🎉"
         printf '\n'
     fi

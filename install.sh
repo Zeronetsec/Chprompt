@@ -7,8 +7,8 @@ B='\033[1;34m'
 GG='\033[0;32m'
 DG='\033[1;90m'
 
-base="$PREFIX/opt"
-bashrc="$HOME/.bashrc"
+base="${PREFIX}/opt"
+bashrc="${HOME}/.bashrc"
 bkdate="$(command date +%Y_%b_%d_%H_%M_%S)"
 
 path="$(
@@ -17,13 +17,13 @@ path="$(
     )" &> /dev/null && pwd
 )"
 
-if [[ "$1" == "--backup" ]]; then
+if [[ "${1}" == "--backup" ]]; then
     backup="true"
 fi
 
 function install() {
-    local cmd="$1"
-    local desc="$2"
+    local cmd="${1}"
+    local desc="${2}"
     echo -e "\n${B}[*] ${N}${desc}"
     eval "${cmd}" >/dev/null
     local status=$?
@@ -41,19 +41,19 @@ function getinstall() {
         exit 1
     fi
 
-    echo -e "$1" | while IFS= read -r line; do
-        [[ -z "$line" ]] && continue
-        IFS="::" read -ra pkgs <<< "$line"
+    echo -e "${1}" | while IFS= read -r line; do
+        [[ -z "${line}" ]] && continue
+        IFS="::" read -ra pkgs <<< "${line}"
         for pkg in "${pkgs[@]}"; do
-            pkg="$(echo -e "$pkg" | command xargs)"
-            if eval "$installw $pkg" 2>/dev/null; then
+            pkg="$(echo -e "${pkg}" | command xargs)"
+            if eval "${installw} ${pkg}" 2>/dev/null; then
                 break
             fi
         done
     done
 }
 
-if [[ ! -d "$path" ]]; then
+if [[ ! -d "${path}" ]]; then
     echo -e "\n${R}[!] ${N}Folder: ${GG}${path} ${N}not found! \n"
     exit 1
 fi
@@ -76,21 +76,21 @@ for i in "${pack[@]}"; do
         "Installing: ${GG}${i}${N}"
 done
 
-if [[ ! -d "$base" ]]; then
+if [[ ! -d "${base}" ]]; then
     install \
         "command mkdir -p ${base}" \
         "Created directory: ${GG}${base}${N}"
 fi
 
-if [[ "$backup" == "true" && -d "$base/chprompt" ]]; then
-    cd "$base"
+if [[ "${backup}" == "true" && -d "${base}/chprompt" ]]; then
+    cd "${base}"
     install \
         "command zip -r chprompt_${bkdate}.bak.zip chprompt" \
         "Backup: ${GG}${base}/chprompt ${DG}=> ${GG}${base}/chprompt_${bkdate}.bak.zip${N}"
     cd
 fi
 
-if [[ -d "$base/chprompt" ]]; then
+if [[ -d "${base}/chprompt" ]]; then
     install \
         "command rm -rf ${base}/chprompt" \
         "Removing: ${GG}old chprompt${N}"
@@ -112,13 +112,13 @@ install \
     " \
     "Backup: ${GG}${base}/chprompt/plugin ${DG}=> ${GG}${base}/chprompt/plugin_backup.zip${N}"
 
-if [[ ! -f "$bashrc" ]]; then
+if [[ ! -f "${bashrc}" ]]; then
     install \
         "command touch ${bashrc}" \
         "Touch: ${GG}${bashrc}${N}"
 fi
 
-if [[ "$backup" == "true" ]]; then
+if [[ "${backup}" == "true" ]]; then
     install \
         "command cp ${bashrc} ${bashrc}.${bkdate}.bak" \
         "Backup: ${GG}${bashrc} ${DG}=> ${GG}${bashrc}.${bkdate}.bak${N}"
@@ -138,7 +138,7 @@ current_theme="$(
     command sed 's/.*chprompt --use //'
 )"
 
-if [[ -z "$current_theme" ]]; then
+if [[ -z "${current_theme}" ]]; then
     current_theme="default/default"
 fi
 
