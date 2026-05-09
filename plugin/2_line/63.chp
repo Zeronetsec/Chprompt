@@ -1,0 +1,19 @@
+# https://github.com/Zeronetsec/Chprompt
+
+[Preview]
+\n
+\033[0m$
+%space%sudo%space%cat
+%space%>%space%/bin/bash
+%space%<<%space%EOF\n
+>
+[END]
+
+[Execute]
+\[\033[0m\]\n
+$%space%sudo%space%cat
+%space%>%space%/bin/bash%space%<<%space%EOF\n
+>%space%
+[END]
+
+# Copyright (c) 2026 Zeronetsec
