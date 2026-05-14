@@ -2,7 +2,7 @@
 # https://github.com/Zeronetsec/Chprompt
 
 function chprompt() {
-    export chppath="${PREFIX}/opt/chprompt"
+    export chppath="$(command chprompt 2>/dev/null)"
 
     local require=(
         "utils/color"
@@ -22,6 +22,11 @@ function chprompt() {
     for chload in "${require[@]}"; do
         source "${chppath}/${chload}.sh"
     done
+
+    if [[ -z "${chppath}" ]]; then
+        echo -e "${R}[!] ${N}Chprompt path not found!"
+        return 1
+    fi
 
     case "$1" in
         "")
@@ -74,6 +79,7 @@ function chprompt() {
         "GG"
         "BB"
         "CC"
+        "WW"
         "chppath"
         "require"
         "chload"

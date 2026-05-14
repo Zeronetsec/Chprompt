@@ -1,0 +1,5 @@
+{
+	"Command": "--chhost",
+	"Args": "<user> [<new_host>]",
+	"Description": "replace hostname in all plugins"
+}

@@ -68,6 +68,7 @@ pack=(
     "gawk"
     "zip"
     "git"
+    "jq"
 )
 
 for i in "${pack[@]}"; do
@@ -155,10 +156,20 @@ install \
     "command mv ${bashrc}.tmp ${bashrc}" \
     "Moving: ${GG}${bashrc}.tmp ${DG}=> ${GG}${bashrc}${N}"
 
+install \
+    "command ln -sf ${base}/chprompt/bin/chprompt.sh ${PREFIX}/bin/chprompt" \
+    "Symlink: ${GG}${base}/chprompt/bin/chprompt.sh ${DG}=> ${GG}${PREFIX}/bin/chprompt${N}"
+
 printf '\n'
-echo -e "${GG}[+] ${N}Chprompt installed!"
-echo -e "${GG}[+] ${N}Usage: ${GG}source ~/.bashrc && chprompt --help ${N}to reload the shell configuration and show helper"
-printf '\n'
-exit 0
+if command -v chprompt &>/dev/null && command grep "chprompt" "${bashrc}" > /dev/null 2>&1; then
+    echo -e "${GG}[+] ${N}Chprompt installed!"
+    echo -e "${GG}[+] ${N}Usage: ${GG}source ~/.bashrc && chprompt --help ${N}to reload the shell configuration and show helper"
+    printf '\n'
+    exit 0
+else
+    echo -e "${R}[!] ${N}Failed installing chprompt!"
+    printf '\n'
+    exit 1
+fi
 
 # Copyright (c) 2026 Zeronetsec
