@@ -7,9 +7,16 @@ B='\033[1;34m'
 GG='\033[0;32m'
 DG='\033[1;90m'
 
-base="${PREFIX}/opt"
+if [[ -z "${PREFIX}" ]]; then
+    prefix="/usr"
+else
+    prefix="${PREFIX}"
+fi
+
+base="${prefix}/opt"
+symlink="${prefix}/bin"
 bashrc="${HOME}/.bashrc"
-bkdate="$(command date +%Y_%b_%d_%H_%M_%S)"
+bkdate="$(command date '+%Y_%b_%d_%H_%M_%S')"
 
 path="$(
     cd -- "$(
@@ -54,11 +61,11 @@ function getinstall() {
 }
 
 if [[ ! -d "${path}" ]]; then
-    echo -e "\n${R}[!] ${N}Folder: ${GG}${path} ${N}not found! \n"
+    echo -e "${R}[!] ${N}Folder: ${GG}${path} ${N}not found! \n"
     exit 1
 fi
 
-echo -e "\n${B}[*] ${N}Installing: ${GG}Chprompt${N}"
+echo -e "${B}[*] ${N}Installing: ${GG}Chprompt${N}"
 
 pack=(
     "bash"
@@ -157,18 +164,16 @@ install \
     "Moving: ${GG}${bashrc}.tmp ${DG}=> ${GG}${bashrc}${N}"
 
 install \
-    "command ln -sf ${base}/chprompt/bin/chprompt.sh ${PREFIX}/bin/chprompt" \
-    "Symlink: ${GG}${base}/chprompt/bin/chprompt.sh ${DG}=> ${GG}${PREFIX}/bin/chprompt${N}"
+    "command ln -sf ${base}/chprompt/bin/chprompt.sh ${symlimk}/chprompt" \
+    "Symlink: ${GG}${base}/chprompt/bin/chprompt.sh ${DG}=> ${GG}${symlink}/chprompt${N}"
 
 printf '\n'
 if command -v chprompt &>/dev/null && command grep "chprompt" "${bashrc}" > /dev/null 2>&1; then
     echo -e "${GG}[+] ${N}Chprompt installed!"
     echo -e "${GG}[+] ${N}Usage: ${GG}source ~/.bashrc && chprompt --help ${N}to reload the shell configuration and show helper"
-    printf '\n'
     exit 0
 else
     echo -e "${R}[!] ${N}Failed installing chprompt!"
-    printf '\n'
     exit 1
 fi
 

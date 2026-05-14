@@ -1,6 +1,6 @@
 <!-- https://github.com/Zeronetsec/Chprompt -->
 
-[![version](https://img.shields.io/badge/Chprompt-Version%201.0-blue.svg?maxAge=259200)]()
+[![version](https://img.shields.io/badge/Chprompt-Version%200.1-blue.svg?maxAge=259200)]()
 [![os](https://img.shields.io/badge/Supported%20OS-Linux-blue.svg)]()
 [![license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
