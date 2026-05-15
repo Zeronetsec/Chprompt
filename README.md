@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 # Chprompt
-Chprompt is a simple, lightweight, and zero-dependency tool to switch your Linux PS1 prompt instantly. <br>
+Chprompt is a simple, and lightweight tool to switch your Linux PS1 prompt instantly. <br>
 Choose from over 100+ built-in prompt styles.
 
 ## Features
