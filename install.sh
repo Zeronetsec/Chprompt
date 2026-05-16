@@ -75,7 +75,7 @@ pack=(
     "gawk"
     "zip"
     "git"
-    "jq"
+    "python3"
 )
 
 for i in "${pack[@]}"; do
