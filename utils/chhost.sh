@@ -24,8 +24,6 @@ function chhost() {
             -name "*.chp" \
             -exec sed -i "s/${old}/${new}/g" {} +
     fi
-
-    return 0
 }
 
 # Copyright (c) 2026 Zeronetsec

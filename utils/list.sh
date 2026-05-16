@@ -17,8 +17,6 @@ function list() {
     echo -e "    ${DG}* ${GG}4${GG}/${GG}1-${l4}${N}"
     echo -e "    ${DG}* ${GG}5${DG}/${GG}1-${l5}${N}"
     echo -e "    ${DG}* ${GG}6${DG}/${GG}1-${l6}${N}"
-
-    return $?
 }
 
 # Copyright (c) 2026 Zeronetsec

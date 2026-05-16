@@ -83,6 +83,7 @@ function chprompt() {
         "chppath"
         "require"
         "chload"
+        "myroot"
     )
 
     for itr in "${unsetvar[@]}"; do

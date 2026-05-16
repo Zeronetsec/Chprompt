@@ -25,8 +25,6 @@ function uwu() {
         done
     done
     echo -ne "\033[?25h\n"
-
-    return $?
 }
 
 # Copyright (c) 2026 Zeronetsec
