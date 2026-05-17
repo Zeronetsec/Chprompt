@@ -1,0 +1,33 @@
+# https://github.com/Zeronetsec/Chprompt
+
+curl
+wget
+ftp://
+tftp://
+sftp://
+tcp://
+udp://
+http://
+chown
+rm
+bash
+/bin/bash
+/tmp/
+/dev/
+nc
+ncat
+netcat
+socat
+python
+python3
+perl
+php
+ruby
+eval
+exec
+id_rsa
+chattr
+chmod
+eval
+
+# Copyright (c) 2026 Zeronetsec

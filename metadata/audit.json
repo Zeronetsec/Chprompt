@@ -1,0 +1,5 @@
+{
+	"Command": "--audit",
+	"Args": "",
+	"Description": "audit all plugins to detect possible malicious shell patterns"
+}

@@ -12,10 +12,10 @@ CC = "\033[0;36m"
 DG = "\033[1;90m"
 WW = "\033[0;37m"
 
-target_metadata = os.getenv("myroot")
+target_metadata = os.getenv("chppath")
 
 if not target_metadata:
-    print(f"{R}[!] {N}Variable: {GG}target_metadata {N}not found!")
+    print(f"{R}[!] {N}Variable: {GG}chppath {N}not found!")
     exit(1)
 
 metadata_path = os.path.join(target_metadata, "metadata", "*.json")

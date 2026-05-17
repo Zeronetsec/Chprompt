@@ -17,6 +17,7 @@ function chprompt() {
         "utils/chuser"
         "utils/chhost"
         "utils/reset"
+        "utils/audit"
     )
 
     for chload in "${require[@]}"; do
@@ -56,6 +57,9 @@ function chprompt() {
         "--reset")
             resetplugin
             ;;
+        "--audit")
+            audit_plugin
+            ;;
         "--uwu")
             uwu
             ;;
@@ -83,7 +87,8 @@ function chprompt() {
         "chppath"
         "require"
         "chload"
-        "myroot"
+        "plugin"
+        "pattern"
     )
 
     for itr in "${unsetvar[@]}"; do
@@ -102,6 +107,7 @@ function chprompt() {
         "chuser"
         "chhost"
         "resetplugin"
+        "audit_plugin"
     )
 
     for itr in "${unsetfnc[@]}"; do
