@@ -164,7 +164,7 @@ install \
     "Moving: ${GG}${bashrc}.tmp ${DG}=> ${GG}${bashrc}${N}"
 
 install \
-    "command ln -sf ${base}/chprompt/bin/chprompt.sh ${symlimk}/chprompt" \
+    "command ln -sf ${base}/chprompt/bin/chprompt.sh ${symlink}/chprompt" \
     "Symlink: ${GG}${base}/chprompt/bin/chprompt.sh ${DG}=> ${GG}${symlink}/chprompt${N}"
 
 printf '\n'
