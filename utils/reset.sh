@@ -10,7 +10,7 @@ function resetplugin() {
     command rm -rf "${chppath}/plugin/"
     command mkdir -p "${chppath}/plugin"
 
-    command cp -v \
+    command cp \
         "${chppath}/plugin_backup.zip" \
         "${chppath}/plugin/"
 
