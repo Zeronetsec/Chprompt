@@ -168,7 +168,7 @@ install \
     "Symlink: ${GG}${base}/chprompt/bin/chprompt.sh ${DG}=> ${GG}${symlink}/chprompt${N}"
 
 printf '\n'
-if command -v chprompt &>/dev/null && command grep "chprompt" "${bashrc}" > /dev/null 2>&1; then
+if command -v chprompt &>/dev/null; then
     echo -e "${GG}[+] ${N}Chprompt installed!"
     echo -e "${GG}[+] ${N}Usage: ${GG}source ~/.bashrc && chprompt --help ${N}to reload the shell configuration and show helper"
     exit 0
