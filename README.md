@@ -13,6 +13,7 @@ Choose from over 100+ built-in prompt styles.
 - Live Preview Mode
 - Session-Based Styling
 - Persistent Configuration
+- And more.
 
 ## Disclaimer
 This tool modifies your `~/.bashrc` and executes raw code in plugins. <br>
@@ -23,13 +24,17 @@ Use at your own risk.
 
 ## Installation
 ```bash
-git clone https://github.com/Zeronetsec/Chprompt.git
+# in termux
+git clone https://github.com/Zeronetsec/Chprompt
 cd Chprompt
 chmod +x install.sh
-./install.sh
+./install.sh [--backup]
 
-# for backup
-./install.sh --backup
+# in linux
+git clone https://github.com/Zeronetsec/Chprompt
+cd Chprompt
+chmod +x install.sh
+sudo HOME=$HOME ./install.sh [--backup]
 ```
 
 ## Usage
