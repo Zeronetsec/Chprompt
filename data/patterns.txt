@@ -12,8 +12,6 @@ chown
 rm
 bash
 /bin/bash
-/tmp/
-/dev/
 nc
 ncat
 netcat
@@ -28,6 +26,5 @@ exec
 id_rsa
 chattr
 chmod
-eval
 
 # Copyright (c) 2026 Zeronetsec
