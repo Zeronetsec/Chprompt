@@ -24,13 +24,13 @@ Use at your own risk.
 
 ## Installation
 ```bash
-# in termux / linux (root)
+# termux / linux (root)
 git clone https://github.com/Zeronetsec/Chprompt
 cd Chprompt
 chmod +x install.sh
 ./install.sh [--backup]
 
-# in linux (user)
+# linux (user)
 git clone https://github.com/Zeronetsec/Chprompt
 cd Chprompt
 chmod +x install.sh
