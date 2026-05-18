@@ -24,6 +24,8 @@ function chhost() {
             -name "*.chp" \
             -exec sed -i "s/${old}/${new}/g" {} +
     fi
+
+    source "${HOME}/.bashrc"
 }
 
 # Copyright (c) 2026 Zeronetsec

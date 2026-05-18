@@ -18,6 +18,8 @@ function resetplugin() {
         echo -e "${R}[!] ${N}Error: ${GG}unzip error with exit code ${GG}${?}${N}"
         return 1
     }
+
+    source "${HOME}/.bashrc"
 }
 
 # Copyright (c) 2026 Zeronetsec
