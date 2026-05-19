@@ -28,13 +28,13 @@ Use at your own risk.
 git clone https://github.com/Zeronetsec/Chprompt
 cd Chprompt
 chmod +x install.sh
-./install.sh [--backup]
+./install.sh #--backup
 
 # linux (user)
 git clone https://github.com/Zeronetsec/Chprompt
 cd Chprompt
 chmod +x install.sh
-sudo HOME=$HOME ./install.sh [--backup]
+sudo HOME=$HOME ./install.sh #--backup
 ```
 
 ## Usage
