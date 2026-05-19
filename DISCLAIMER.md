@@ -32,6 +32,6 @@ By using this tool, you acknowledge and accept the following risks:
 
 ## Use at Your Own Risk
 You are responsible for any changes made to your system. <br>
-It is strongly recommended to back up your configuration files before using this tool. <br>
+It is strongly recommended to back up your configuration files before using this tool.
 
 <!-- Copyright (c) 2026 Zeronetsec -->

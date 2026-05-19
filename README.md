@@ -28,13 +28,13 @@ Use at your own risk.
 git clone https://github.com/Zeronetsec/Chprompt
 cd Chprompt
 chmod +x install.sh
-./install.sh #--backup
+./install.sh # --backup
 
 # linux (user)
 git clone https://github.com/Zeronetsec/Chprompt
 cd Chprompt
 chmod +x install.sh
-sudo HOME=$HOME ./install.sh #--backup
+sudo HOME=$HOME ./install.sh # --backup
 ```
 
 ## Usage
@@ -47,6 +47,6 @@ chprompt --list
 And more commands.
 
 ## License
-This project is licensed under the MIT License. <br>
+This project is licensed under the MIT License.
 
 <!-- Copyright (c) 2026 Zeronetsec -->
