@@ -28,7 +28,7 @@ git clone https://github.com/Zeronetsec/Chprompt
 cd Chprompt
 chmod +x install.sh
 
-# termux / linux (user)
+# termux / linux (root)
 ./install.sh # --backup
 
 # linux (user)
