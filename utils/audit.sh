@@ -15,7 +15,6 @@ function audit_plugin() {
         }
 
         echo -e "${B}[*] ${N}Audit plugin: ${GG}${plugin}/${N}"
-
         command python3 "${engine}"
         return $?
     else
