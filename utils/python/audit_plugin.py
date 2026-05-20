@@ -39,8 +39,6 @@ def scan_plugin(plugin_dir, patterns):
         print(f"{R}[!] {N}Plugin directory: {GG}{plugin_dir} {N}not found!")
         sys.exit(1)
 
-    print(f"{B}[*] {N}Audit plugin: {GG}{plugin_dir}{N}\n")
-
     match_count = 0
     for root, _, files in os.walk(plugin_dir):
         for file in files:

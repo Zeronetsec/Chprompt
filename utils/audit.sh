@@ -13,6 +13,9 @@ function audit_plugin() {
         [[ ! -x "${engine}" ]] && {
             command chmod +x "${engine}"
         }
+
+        echo -e "${B}[*] ${N}Audit plugin: ${GG}${plugin}/${N}"
+
         command python3 "${engine}"
         return $?
     else
