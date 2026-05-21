@@ -18,7 +18,7 @@ Choose from over 100+ built-in prompt styles.
 ## Disclaimer
 This tool modifies your `~/.bashrc` and executes raw code in plugins. <br>
 Please read the
-[DISCLAIMER](https://github.com/Zeronetsec/Chprompt/blob/main/DISCLAIMER.md)
+[DISCLAIMER](DISCLAIMER.md)
 before use. <br>
 Use at your own risk.
 
@@ -40,6 +40,7 @@ sudo HOME=$HOME ./install.sh # --backup
 chprompt --preview <line>/<prompt_number>
 chprompt --use <line>/<prompt_number>
 chprompt --inject <line>/<prompt_number>
+chprompt --audit
 chprompt --list
 ```
 And more commands.
