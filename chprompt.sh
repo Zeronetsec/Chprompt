@@ -99,7 +99,6 @@ function chprompt() {
         "chppath"
         "plugin"
         "pattern"
-        "excode"
     )
 
     for itr in "${unsetvar[@]}"; do
@@ -107,7 +106,6 @@ function chprompt() {
     done
 
     unsetfnc=(
-        "include"
         "utils::List"
         "utils::Preview"
         "utils::Use"
@@ -126,6 +124,7 @@ function chprompt() {
         unset -f "${itr}"
     done
 
+    unset -f include
     unset unsetvar
     unset unsetfnc
     unset itr
