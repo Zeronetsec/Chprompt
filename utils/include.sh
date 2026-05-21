@@ -26,13 +26,13 @@ function include() {
     while read -r line; do
         [[ -z "${line}" ]] && continue
         if [[ ! -f "${chppath}/${line}.sh" ]]; then
-            echo -e "${R}[!] ${N}Include: ${GG}${line} ${N}not found!"
-            ecode=1
+            echo -e "\033[1;31m[!] \033[0mInclude: \033[0;32m${line} \033[0mnot found!"
+            return 1
         fi
         source "${chppath}/${line}.sh"
     done <<< "${input_data}"
 
-    return ${ecode:-0}
+    return 0
 }
 
 # Copyright (c) 2026 Zeronetsec
