@@ -3,75 +3,87 @@
 
 function chprompt() {
     export chppath="$(command chprompt 2>/dev/null)"
+    local excode
 
-    local require=(
-        "utils/color"
-        "utils/help"
-        "utils/uwu"
-        "utils/version"
-        "utils/list"
-        "utils/preview"
-        "utils/inject"
-        "utils/use"
-        "utils/getblock"
-        "utils/chuser"
-        "utils/chhost"
-        "utils/reset"
-        "utils/audit"
-    )
+    source "${chppath}/utils/include.sh"
 
-    for chload in "${require[@]}"; do
-        source "${chppath}/${chload}.sh"
-    done
+    include : '(
+        utils/color
+        utils/helper
+        utils/uwu
+        utils/version
+        utils/list
+        utils/preview
+        utils/inject
+        utils/use
+        utils/getblock
+        utils/chuser
+        utils/chhost
+        utils/reset_plugin
+        utils/audit_plugin
+    )' || excode=1
 
     if [[ -z "${chppath}" ]]; then
         echo -e "${R}[!] ${N}Chprompt path not found!"
-        return 1
+        excode=1
     fi
 
-    case "$1" in
+    case "${1}" in
         "")
             echo -e "${R}[!] ${N}Invalid input!"
             echo -e "${R}[!] ${N}Try: ${GG}chprompt --help${N}"
+            excode=0
             ;;
         "--list")
-            list
+            utils::List
+            excode=$?
             ;;
         "--preview")
-            preview "${2}"
+            utils::Preview "${2}"
+            excode=$?
             ;;
         "--use")
-            use "${2}"
+            utils::Use "${2}"
+            excode=$?
             ;;
         "--inject")
-            inject "${2}"
+            utils::Inject "${2}"
+            excode=$?
             ;;
         "--chuser")
             shift
-            chuser "${@}"
+            utils::Chuser "${@}"
+            excode=$?
             ;;
         "--chhost")
             shift
-            chhost "${@}"
+            utils::Chhost "${@}"
+            excode=$?
             ;;
         "--reset")
-            resetplugin
+            utils::ResetPlugin
+            excode=$?
             ;;
         "--audit")
-            audit_plugin
+            utils::AuditPlugin
+            excode=$?
             ;;
         "--uwu")
-            uwu
+            utils::Uwu
+            excode=$?
             ;;
         "--version")
-            version
+            utils::Version
+            excode=$?
             ;;
         "--help")
-            helper
+            utils::Helper
+            excode=$?
             ;;
         *)
             echo -e "${R}[!] ${N}Invalid input: ${GG}${1}${N}"
             echo -e "${R}[!] ${N}Try: ${GG}chprompt --help${N}"
+            excode=1
             ;;
     esac
 
@@ -85,10 +97,9 @@ function chprompt() {
         "CC"
         "WW"
         "chppath"
-        "require"
-        "chload"
         "plugin"
         "pattern"
+        "excode"
     )
 
     for itr in "${unsetvar[@]}"; do
@@ -96,18 +107,19 @@ function chprompt() {
     done
 
     unsetfnc=(
-        "list"
-        "preview"
-        "use"
-        "inject"
-        "help"
-        "version"
-        "uwu"
-        "getblock"
-        "chuser"
-        "chhost"
-        "resetplugin"
-        "audit_plugin"
+        "include"
+        "utils::List"
+        "utils::Preview"
+        "utils::Use"
+        "utils::Inject"
+        "utils::Helper"
+        "utils::Version"
+        "utils::Uwu"
+        "utils::Chuser"
+        "utils::Chhost"
+        "utils::ResetPlugin"
+        "utils::AuditPlugin"
+        "utils::getblock"
     )
 
     for itr in "${unsetfnc[@]}"; do
@@ -117,6 +129,8 @@ function chprompt() {
     unset unsetvar
     unset unsetfnc
     unset itr
+
+    return ${excode}
 }
 
 # Copyright (c) 2026 Zeronetsec

@@ -1,7 +1,8 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function inject() {
+function utils::Inject() {
     local arg1="${1}"
+    local PREFIX="${PREFIX:-/usr}"
 
     if [[ -z "${arg1}" ]]; then
         echo -e "${R}[!] ${N}Missing argument!"
@@ -37,13 +38,15 @@ function inject() {
 
     source <(
         printf 'export PS1=%q\n' "$(
-            getblock 'Execute' \
+            utils::getblock 'Execute' \
             "${chppath}/plugin/${folder}_line/${file}.chp" | \
             command grep -vE '^\s*(#|$)' | \
             command tr -d '\n' | \
             command sed 's/%space%/ /g'
         )"
     )
+
+    return 0
 }
 
 # Copyright (c) 2026 Zeronetsec

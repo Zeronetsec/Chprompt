@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function getblock() {
+function utils::getblock() {
     local sec="${1}"
     local file="${2}"
 

@@ -1,12 +1,11 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function resetplugin() {
+function utils::ResetPlugin() {
     if [[ ! -f "${chppath}/plugin_backup.zip" ]]; then
         echo -e "${R}[!] ${N}Plugin backup: ${GG}${chppath}/plugin_backup.zip ${N}not found!"
         return 1
     fi
 
-    echo -e "${B}[*] ${N}Resetting plugins to default"
     command rm -rf "${chppath}/plugin/"
     command mkdir -p "${chppath}/plugin"
 
@@ -20,6 +19,7 @@ function resetplugin() {
     }
 
     source "${HOME}/.bashrc"
+    return 0
 }
 
 # Copyright (c) 2026 Zeronetsec

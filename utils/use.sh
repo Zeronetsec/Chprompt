@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function use() {
+function utils::Use() {
     local arg1="${1}"
 
     if [[ -z "${arg1}" ]]; then
@@ -25,13 +25,15 @@ function use() {
 
     source <(
         printf 'export PS1=%q\n' "$(
-            getblock 'Execute' \
+            utils::getblock 'Execute' \
             "${chppath}/plugin/${folder}_line/${file}.chp" | \
             command grep -vE '^\s*(#|$)' | \
             command tr -d '\n' | \
             command sed 's/%space%/ /g'
         )"
     )
+
+    return 0
 }
 
 # Copyright (c) 2026 Zeronetsec

@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function chuser() {
+function utils::Chuser() {
     local target="${chppath}/plugin"
 
     if [[ -z "${1}" ]]; then
@@ -10,7 +10,6 @@ function chuser() {
 
     if [[ -z "${2}" ]]; then
         local newuser="${1}"
-        echo -e "${B}[*] ${N}Replacing: ${GG}\\u ${N}and ${GG}\$(command whoami) ${DG}=> ${GG}${newuser} ${N}on all plugins"
         command find "${target}" \
             -type f \
             -name "*.chp" \
@@ -18,7 +17,6 @@ function chuser() {
     else
         local old="${1}"
         local new="${2}"
-        echo -e "${B}[*] ${N}Replacing: ${GG}${old} ${DG}=> ${GG}${new} ${N}on all plugins"
         command find "${target}" \
             -type f \
             -name "*.chp" \
@@ -26,6 +24,7 @@ function chuser() {
     fi
 
     source "${HOME}/.bashrc"
+    return 0
 }
 
 # Copyright (c) 2026 Zeronetsec

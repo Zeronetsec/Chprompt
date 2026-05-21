@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function list() {
+function utils::List() {
     local path="${chppath}/plugin"
 
     local l1="$(command ls "${path}/1_line/" | command wc -l)"
@@ -17,6 +17,8 @@ function list() {
     echo -e "    ${DG}* ${GG}4${GG}/${GG}1-${l4}${N}"
     echo -e "    ${DG}* ${GG}5${DG}/${GG}1-${l5}${N}"
     echo -e "    ${DG}* ${GG}6${DG}/${GG}1-${l6}${N}"
+
+    return 0
 }
 
 # Copyright (c) 2026 Zeronetsec

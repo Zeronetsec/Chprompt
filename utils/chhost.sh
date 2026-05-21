@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function chhost() {
+function utils::Chhost() {
     local target="${chppath}/plugin"
 
     if [[ -z "${1}" ]]; then
@@ -10,7 +10,6 @@ function chhost() {
 
     if [[ -z "${2}" ]]; then
         local newhost="${1}"
-        echo -e "${B}[*] ${N}Replacing: ${GG}\\h ${N}and ${GG}\$(command hostname) ${DG}=> ${GG}${newhost} ${N}on all plugins"
         command find "${target}" \
             -type f \
             -name "*.chp" \
@@ -18,7 +17,6 @@ function chhost() {
     else
         local old="${1}"
         local new="${2}"
-        echo -e "${B}[*] ${N}Replacing: ${GG}${old} ${DG}=> ${GG}${new} ${N}on all plugins"
         command find "${target}" \
             -type f \
             -name "*.chp" \
@@ -26,6 +24,7 @@ function chhost() {
     fi
 
     source "${HOME}/.bashrc"
+    return 0
 }
 
 # Copyright (c) 2026 Zeronetsec

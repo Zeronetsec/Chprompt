@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function preview() {
+function utils::Preview() {
     local arg1="${1}"
 
     if [[ -z "${arg1}" ]]; then
@@ -24,12 +24,14 @@ function preview() {
     fi
 
     eval "echo -e \"$(
-        getblock 'Preview' \
+        utils::getblock 'Preview' \
         "${chppath}/plugin/${folder}_line/${file}.chp" | \
         command grep -vE '^\s*(#|$)' | \
         command tr -d '\n' | \
         command sed 's/%space%/ /g'
     )\""
+
+    return 0
 }
 
 # Copyright (c) 2026 Zeronetsec

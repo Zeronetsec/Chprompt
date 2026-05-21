@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function version() {
+function utils::Version() {
     local name="Chprompt"
     local version="v0.1"
     local creator="Zeronetsec"
@@ -10,6 +10,8 @@ function version() {
     echo -e "${N}Version: ${GG}${version}${N}"
     echo -e "${N}Creator: ${GG}${creator}${N}"
     echo -e "${N}Homepage: ${GG}${homepage}${N}"
+
+    return 0
 }
 
 # Copyright (c) 2026 Zeronetsec

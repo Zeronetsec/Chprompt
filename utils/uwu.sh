@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function uwu() {
+function utils::Uwu() {
     local faces=(
         "(｡◕‿◕｡)"
         "(≧◡≦)"
@@ -25,6 +25,8 @@ function uwu() {
         done
     done
     echo -ne "\033[?25h\n"
+
+    return 0
 }
 
 # Copyright (c) 2026 Zeronetsec
