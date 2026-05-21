@@ -16,7 +16,6 @@ function chprompt() {
         utils/preview
         utils/inject
         utils/use
-        utils/getblock
         utils/chuser
         utils/chhost
         utils/reset_plugin
@@ -117,7 +116,6 @@ function chprompt() {
         "utils::Chhost"
         "utils::ResetPlugin"
         "utils::AuditPlugin"
-        "utils::getblock"
     )
 
     for itr in "${unsetfnc[@]}"; do

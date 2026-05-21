@@ -1,8 +1,11 @@
 # https://github.com/Zeronetsec/Chprompt
 
 function utils::Preview() {
-    local arg1="${1}"
+    include : '(
+        utils/getblock
+    )' || return 1
 
+    local arg1="${1}"
     if [[ -z "${arg1}" ]]; then
         echo -e "${R}[!] ${N}Missing argument!"
         return 1
@@ -31,6 +34,7 @@ function utils::Preview() {
         command sed 's/%space%/ /g'
     )\""
 
+    unset -f utils::getblock
     return 0
 }
 

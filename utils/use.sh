@@ -1,6 +1,10 @@
 # https://github.com/Zeronetsec/Chprompt
 
 function utils::Use() {
+    include : '(
+        utils/getblock
+    )' || return 1
+
     local arg1="${1}"
 
     if [[ -z "${arg1}" ]]; then
@@ -33,6 +37,7 @@ function utils::Use() {
         )"
     )
 
+    unset -f utils::getblock
     return 0
 }
 

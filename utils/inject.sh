@@ -1,6 +1,10 @@
 # https://github.com/Zeronetsec/Chprompt
 
 function utils::Inject() {
+    include : '(
+        utils/getblock
+    )' || return 1
+
     local arg1="${1}"
     local PREFIX="${PREFIX:-/usr}"
 
@@ -46,6 +50,7 @@ function utils::Inject() {
         )"
     )
 
+    unset -f utils::getblock
     return 0
 }
 
