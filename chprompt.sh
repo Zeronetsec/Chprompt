@@ -8,85 +8,85 @@ function chprompt() {
     if [[ -z "${chppath}" ]]; then
         echo -e "${R}[!] ${N}Chprompt path not found!"
         excode=1
+    else
+        source "${chppath}/utils/include.sh"
+
+        include : '(
+            utils/color
+            utils/helper
+            utils/uwu
+            utils/version
+            utils/list
+            utils/preview
+            utils/inject
+            utils/use
+            utils/chuser
+            utils/chhost
+            utils/reset_plugin
+            utils/audit_plugin
+            utils/getblock
+            utils/missing_arguments
+            utils/unknown_command
+            utils/invalid_input
+        )' || excode=1
+
+        case "${1}" in
+            "")
+                utils::invalidInput
+                excode=$?
+                ;;
+            "--list")
+                utils::List
+                excode=$?
+                ;;
+            "--preview")
+                utils::Preview "${2}"
+                excode=$?
+                ;;
+            "--use")
+                utils::Use "${2}"
+                excode=$?
+                ;;
+            "--inject")
+                utils::Inject "${2}"
+                excode=$?
+                ;;
+            "--chuser")
+                shift
+                utils::Chuser "${@}"
+                excode=$?
+                ;;
+            "--chhost")
+                shift
+                utils::Chhost "${@}"
+                excode=$?
+                ;;
+            "--reset")
+                utils::ResetPlugin
+                excode=$?
+                ;;
+            "--audit")
+                utils::AuditPlugin
+                excode=$?
+                ;;
+            "--uwu")
+                utils::Uwu
+                excode=$?
+                ;;
+            "--version")
+                utils::Version
+                excode=$?
+                ;;
+            "--help")
+                utils::Helper
+                excode=$?
+                ;;
+            *)
+                utils::unknownCommand "${1}"
+                excode=$?
+                ;;
+        esac
     fi
-
-    source "${chppath}/utils/include.sh"
-
-    include : '(
-        utils/color
-        utils/helper
-        utils/uwu
-        utils/version
-        utils/list
-        utils/preview
-        utils/inject
-        utils/use
-        utils/chuser
-        utils/chhost
-        utils/reset_plugin
-        utils/audit_plugin
-        utils/getblock
-        utils/missing_arguments
-        utils/unknown_command
-        utils/invalid_input
-    )' || excode=1
-
-    case "${1}" in
-        "")
-            utils::invalidInput
-            excode=$?
-            ;;
-        "--list")
-            utils::List
-            excode=$?
-            ;;
-        "--preview")
-            utils::Preview "${2}"
-            excode=$?
-            ;;
-        "--use")
-            utils::Use "${2}"
-            excode=$?
-            ;;
-        "--inject")
-            utils::Inject "${2}"
-            excode=$?
-            ;;
-        "--chuser")
-            shift
-            utils::Chuser "${@}"
-            excode=$?
-            ;;
-        "--chhost")
-            shift
-            utils::Chhost "${@}"
-            excode=$?
-            ;;
-        "--reset")
-            utils::ResetPlugin
-            excode=$?
-            ;;
-        "--audit")
-            utils::AuditPlugin
-            excode=$?
-            ;;
-        "--uwu")
-            utils::Uwu
-            excode=$?
-            ;;
-        "--version")
-            utils::Version
-            excode=$?
-            ;;
-        "--help")
-            utils::Helper
-            excode=$?
-            ;;
-        *)
-            utils::unknownCommand "${1}"
-            excode=$?
-            ;;
-    esac
 
     unsetvar=(
         "N"
