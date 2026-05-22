@@ -25,6 +25,7 @@ function include() {
 
     while read -r line; do
         [[ -z "${line}" ]] && continue
+        [[ "${line}" =~ ^# ]] && continue
         if [[ ! -f "${chppath}/${line}.sh" ]]; then
             echo -e "\033[1;31m[!] \033[0mInclude: \033[0;32m${line} \033[0mnot found!"
             return 1

@@ -4,8 +4,8 @@ function utils::Chhost() {
     local target="${chppath}/plugin"
 
     if [[ -z "${1}" ]]; then
-        echo -e "${R}[!] ${N}Missing argument!"
-        return 1
+        utils::missingArguments
+        return $?
     fi
 
     if [[ -z "${2}" ]]; then

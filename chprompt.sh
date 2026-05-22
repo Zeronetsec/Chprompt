@@ -20,6 +20,10 @@ function chprompt() {
         utils/chhost
         utils/reset_plugin
         utils/audit_plugin
+        utils/getblock
+        utils/missing_arguments
+        utils/unknown_command
+        utils/invalid_input
     )' || excode=1
 
     if [[ -z "${chppath}" ]]; then
@@ -29,9 +33,8 @@ function chprompt() {
 
     case "${1}" in
         "")
-            echo -e "${R}[!] ${N}Invalid input!"
-            echo -e "${R}[!] ${N}Try: ${GG}chprompt --help${N}"
-            excode=0
+            utils::invalidInput
+            excode=$?
             ;;
         "--list")
             utils::List
@@ -80,9 +83,8 @@ function chprompt() {
             excode=$?
             ;;
         *)
-            echo -e "${R}[!] ${N}Invalid input: ${GG}${1}${N}"
-            echo -e "${R}[!] ${N}Try: ${GG}chprompt --help${N}"
-            excode=1
+            utils::unknownCommand "${2}"
+            excode=$?
             ;;
     esac
 
@@ -116,6 +118,10 @@ function chprompt() {
         "utils::Chhost"
         "utils::ResetPlugin"
         "utils::AuditPlugin"
+        "utils::getblock"
+        "utils::missingArguments"
+        "utils::unknownCommand"
+        "utils::invalidInput"
     )
 
     for itr in "${unsetfnc[@]}"; do

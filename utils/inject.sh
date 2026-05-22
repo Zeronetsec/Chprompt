@@ -1,16 +1,12 @@
 # https://github.com/Zeronetsec/Chprompt
 
 function utils::Inject() {
-    include : '(
-        utils/getblock
-    )' || return 1
-
     local arg1="${1}"
     local PREFIX="${PREFIX:-/usr}"
 
     if [[ -z "${arg1}" ]]; then
-        echo -e "${R}[!] ${N}Missing argument!"
-        return 1
+        utils::missingArguments
+        return $?
     fi
 
     local folder="$(
@@ -50,7 +46,6 @@ function utils::Inject() {
         )"
     )
 
-    unset -f utils::getblock
     return 0
 }
 
