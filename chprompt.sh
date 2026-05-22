@@ -3,7 +3,12 @@
 
 function chprompt() {
     export chppath="$(command chprompt 2>/dev/null)"
-    local excode
+    local excode=0
+
+    if [[ -z "${chppath}" ]]; then
+        echo -e "${R}[!] ${N}Chprompt path not found!"
+        excode=1
+    fi
 
     source "${chppath}/utils/include.sh"
 
@@ -25,11 +30,6 @@ function chprompt() {
         utils/unknown_command
         utils/invalid_input
     )' || excode=1
-
-    if [[ -z "${chppath}" ]]; then
-        echo -e "${R}[!] ${N}Chprompt path not found!"
-        excode=1
-    fi
 
     case "${1}" in
         "")
@@ -83,7 +83,7 @@ function chprompt() {
             excode=$?
             ;;
         *)
-            utils::unknownCommand "${2}"
+            utils::unknownCommand "${1}"
             excode=$?
             ;;
     esac
