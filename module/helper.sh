@@ -3,6 +3,7 @@
 function module::Helper() {
     local engine="${root}/utils/python/json_parser.py"
     if [[ -f "${engine}" ]]; then
+        utils::banner
         utils::birthday
         echo -e "${N}Usage: ${GG}chprompt ${CC}<option> [<args>]${N}"
         printf '\n'

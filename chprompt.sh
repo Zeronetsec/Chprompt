@@ -17,6 +17,7 @@ function chprompt() {
             utils/destroyf
             utils/birthday
             utils/cprompt
+            utils/banner
             module/helper
             module/uwu
             module/version
@@ -121,6 +122,7 @@ function chprompt() {
         utils::invalidOption
         utils::birthday
         utils::cprompt
+        utils::banner
         module::Helper
         module::Uwu
         module::Version
