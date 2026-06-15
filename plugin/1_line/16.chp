@@ -1,16 +1,16 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\033[0m\n
-\033[1;46;30m%space%
+\x1b[0m\n
+\x1b[1;46;30m%space%
 $(command whoami)@$(command hostname)
 %space%
-\033[49m\033[1;37m→
-\033[1;45;37m%space%
+\x1b[49m\x1b[1;37m→
+\x1b[1;45;37m%space%
 ~/$(command basename "$(pwd)")
-%space%\033[49m%space%
-$(EXIT_CODE=$?; if [[ $EXIT_CODE -eq 0 ]]; then echo -e "\033[1;32mλ"; else echo -e "\033[1;31m✖"; fi)
-%space%\033[1;37m❯\033[0m
+%space%\x1b[49m%space%
+$(EXIT_CODE=${?}; if [[ ${EXIT_CODE} -eq 0 ]]; then echo -e "\x1b[1;32mλ"; else echo -e "\x1b[1;31m✖"; fi)
+%space%\x1b[1;37m❯\x1b[0m
 [END]
 
 [Execute]

@@ -1,14 +1,14 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\033[0m\n
-\033[1;30m
+\x1b[0m\n
+\x1b[1;30m
 $(command date '+%Y-%m-%d %H:%M:%S')\n
-\033[1;37m
+\x1b[1;37m
 ~/$(command basename "$(pwd)")
-%space%\033[1;30m\n
-$(if [[ "$EUID" -eq 0 ]]; then echo '#'; else echo '$'; fi)
-\033[0m
+%space%\x1b[1;30m\n
+$(if [[ "${EUID}" -eq 0 ]]; then echo '#'; else echo '$'; fi)
+\x1b[0m
 [END]
 
 [Execute]

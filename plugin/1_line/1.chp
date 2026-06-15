@@ -1,10 +1,10 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\033[0m\n
-\033[0;37m
+\x1b[0m\n
+\x1b[0;37m
 Android%space%>
-\033[0m
+\x1b[0m
 [END]
 
 [Execute]

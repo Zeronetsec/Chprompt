@@ -1,47 +1,41 @@
 <!-- https://github.com/Zeronetsec/Chprompt -->
 
-[![version](https://img.shields.io/badge/Chprompt-Version%200.1-blue.svg?maxAge=259200)]()
+[![version](https://img.shields.io/badge/Chprompt-Version%200.1-blue.svg)]()
 [![os](https://img.shields.io/badge/Supported%20OS-Linux-blue.svg)]()
 [![license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 # Chprompt
-Chprompt is a simple, and lightweight tool to switch your Linux PS1 prompt instantly. <br>
-Choose from over 100+ built-in prompt styles.
+Chprompt is a tool for managing and customizing Bash prompts easily and efficiently.
 
 ## Features
-- Native PS1 Management
-- Live Preview Mode
-- Session-Based Styling
-- Persistent Configuration
-- And more.
+- Preview available prompts.
+- Apply prompts instantly.
+- Inject prompts into your shell configuration.
+- Change user/host name references inside prompt templates.
+- And more features.
 
 ## Disclaimer
-This tool modifies your `~/.bashrc` and executes raw code in plugins. <br>
-Please read the
-[DISCLAIMER](DISCLAIMER.md)
-before use. <br>
-Use at your own risk.
+Please read [.docs/disclaimer.md](.docs/disclaimer.md) before using this tool. </br>
+Use this software at your own risk. </br>
+The author is not responsible for any damage, data loss, or issues that may result from its use.
 
-## Installation
+## Install & Uninstall
+Quick install:
 ```bash
 git clone https://github.com/Zeronetsec/Chprompt
 cd Chprompt
 chmod +x install.sh
-
-# termux / linux (root)
-./install.sh # --backup
-
-# linux (user)
-sudo HOME=$HOME ./install.sh # --backup
+./install.sh
 ```
+For more detailed installation and uninstallation instructions, see [.docs/install_and_uninstall.md](.docs/install_and_uninstall.md).
 
-## Usage
-``` bash
-chprompt --preview <line>/<prompt_number>
-chprompt --use <line>/<prompt_number>
-chprompt --inject <line>/<prompt_number>
-chprompt --audit
-chprompt --list
+## Usage Example
+```bash
+chprompt --inject 2/52
+chprompt --chuser user
+chprompt --chuser user newuser
+chprompt --show-source 2/52
+chprompt --show-ps1 2/52
 ```
 And more commands.
 

@@ -1,32 +1,32 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\033[0m\n
-\033[48;5;235m
-\033[38;5;82m
+\x1b[0m\n
+\x1b[48;5;235m
+\x1b[38;5;82m
 ╔═════════════════════════════════╗
-\033[0m\n
-\033[38;5;45m║%space%░%space%USER:%space%
+\x1b[0m\n
+\x1b[38;5;45m║%space%░%space%USER:%space%
 $(command whoami)
 %space%░%space%HOST:%space%
 $(command hostname)
 %space%░%space%EXIT:%space%$?
 %space%░%space%║\n
-\033[38;5;207m║%space%░%space%PATH:%space%
+\x1b[38;5;207m║%space%░%space%PATH:%space%
 ~/$(command basename "$(pwd)")
 %space%░%space%SHELL:%space%
-$(command basename "$SHELL")
+$(command basename "${SHELL}")
 %space%░%space%║\n
-\033[38;5;82m║%space%░
+\x1b[38;5;82m║%space%░
 %space%TIME:%space%
 $(command date +%T)
 %space%░%space%DATE:%space%
 $(command date "+%a %b %d")
 %space%░%space%║\n
-\033[38;5;45m
+\x1b[38;5;45m
 ╚═════════════════════════════════╝\n
-\033[38;5;82m▌❯
-\033[0m
+\x1b[38;5;82m▌❯
+\x1b[0m
 [END]
 
 [Execute]
@@ -44,7 +44,7 @@ $(echo -e "$?")
 \[\033[38;5;207m\]║%space%░
 %space%PATH:%space%\w%space%░
 %space%SHELL:%space%
-$(command basename "$SHELL")
+$(command basename "${SHELL}")
 %space%░%space%║\n
 \[\033[38;5;82m\]║%space%░
 %space%TIME:%space%\t%space%░

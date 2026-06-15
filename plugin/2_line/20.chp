@@ -1,8 +1,8 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\033[0m\n
-\033[0m┌─[
+\x1b[0m\n
+\x1b[0m┌─[
 $(command whoami)@$(command hostname)]\n
 └─[
 ~/$(command basename "$(pwd)")]

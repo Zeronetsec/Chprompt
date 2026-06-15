@@ -1,2 +1,5 @@
-*.chp linguist-vendored
+.install/** linguist-vendored
+
+plugin/** linguist-vendored
+
 install.sh linguist-vendored

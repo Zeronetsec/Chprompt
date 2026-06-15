@@ -5,17 +5,17 @@ import os
 import glob
 import json
 
-N = "\033[0m"
-R = "\033[1;31m"
-GG = "\033[0;32m"
-CC = "\033[0;36m"
-DG = "\033[1;90m"
-WW = "\033[0;37m"
+N = "\x1b[0m"
+R = "\x1b[1;31m"
+GG = "\x1b[0;32m"
+CC = "\x1b[0;36m"
+DG = "\x1b[1;90m"
+WW = "\x1b[0;37m"
 
-target_metadata = os.getenv("chppath")
+target_metadata = os.getenv("root")
 
 if not target_metadata:
-    print(f"{R}[!] {N}Variable: {GG}chppath {N}not found!")
+    print(f"{R}[!] {N}Variable: {GG}root {N}not found!")
     exit(1)
 
 metadata_path = os.path.join(target_metadata, "metadata", "*.json")

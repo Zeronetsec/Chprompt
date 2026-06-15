@@ -1,18 +1,18 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\033[0m\n
-\033[1;34m┌──(
-\033[1;32m󰭹$space%
+\x1b[0m\n
+\x1b[1;34m┌──(
+\x1b[1;32m󰭹%space%
 $(command whoami)
-\033[1;34m)-[
-\033[0;37m
+\x1b[1;34m)-[
+\x1b[0;37m
 ~/$(command basename "$(pwd)")
-\033[1;34m]
+\x1b[1;34m]
 $(command git branch 2>/dev/null | command grep "^*" | command sed "s/* /—[ /; s/$/]/")\n
-\033[1;34m└─
-\033[1;32m
-\033[0m
+\x1b[1;34m└─
+\x1b[1;32m
+\x1b[0m
 [END]
 
 [Execute]

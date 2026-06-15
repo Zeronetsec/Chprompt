@@ -1,35 +1,35 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\033[0m\n
-\033[1;31m▁
-\033[1;90m
+\x1b[0m\n
+\x1b[1;31m▁
+\x1b[1;90m
 ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-\033[1;31m▁▁▁▁\n
-\033[1;31m▌
+\x1b[1;31m▁▁▁▁\n
+\x1b[1;31m▌
 %space%Current%space%Directory
-\033[1;90m:%space%
+\x1b[1;90m:%space%
 ~/$(command basename "$(pwd)")
 %space%
 ($(command basename "$(pwd)"))\n
-\033[1;31m▌
+\x1b[1;31m▌
 %space%Total%space%File
-\033[1;90m:%space%
+\x1b[1;90m:%space%
 $(command ls 2>/dev/null | command wc -l)\n
-\033[1;31m▌%space%Shell
-\033[1;90m:%space%
-$(command basename "$SHELL")\n
-\033[1;31m▌%space%IP
-\033[1;90m:%space%
+\x1b[1;31m▌%space%Shell
+\x1b[1;90m:%space%
+$(command basename "${SHELL}")\n
+\x1b[1;31m▌%space%IP
+\x1b[1;90m:%space%
 $(command hostname -i)\n
-\033[1;31m▌%space%
-\033[1;34m
+\x1b[1;31m▌%space%
+\x1b[1;34m
 $(command whoami)
-\033[1;90m@
-\033[0;32m
+\x1b[1;90m@
+\x1b[0;32m
 $(command hostname)
-%space%\033[0;33m❯❯❯
-\033[0m
+%space%\x1b[0;33m❯❯❯
+\x1b[0m
 [END]
 
 [Execute]
@@ -47,7 +47,7 @@ $(command hostname)
 $(command ls 2>/dev/null | command wc -l)\n
 \[\033[1;31m\]▌%space%Shell
 \[\033[1;90m\]:%space%
-$(command basename "$SHELL")\n
+$(command basename "${SHELL}")\n
 \[\033[1;31m\]▌%space%IP
 \[\033[1;90m\]:%space%
 $(command hostname -i)\n

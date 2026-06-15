@@ -1,23 +1,18 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function utils::AuditPlugin() {
-    local engine="${chppath}/utils/python/audit_plugin.py"
-    export plugin="${chppath}/plugin"
-    export pattern="${chppath}/data/patterns.txt"
+function module::Audit() {
+    local engine="${root}/utils/python/audit_plugin.py"
 
-    if [[ -z "${chppath}" ]]; then
-        echo -e "${R}[!] ${N}Chprompt path not found!"
-        return 1
-    fi
+    export plugin="${root}/plugin"
+    export pattern="${root}/data/patterns.txt"
 
     if [[ -f "${engine}" ]]; then
         [[ ! -x "${engine}" ]] && {
             command chmod +x "${engine}"
         }
-
         echo -e "${B}[*] ${N}Audit plugin: ${GG}${plugin}/${N}"
         command python3 "${engine}"
-        return $?
+        return ${?}
     else
         echo -e "${R}[!] ${N}Engine: ${GG}${engine} ${N}not found!"
         return 1

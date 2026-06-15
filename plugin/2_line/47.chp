@@ -1,15 +1,15 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\033[0m\n
-\033[48;5;53;97m%space%❮%space%
+\x1b[0m\n
+\x1b[48;5;53;97m%space%❮%space%
 $(command whoami)@$(command hostname):
 ~/$(command basename "$(pwd)")
 %space%❯%space%
-\033[48;5;91m%space%
-\033[48;5;163m%space%
-\033[48;5;198m%space%
-\033[0m\n
+\x1b[48;5;91m%space%
+\x1b[48;5;163m%space%
+\x1b[48;5;198m%space%
+\x1b[0m\n
 λ
 [END]
 

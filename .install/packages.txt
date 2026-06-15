@@ -1,0 +1,12 @@
+bash
+python3
+coreutils
+findutils
+inetutils::{inet-utils,hostname}
+sed
+grep
+gawk::awk
+zip
+unzip
+git
+bat

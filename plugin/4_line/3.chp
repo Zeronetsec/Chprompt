@@ -1,0 +1,48 @@
+# https://github.com/Zeronetsec/Chprompt
+
+[Preview]
+\x1b[0m\n
+\x1b[48;5;235m
+\x1b[38;5;201m
+╔═▸%space%░%space
+%USER:%space%$(command whoami)
+%space%░%space%═╗
+\x1b[0m\n
+\x1b[48;5;236m
+\x1b[38;5;45m
+║%space%░%space
+%HOST:%space%$(command hostname)
+%space%░%space%║\n
+\x1b[48;5;237m
+\x1b[38;5;207m
+║%space%░%space
+%DIR:%space%~/$(command basename "$(pwd)")
+%space%░%space%║\n
+\x1b[48;5;238m
+\x1b[38;5;82m
+╚═▸%space%❯
+\x1b[0m
+[END]
+
+[Execute]
+\[\033[0m\]\n
+\[\033[48;5;235m\]
+\[\033[38;5;201m\]
+╔═▸%space%░%space%USER:%space%\u
+%space%░%space%═╗
+\[\033[0m\]\n
+\[\033[48;5;236m\]
+\[\033[38;5;45m\]
+║%space%░%space%HOST:%space%\h
+%space%░%space%║\n
+\[\033[48;5;237m\]
+\[\033[38;5;207m\]
+║%space%░%space%DIR:%space%\w
+%space%░%space%║\n
+\[\033[48;5;238m\]
+\[\033[38;5;82m\]
+╚═▸%space%❯%space%
+\[\033[0m\]
+[END]
+
+# Copyright (c) 2026 Zeronetsec

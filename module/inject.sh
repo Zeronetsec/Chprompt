@@ -1,12 +1,12 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function utils::Inject() {
+function module::Inject() {
     local arg1="${1}"
     local PREFIX="${PREFIX:-/usr}"
 
     if [[ -z "${arg1}" ]]; then
-        utils::missingArguments
-        return $?
+        utils::missingArgument
+        return 1
     fi
 
     local folder="$(
@@ -19,7 +19,11 @@ function utils::Inject() {
         command cut -d '/' -f 2
     )"
 
-    if [[ ! -f "${chppath}/plugin/${folder}_line/${file}.chp" ]]; then
+    if [[ ! -d "${PREFIX}" ]]; then
+        command mkdir -p "${PREFIX}"
+    fi
+
+    if [[ ! -f "${root}/plugin/${folder}_line/${file}.chp" ]]; then
         echo -e "${R}[!] ${N}Prompt: ${GG}${folder}/${file} ${N}not found!"
         return 1
     fi
@@ -39,7 +43,7 @@ function utils::Inject() {
     source <(
         printf 'export PS1=%q\n' "$(
             utils::getblock 'Execute' \
-            "${chppath}/plugin/${folder}_line/${file}.chp" | \
+            "${root}/plugin/${folder}_line/${file}.chp" | \
             command grep -vE '^\s*(#|$)' | \
             command tr -d '\n' | \
             command sed 's/%space%/ /g'

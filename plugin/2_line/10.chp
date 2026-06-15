@@ -1,21 +1,21 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\033[0m\n
-\033[1;34m┌──(
-\033[1;31m
+\x1b[0m\n
+\x1b[1;34m┌──(
+\x1b[1;31m
 $(command whoami)
-\033[1;90m@
-\033[1;31m
+\x1b[1;90m@
+\x1b[1;31m
 $(command hostname)
-\033[1;34m)-(
-\033[0;36m
+\x1b[1;34m)-(
+\x1b[0;36m
 ~/$(command basename "$(pwd)")
-\033[1;34m)\n
-\033[1;34m└──
-\033[1;31m
-$(if [[ "$EUID" -eq 0 ]]; then echo '#'; else echo '$'; fi)
-\033[0m
+\x1b[1;34m)\n
+\x1b[1;34m└──
+\x1b[1;31m
+$(if [[ "${EUID}" -eq 0 ]]; then echo '#'; else echo '$'; fi)
+\x1b[0m
 [END]
 
 [Execute]

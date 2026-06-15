@@ -1,10 +1,10 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\033[0m
-\033[0;37mShell
+\x1b[0m
+\x1b[0;37mShell
 %space%>
-\033[0m
+\x1b[0m
 [END]
 
 [Execute]

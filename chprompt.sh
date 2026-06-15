@@ -1,137 +1,145 @@
-#!/usr/bin/env bash
 # https://github.com/Zeronetsec/Chprompt
 
 function chprompt() {
-    export chppath="$(command chprompt 2>/dev/null)"
+    export root="$(command chprompt 2>/dev/null)"
     local excode=0
-
-    if [[ -z "${chppath}" ]]; then
-        echo -e "${R}[!] ${N}Chprompt path not found!"
+    if [[ -z "${root}" ]]; then
+        echo -e "\x1b[1;31m[!] \x1b[0mChprompt path not found!"
         excode=1
     else
-        source "${chppath}/utils/include.sh"
-
+        source "${root}/utils/include.sh"
         include : '(
             utils/color
-            utils/helper
-            utils/uwu
-            utils/version
-            utils/list
-            utils/preview
-            utils/inject
-            utils/use
-            utils/chuser
-            utils/chhost
-            utils/reset_plugin
-            utils/audit_plugin
             utils/getblock
-            utils/missing_arguments
-            utils/unknown_command
-            utils/invalid_input
+            utils/missing_argument
+            utils/invalid_option
+            utils/destroyv
+            utils/destroyf
+            utils/birthday
+            utils/cprompt
+            module/helper
+            module/uwu
+            module/version
+            module/list
+            module/preview
+            module/inject
+            module/use
+            module/chuser
+            module/chhost
+            module/reset
+            module/audit
+            module/current_prompt
+            module/show_ps1
+            module/show_source
         )' || excode=1
 
         case "${1}" in
             "")
-                utils::invalidInput
-                excode=$?
+                utils::missingArgument
+                excode=${?}
                 ;;
             "--list")
-                utils::List
-                excode=$?
+                module::List
+                excode=${?}
                 ;;
             "--preview")
-                utils::Preview "${2}"
-                excode=$?
+                module::Preview "${@:2}"
+                excode=${?}
                 ;;
             "--use")
-                utils::Use "${2}"
-                excode=$?
+                module::Use "${@:2}"
+                excode=${?}
                 ;;
             "--inject")
-                utils::Inject "${2}"
-                excode=$?
+                module::Inject "${@:2}"
+                excode=${?}
                 ;;
             "--chuser")
-                shift
-                utils::Chuser "${@}"
-                excode=$?
+                module::Chuser "${@:2}"
+                excode=${?}
                 ;;
             "--chhost")
-                shift
-                utils::Chhost "${@}"
-                excode=$?
+                module::Chhost "${@:2}"
+                excode=${?}
                 ;;
             "--reset")
-                utils::ResetPlugin
-                excode=$?
+                module::Reset
+                excode=${?}
                 ;;
             "--audit")
-                utils::AuditPlugin
-                excode=$?
+                module::Audit
+                excode=${?}
+                ;;
+            "--current-prompt")
+                module::CurrentPrompt
+                excode=${?}
+                ;;
+            "--show-ps1")
+                module::ShowPS1 "${@:2}"
+                excode=${?}
+                ;;
+            "--show-source")
+                module::ShowSource "${@:2}"
+                excode=${?}
                 ;;
             "--uwu")
-                utils::Uwu
-                excode=$?
+                module::Uwu
+                excode=${?}
                 ;;
             "--version")
-                utils::Version
-                excode=$?
+                module::Version
+                excode=${?}
                 ;;
             "--help")
-                utils::Helper
-                excode=$?
+                module::Helper
+                excode=${?}
                 ;;
             *)
-                utils::unknownCommand "${1}"
-                excode=$?
+                utils::invalidOption "${1}"
+                excode=${?}
                 ;;
         esac
     fi
 
-    unsetvar=(
-        "N"
-        "R"
-        "B"
-        "DG"
-        "GG"
-        "BB"
-        "CC"
-        "WW"
-        "chppath"
-        "plugin"
-        "pattern"
-    )
+    destroyv : '(
+        N
+        R
+        B
+        DG
+        GG
+        BB
+        CC
+        WW
+        root
+        plugin
+        pattern
+    )' || excode=1
 
-    for itr in "${unsetvar[@]}"; do
-        unset "${itr}"
-    done
-
-    unsetfnc=(
-        "utils::List"
-        "utils::Preview"
-        "utils::Use"
-        "utils::Inject"
-        "utils::Helper"
-        "utils::Version"
-        "utils::Uwu"
-        "utils::Chuser"
-        "utils::Chhost"
-        "utils::ResetPlugin"
-        "utils::AuditPlugin"
-        "utils::getblock"
-        "utils::missingArguments"
-        "utils::unknownCommand"
-        "utils::invalidInput"
-    )
-
-    for itr in "${unsetfnc[@]}"; do
-        unset -f "${itr}"
-    done
+    destroyf : '(
+        utils::getblock
+        utils::missingArgument
+        utils::invalidOption
+        utils::birthday
+        utils::cprompt
+        module::Helper
+        module::Uwu
+        module::Version
+        module::List
+        module::Preview
+        module::Inject
+        module::Use
+        module::Chuser
+        module::Chhost
+        module::Reset
+        module::Audit
+        module::CurrentPrompt
+        module::ShowPS1
+        module::ShowSource
+    )' || excode=1
 
     unset -f include
-    unset unsetvar
-    unset unsetfnc
-    unset itr
+    unset -f destroyv
+    unset -f destroyf
 
     return ${excode}
 }

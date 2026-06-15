@@ -16,21 +16,25 @@ function include() {
         return 1
     fi
 
-    input_data="$(echo -e "${input_data}" | \
-        command sed -n '/(/,/)/p' | \
-        command sed 's/[()]//g' | \
-        command sed 's/^[[:space:]]*[[:space:]]*//; s/^[[:space:]]*//; s/[[:space:]]*$//' | \
-        command sed '/^$/d'
+    input_data="$(
+        echo -e "${input_data}" | \
+        command sed -n '/(/,/)/ {
+            s/[()]//g;
+            s/^[[:space:]]*//;
+            s/[[:space:]]*$//;
+            /^$/d;
+            p;
+        }'
     )"
 
     while read -r line; do
         [[ -z "${line}" ]] && continue
         [[ "${line}" =~ ^# ]] && continue
-        if [[ ! -f "${chppath}/${line}.sh" ]]; then
-            echo -e "\033[1;31m[!] \033[0mInclude: \033[0;32m${line} \033[0mnot found!"
+        if [[ ! -f "${root}/${line}.sh" ]]; then
+            echo -e "\x1b[1;31m[!] \x1b[0mInclude: \x1b[0;32m${line} \x1b[0mnot found!"
             return 1
         fi
-        source "${chppath}/${line}.sh"
+        source "${root}/${line}.sh"
     done <<< "${input_data}"
 
     return 0

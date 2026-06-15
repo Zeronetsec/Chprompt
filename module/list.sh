@@ -1,7 +1,7 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function utils::List() {
-    local path="${chppath}/plugin"
+function module::List() {
+    local path="${root}/plugin"
 
     local l1="$(command ls "${path}/1_line/" | command wc -l)"
     local l2="$(command ls "${path}/2_line/" | command wc -l)"

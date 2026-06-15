@@ -1,180 +1,58 @@
 #!/usr/bin/env bash
-# https://github.com/Zeronetsec/Chprompt
 
-N='\033[0m'
-R='\033[1;31m'
-B='\033[1;34m'
-GG='\033[0;32m'
-DG='\033[1;90m'
+set -o errexit
 
-if [[ -z "${PREFIX}" ]]; then
-    prefix="/usr"
-else
-    prefix="${PREFIX}"
-fi
-
-base="${prefix}/opt"
-symlink="${prefix}/bin"
-bashrc="${HOME}/.bashrc"
-bkdate="$(command date '+%Y_%b_%d_%H_%M_%S')"
-
-path="$(
-    cd -- "$(
-        command dirname -- "${BASH_SOURCE[0]}"
-    )" &> /dev/null && pwd
-)"
-
-if [[ "${1}" == "--backup" ]]; then
-    backup="true"
-fi
-
-function install() {
-    local cmd="${1}"
-    local desc="${2}"
-    echo -e "\n${B}[*] ${N}${desc}"
-    eval "${cmd}" >/dev/null
-    local status=$?
-    echo -e "    ${DG}└── ${N}exit: ${GG}${status}${N}"
-}
-
-function getinstall() {
-    if command -v apt >/dev/null 2>&1; then
-        installw="command apt install -y"
-    elif command -v apk >/dev/null 2>&1; then
-        installw="command apk add"
-    elif command -v pacman >/dev/null 2>&1; then
-        installw="command pacman -S --noconfirm"
-    else
-        exit 1
-    fi
-
-    echo -e "${1}" | while IFS= read -r line; do
-        [[ -z "${line}" ]] && continue
-        IFS="::" read -ra pkgs <<< "${line}"
-        for pkg in "${pkgs[@]}"; do
-            pkg="$(echo -e "${pkg}" | command xargs)"
-            if eval "${installw} ${pkg}" 2>/dev/null; then
-                break
-            fi
-        done
-    done
-}
-
-if [[ ! -d "${path}" ]]; then
-    echo -e "${R}[!] ${N}Folder: ${GG}${path} ${N}not found! \n"
-    exit 1
-fi
-
-echo -e "${B}[*] ${N}Installing: ${GG}Chprompt${N}"
-
-pack=(
-    "bash"
-    "coreutils"
-    "sed"
-    "grep"
-    "gawk"
-    "zip"
-    "git"
-    "python3"
-)
-
-for i in "${pack[@]}"; do
-    install \
-        "getinstall ${i}" \
-        "Installing: ${GG}${i}${N}"
+src="${BASH_SOURCE[0]}"
+while [[ -h "${src}" ]]; do
+    dir="$(
+        cd -P "$(
+            command dirname "${src}"
+        )" > /dev/null 2>&1 && pwd
+    )"
+    src="$(command readlink "${src}")"
+    [[ "${src}" != /* ]] && src="${dir}/${src}"
 done
 
-if [[ ! -d "${base}" ]]; then
-    install \
-        "command mkdir -p ${base}" \
-        "Created directory: ${GG}${base}${N}"
-fi
-
-if [[ "${backup}" == "true" && -d "${base}/chprompt" ]]; then
-    cd "${base}"
-    install \
-        "command zip -r chprompt_${bkdate}.bak.zip chprompt" \
-        "Backup: ${GG}${base}/chprompt ${DG}=> ${GG}${base}/chprompt_${bkdate}.bak.zip${N}"
-    cd
-fi
-
-if [[ -d "${base}/chprompt" ]]; then
-    install \
-        "command rm -rf ${base}/chprompt" \
-        "Removing: ${GG}old chprompt${N}"
-fi
-
-install \
-    "command mv ${path} ${base}/chprompt" \
-    "Moving: ${GG}${path} ${DG}=> ${GG}${base}/chprompt${N}"
-
-install \
-    "command chmod +x -R ${base}/chprompt" \
-    "Setting up permission"
-
-install \
-    "
-        cd ${base}/chprompt
-        command zip -r plugin_backup.zip plugin
-        cd
-    " \
-    "Backup: ${GG}${base}/chprompt/plugin ${DG}=> ${GG}${base}/chprompt/plugin_backup.zip${N}"
-
-if [[ ! -f "${bashrc}" ]]; then
-    install \
-        "command touch ${bashrc}" \
-        "Touch: ${GG}${bashrc}${N}"
-fi
-
-if [[ "${backup}" == "true" ]]; then
-    install \
-        "command cp ${bashrc} ${bashrc}.${bkdate}.bak" \
-        "Backup: ${GG}${bashrc} ${DG}=> ${GG}${bashrc}.${bkdate}.bak${N}"
-fi
-
-install \
-    "
-        command cat ${bashrc} | \
-        command grep -Ev 'source ${base}/chprompt/chprompt.sh|chprompt --use' \
-        > ${bashrc}.tmp || true
-    " \
-    "Filtering: ${GG}${bashrc}${N}"
-
-current_theme="$(
-    command grep "chprompt --use" "${bashrc}" | \
-    command head -n 1 | \
-    command sed 's/.*chprompt --use //'
+dir="$(
+    cd -P "$(
+        command dirname "${src}"
+    )" > /dev/null 2>&1 && pwd
 )"
 
-if [[ -z "${current_theme}" ]]; then
-    current_theme="default/default"
-fi
+export root="${dir}"
+readonly root
 
-install \
-    "
-        {
-            echo -e 'source ${base}/chprompt/chprompt.sh'
-            echo -e chprompt --use ${current_theme}
-        } >> ${bashrc}.tmp
-    " \
-    "Add command: ${GG}source ${base}/chprompt/chprompt.sh ${DG}=> ${GG}${bashrc}.tmp${N}"
+source "${root}/.install/include.sh"
+include : '(
+    .install/color
+    .install/variable
+    .install/error
+    .install/varlock
+    .install/zinstall
+    .install/zparser
+    .install/inpackages
+    .install/prepdir
+    .install/getinstall
+    .install/installer
+    .install/checker
+    .install/fnclock
+)'
 
-install \
-    "command mv ${bashrc}.tmp ${bashrc}" \
-    "Moving: ${GG}${bashrc}.tmp ${DG}=> ${GG}${bashrc}${N}"
+__BACKUP__=false
+HOME="${HOME}"
 
-install \
-    "command ln -sf ${base}/chprompt/bin/chprompt.sh ${symlink}/chprompt" \
-    "Symlink: ${GG}${base}/chprompt/bin/chprompt.sh ${DG}=> ${GG}${symlink}/chprompt${N}"
+while [[ ${#} -gt 0 ]]; do
+    case "${1}" in
+        "--backup") export __BACKUP__=true ;;
+        "--home="*) export HOME="${1#*=}" ;;
+    esac
+    shift
+done
 
-printf '\n'
-if command -v chprompt &>/dev/null; then
-    echo -e "${GG}[+] ${N}Chprompt installed!"
-    echo -e "${GG}[+] ${N}Usage: ${GG}source ~/.bashrc && chprompt --help ${N}to reload the shell configuration and show helper"
-    exit 0
-else
-    echo -e "${R}[!] ${N}Failed installing chprompt!"
-    exit 1
-fi
+install::inpackages
+install::prepdir
+install::installer
+install::checker
 
-# Copyright (c) 2026 Zeronetsec
+trap - EXIT
+exit ${?}

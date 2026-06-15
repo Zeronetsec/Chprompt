@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function utils::Uwu() {
+function module::Uwu() {
     local faces=(
         "(｡◕‿◕｡)"
         "(≧◡≦)"
@@ -16,15 +16,15 @@ function utils::Uwu() {
 
     SECONDS=0
 
-    echo -ne "\033[?25l"
+    echo -ne "\x1b[?25l"
     while (( SECONDS < duration )); do
         for face in "${faces[@]}"; do
             (( SECONDS >= duration )) && break
-            printf "\r%s\033[K" "${face}"
+            printf "\r%s\x1b[K" "${face}"
             command sleep "${delay}"
         done
     done
-    echo -ne "\033[?25h\n"
+    echo -ne "\x1b[?25h\n"
 
     return 0
 }

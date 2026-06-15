@@ -5,12 +5,12 @@ import os
 import sys
 import re
 
-N = "\033[0m"
-R = "\033[1;31m"
-B = "\033[1;34m"
-GG = "\033[0;32m"
-DG = "\033[1;90m"
-CC = "\033[0;36m"
+N = "\x1b[0m"
+R = "\x1b[1;31m"
+B = "\x1b[1;34m"
+GG = "\x1b[0;32m"
+DG = "\x1b[1;90m"
+CC = "\x1b[0;36m"
 
 def load_patterns(pattern_file_path):
     if not pattern_file_path or not os.path.exists(pattern_file_path):

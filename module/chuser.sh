@@ -1,11 +1,10 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function utils::Chuser() {
-    local target="${chppath}/plugin"
-
+function module::Chuser() {
+    local target="${root}/plugin"
     if [[ -z "${1}" ]]; then
-        utils::missingArguments
-        return $?
+        utils::missingArgument
+        return 1
     fi
 
     if [[ -z "${2}" ]]; then
@@ -23,7 +22,7 @@ function utils::Chuser() {
             -exec sed -i "s/${old}/${new}/g" {} +
     fi
 
-    source "${HOME}/.bashrc"
+    module::Use "$(utils::cprompt)"
     return 0
 }
 

@@ -1,11 +1,11 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\033[0m\n
-\033[0;32m
+\x1b[0m\n
+\x1b[0;32m
 ~/$(command basename "$(pwd)")
-%space%\033[0m
-$(if [[ "$EUID" -eq 0 ]]; then echo '#'; else echo '$'; fi)
+%space%\x1b[0m
+$(if [[ "${EUID}" -eq 0 ]]; then echo '#'; else echo '$'; fi)
 [END]
 
 [Execute]
