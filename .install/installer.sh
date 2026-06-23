@@ -5,8 +5,8 @@ function install::installer() {
             install::getinstall \
                 "
                     command zip -r \
-                    chprompt_${bkdate}.bak.zip \
-                    chprompt
+                        chprompt_${bkdate}.bak.zip \
+                        chprompt
                 " \
                 "Backup: ${GG}${opt}/chprompt ${DG}-> ${GG}${opt}/chprompt_${bkdate}.bak.zip${N}"
             cd
@@ -25,36 +25,36 @@ function install::installer() {
 
     install::getinstall \
         "command chmod +x ${opt}/chprompt/bin/chprompt.sh" \
-        "Setting up permission for: ${GG}${opt}/chprompt/bin/chprompt.sh"
+        "Set permission for: ${GG}${opt}/chprompt/bin/chprompt.sh"
 
     install::getinstall \
         "command chmod +x ${opt}/chprompt/utils/python/*" \
-        "Setting up permission for: ${GG}${opt}/chprompt/utils/python/*"
+        "Set permission for: ${GG}${opt}/chprompt/utils/python/*"
 
     (
         cd "${opt}/chprompt"
         install::getinstall \
             "
                 command zip -r \
-                plugin_backup.zip \
-                plugin
+                    plugin_backup.zip \
+                    plugin
             " \
-            "Backup: ${GG}${opt}/chprompt/plugin ${DG}-> ${GG}${opt}/chprompt/plugin_backup.zip${N}"
+            "Create zip: ${GG}${opt}/chprompt/plugin ${DG}-> ${GG}${opt}/chprompt/plugin_backup.zip${N}"
         cd
     )
 
     if [[ ! -f "${HOME}/.bashrc" ]]; then
         install::getinstall \
             "command touch ${HOME}/.bashrc" \
-            "Touch: ${GG}${HOME}/.bashrc${N}"
+            "Create file: ${GG}${HOME}/.bashrc${N}"
     fi
 
     if [[ "${__BACKUP__}" == "true" ]]; then
         install::getinstall \
             "
                 command cp \
-                ${HOME}/.bashrc \
-                ${HOME}/.bashrc_${bkdate}.bak
+                    ${HOME}/.bashrc \
+                    ${HOME}/.bashrc_${bkdate}.bak
             " \
             "Backup: ${GG}${HOME}/.bashrc ${DG}-> ${GG}${HOME}/.bashrc_${bkdate}.bak${N}"
     fi
@@ -62,9 +62,9 @@ function install::installer() {
     install::getinstall \
         "
             command cat ${HOME}/.bashrc | \
-            command grep -Ev \
-            'source ${opt}/chprompt/chprompt.sh|chprompt --use' \
-            > ${HOME}/.bashrc.tmp || true
+                command grep -Ev \
+                    'source ${opt}/chprompt/chprompt.sh|chprompt --use' \
+                    > ${HOME}/.bashrc.tmp || true
         " \
         "Filtering: ${GG}${HOME}/.bashrc${N}"
 
@@ -83,9 +83,9 @@ function install::installer() {
         "
             {
                 echo -e \
-                'source ${opt}/chprompt/chprompt.sh'
+                    'source ${opt}/chprompt/chprompt.sh'
                 echo -e \
-                'chprompt --use ${current_theme}'
+                    'chprompt --use ${current_theme}'
             } >> ${HOME}/.bashrc.tmp
         " \
         "Add line: ${GG}source ${opt}/chprompt/chprompt.sh ${DG}-> ${GG}${HOME}/.bashrc.tmp${N}"
