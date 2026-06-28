@@ -1,5 +1,5 @@
 {
-	"Command": "--chuser",
-	"Args": "<user> [<new_user>]",
-	"Description": "replace username in all plugins"
+    "Command": "--chuser",
+    "Args": "<user> [<new_user>]",
+    "Description": "replace username in all plugins"
 }

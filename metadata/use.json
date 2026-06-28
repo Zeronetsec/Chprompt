@@ -1,5 +1,5 @@
 {
-	"Command": "--use",
-	"Args": "<line>/<prompt_number>",
-	"Description": "set a specific prompt as active"
+    "Command": "--use",
+    "Args": "<line>/<prompt_number>",
+    "Description": "set a specific prompt as active"
 }

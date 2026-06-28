@@ -1,5 +1,5 @@
 {
-	"Command": "--show-source",
-	"Args": "<line>/<prompt_number>",
-	"Description": "print the raw source code (.chp format)"
+    "Command": "--show-source",
+    "Args": "<line>/<prompt_number>",
+    "Description": "print the raw source code (.chp format)"
 }

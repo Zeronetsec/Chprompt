@@ -1,5 +1,5 @@
 {
-	"Command": "--current-prompt",
-	"Args": "",
-	"Description": "show current prompt"
+    "Command": "--current-prompt",
+    "Args": "",
+    "Description": "show current prompt"
 }

@@ -1,5 +1,5 @@
 {
-	"Command": "--inject",
-	"Args": "<line>/<prompt_number>",
-	"Description": "inject a prompt into the ~/.bashrc configuration"
+    "Command": "--inject",
+    "Args": "<line>/<prompt_number>",
+    "Description": "inject a prompt into the ~/.bashrc configuration"
 }

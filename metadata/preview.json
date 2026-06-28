@@ -1,5 +1,5 @@
 {
-	"Command": "--preview",
-	"Args": "<line>/<prompt_number>",
-	"Description": "preview a specific prompt"
+    "Command": "--preview",
+    "Args": "<line>/<prompt_number>",
+    "Description": "preview a specific prompt"
 }

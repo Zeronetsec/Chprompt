@@ -1,5 +1,5 @@
 {
-	"Command": "--reset",
-	"Args": "",
-	"Description": "restore plugins to default (removes custom plugins)"
+    "Command": "--reset",
+    "Args": "",
+    "Description": "restore plugins to default (removes custom plugins)"
 }

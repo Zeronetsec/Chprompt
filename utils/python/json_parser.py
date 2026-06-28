@@ -24,19 +24,18 @@ for file_path in glob.glob(metadata_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
-            
             command = data.get("Command", "")
             args = data.get("Args", "")
             desc = data.get("Description", "")
-            
+
             if args:
                 fullcmd = f"{GG}{command} {CC}{args}{N}"
             else:
                 fullcmd = f"{GG}{command}{N}"
-                
+
             print(f"    {DG}* {fullcmd}")
             print(f"    {DG}└── {WW}{desc}{N}")
-            
+
     except (json.JSONDecodeError, KeyError, PermissionError) as e:
         continue
 

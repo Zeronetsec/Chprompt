@@ -1,5 +1,5 @@
 {
-	"Command": "--show-ps1",
-	"Args": "<line>/<prompt_number>",
-	"Description": "print the evaluated ps1 string"
+    "Command": "--show-ps1",
+    "Args": "<line>/<prompt_number>",
+    "Description": "print the evaluated ps1 string"
 }

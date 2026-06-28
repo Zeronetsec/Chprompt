@@ -1,5 +1,5 @@
 {
-	"Command": "--list",
-	"Args": "",
-	"Description": "list all available prompt numbers"
+    "Command": "--list",
+    "Args": "",
+    "Description": "list all available prompt numbers"
 }
