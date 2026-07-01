@@ -105,4 +105,4 @@ function install::installer() {
                 ${bin}/chprompt
         " \
         "Symlink: ${GG}${opt}/chprompt/bin/chprompt.sh ${DG}-> ${GG}${bin}/chprompt${N}"
-}
+}; readonly -f install::installer

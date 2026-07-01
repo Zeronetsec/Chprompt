@@ -5,6 +5,7 @@ function module::Helper() {
     if [[ -f "${engine}" ]]; then
         utils::banner
         utils::birthday
+
         echo -e "${N}Usage: ${GG}chprompt ${CC}<option> [<args>]${N}"
         printf '\n'
         echo -e "${N}Available options:"
