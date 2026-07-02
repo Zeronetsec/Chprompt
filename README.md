@@ -19,7 +19,7 @@ Please read [.docs/disclaimer.md](.docs/disclaimer.md) before using this tool. <
 Use this software at your own risk. </br>
 The author is not responsible for any damage, data loss, or issues that may result from its use.
 
-## Install & Uninstall
+## Installation
 Quick install:
 ```bash
 git clone https://github.com/Zeronetsec/Chprompt
