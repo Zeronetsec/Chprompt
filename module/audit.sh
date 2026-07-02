@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function module::Audit() {
+function Audit() {
     local engine="${root}/utils/python/audit_plugin.py"
 
     export plugin="${root}/plugin"

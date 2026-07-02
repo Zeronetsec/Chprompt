@@ -1,4 +1,10 @@
 function install::installer() {
+    echo -e "${B}[*] ${N}Namespacing module..."
+    install::extern::Namespace "${root}" \
+        --exfile .gitattributes:chprompt.sh:install.sh:LICENSE:README.md:include.sh:destroyf.sh:destroyv.sh \
+        --exdir .git:.docs:.install \
+        --rdonly false
+
     if [[ "${__BACKUP__}" == "true" && -d "${opt}/chprompt" ]]; then
         (
             cd "${opt}"

@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function module::CurrentPrompt() {
+function CurrentPrompt() {
     local cprompt=$(
         utils::cprompt
     )

@@ -33,6 +33,7 @@ include : '(
     .install/prepdir
     .install/zinstall
     .install/zparser
+    .install/extern/namespace
 )'
 
 __BACKUP__=false

@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function module::List() {
+function List() {
     local path="${root}/plugin"
 
     local l1="$(command ls "${path}/1_line/" | command wc -l)"

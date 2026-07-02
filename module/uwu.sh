@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function module::Uwu() {
+function Uwu() {
     local faces=(
         "(｡◕‿◕｡)"
         "(≧◡≦)"

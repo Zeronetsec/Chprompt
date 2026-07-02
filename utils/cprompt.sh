@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function utils::cprompt() {
+function cprompt() {
     local cprompt=$(
         command grep -oP \
         'chprompt --use \K[^ ]+' "${HOME}/.bashrc"

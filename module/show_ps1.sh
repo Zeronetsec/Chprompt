@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function module::ShowPS1() {
+function ShowPS1() {
     local arg1="${1}"
     if [[ -z "${arg1}" ]]; then
         utils::missingArgument

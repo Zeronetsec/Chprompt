@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function utils::banner() {
+function banner() {
     local banner="${root}/data/banner.txt"
     echo -ne "${B}"
     command cat "${banner}"

@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function utils::birthday() {
+function birthday() {
     local birth_date="03-10"
     local today="$(command date '+%m-%d')"
     if [[ "${today}" == "${birth_date}" ]]; then
