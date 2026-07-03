@@ -1,7 +1,7 @@
 # https://github.com/Zeronetsec/Chprompt
 
 [Preview]
-\x1b[0m
+\x1b[0m\n
 \x1b[0;37mShell
 %space%>
 \x1b[0m
