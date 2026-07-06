@@ -33,10 +33,6 @@ function install::installer() {
         "command chmod +x ${opt}/chprompt/bin/chprompt.sh" \
         "Set permission for: ${GG}${opt}/chprompt/bin/chprompt.sh"
 
-    install::getinstall \
-        "command chmod +x ${opt}/chprompt/utils/python/*" \
-        "Set permission for: ${GG}${opt}/chprompt/utils/python/*"
-
     (
         cd "${opt}/chprompt"
         install::getinstall \
