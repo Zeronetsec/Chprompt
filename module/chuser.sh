@@ -12,14 +12,14 @@ function Chuser() {
         command find "${target}" \
             -type f \
             -name "*.chp" \
-            -exec sed -Ei 's/\\u|\$\(command whoami\)/'"${newuser}"'/g' {} +
+            -exec sed -i 's/\\u/'"${newuser}"'/g; s/\$(command whoami)/'"${newuser}"'/g' {} +
     else
         local old="${1}"
         local new="${2}"
         command find "${target}" \
             -type f \
             -name "*.chp" \
-            -exec sed -i "s/${old}/${new}/g" {} +
+            -exec sed -i "s/\<${old}\>/${new}/g" {} +
     fi
 
     module::Use "$(utils::cprompt)"

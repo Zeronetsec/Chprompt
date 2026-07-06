@@ -12,14 +12,14 @@ function Chhost() {
         command find "${target}" \
             -type f \
             -name "*.chp" \
-            -exec sed -Ei 's/\\h|\$\(command hostname\)/'"${newhost}"'/g' {} +
+            -exec sed -i 's/\\h/'"${newhost}"'/g; s/\$(command hostname)/'"${newhost}"'/g' {} +
     else
         local old="${1}"
         local new="${2}"
         command find "${target}" \
             -type f \
             -name "*.chp" \
-            -exec sed -i "s/${old}/${new}/g" {} +
+            -exec sed -i "s/\<${old}\>/${new}/g" {} +
     fi
 
     module::Use "$(utils::cprompt)"
