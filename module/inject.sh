@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function Inject() {
+function module::Inject() {
     local arg1="${1}"
     local PREFIX="${PREFIX:-/usr}"
 

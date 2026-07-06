@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function Helper() {
+function module::Helper() {
     local engine="${root}/utils/python/json_parser.py"
     if [[ -f "${engine}" ]]; then
         utils::banner

@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function Version() {
+function module::Version() {
     local name="Chprompt"
     local version="v0.1"
     local creator="Zeronetsec"

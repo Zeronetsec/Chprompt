@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function Use() {
+function module::Use() {
     local arg1="${1}"
     if [[ -z "${arg1}" ]]; then
         utils::missingArgument

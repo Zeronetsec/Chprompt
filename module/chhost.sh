@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function Chhost() {
+function module::Chhost() {
     local target="${root}/plugin"
     if [[ -z "${1}" ]]; then
         utils::missingArgument

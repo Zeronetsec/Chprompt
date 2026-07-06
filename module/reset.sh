@@ -1,6 +1,6 @@
 # https://github.com/Zeronetsec/Chprompt
 
-function Reset() {
+function module::Reset() {
     if [[ ! -f "${root}/plugin_backup.zip" ]]; then
         echo -e "${R}[!] ${N}Plugin backup: ${GG}${root}/plugin_backup.zip ${N}not found!"
         return 1
