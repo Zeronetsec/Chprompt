@@ -21,7 +21,7 @@ $(EXIT_CODE=${?}; if [[ ${EXIT_CODE} -eq 0 ]]; then echo -e "\x1b[1;32mλ"; else
 \[\033[1;45;37m\]
 %space%\w%space%
 \[\033[49m\]%space%
-$(EXIT_CODE=$?; if [[ $EXIT_CODE -eq 0 ]]; then echo -e "\[\033[1;32m\]λ"; else echo -e "\[\033[1;31m\]✖"; fi)
+$(EXIT_CODE=${?}; if [[ ${EXIT_CODE} -eq 0 ]]; then echo -e "\[\033[1;32m\]λ"; else echo -e "\[\033[1;31m\]✖"; fi)
 %space%\[\033[1;37m\]❯
 \[\033[0m\]%space%
 [END]
