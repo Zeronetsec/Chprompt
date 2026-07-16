@@ -5,7 +5,7 @@
 This tool is currently in its early **v0.1** stage and is considered **unstable**. </br>
 You may encounter bugs, system errors, or unexpected behavior. </br>
 Additionally, core structures, commands, and language configurations are highly subject to change in future updates. </br>
-Read also: [.docs/why.md](why.md)
+Read also: [.docs/why.md](why.md).
 
 This tool is designed specifically for **Bash** environments. </br>
 Forcing it to run on other shells may lead to corruption or unintended damage to your shell configuration.
