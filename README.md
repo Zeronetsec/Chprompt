@@ -1,8 +1,8 @@
 <!-- https://github.com/Zeronetsec/Chprompt -->
 
-<img src="https://img.shields.io/badge/Chprompt-Version%200.1-blue.svg?style=square&logo=gnu-bash" />
-<img src="https://img.shields.io/badge/Supported%20OS-Linux-blue.svg?style=square&logo=linux" />
-<img src="https://img.shields.io/badge/License-MIT-blue.svg?style=square&logo=github" />
+<img src="https://img.shields.io/badge/Chprompt-Version%200.1-blue.svg?style=square&logo=gnu-bash" >
+<img src="https://img.shields.io/badge/Supported%20OS-Linux-blue.svg?style=square&logo=linux" >
+<img src="https://img.shields.io/badge/License-MIT-blue.svg?style=square&logo=github" >
 
 # Chprompt
 Chprompt is a tool for managing and customizing Bash prompts easily and efficiently.
