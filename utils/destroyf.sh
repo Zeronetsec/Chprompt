@@ -1,38 +1,38 @@
 # https://github.com/Zeronetsec/Chprompt
 
 function destroyf() {
-    local input_data
-    local line
-    local ecode
-
     if [[ "${1}" != ":" ]]; then
         return 1
     fi
 
     shift
-    input_data="${1}"
-
+    local input_data="${1}"
     if [[ -z "${input_data}" ]]; then
         return 1
     fi
 
-    input_data="$(
-        echo -e "${input_data}" | \
-        command sed -n '/(/,/)/ {
-            s/[()]//g;
-            s/^[[:space:]]*//;
-            s/[[:space:]]*$//;
-            /^$/d;
-            p;
-        }'
-    )"
+    local line
+    local inside_bracket=0
 
     while read -r line; do
-        [[ -z "${line}" ]] && continue
-        [[ "${line}" =~ ^# ]] && continue
-        unset -f "${line}"
-    done <<< "${input_data}"
+        line="${line#"${line%%[![:space:]]*}"}"
+        line="${line%"${line##*[![:space:]]}"}"
+        if [[ "${line}" == *"("* ]]; then
+            inside_bracket=1
+            continue
+        fi
 
+        if [[ "${line}" == *")"* ]]; then
+            inside_bracket=0
+            continue
+        fi
+
+        if (( inside_bracket )); then
+            [[ -z "${line}" ]] && continue
+            [[ "${line}" =~ ^# ]] && continue
+            unset -f "${line}"
+        fi
+    done <<< "${input_data}"
     return 0
 }
 

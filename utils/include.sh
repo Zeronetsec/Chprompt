@@ -30,7 +30,6 @@ function include() {
         if (( inside_bracket )); then
             [[ -z "${line}" ]] && continue
             [[ "${line}" =~ ^# ]] && continue
-
             if [[ ! -f "${root}/${line}.sh" ]]; then
                 echo -e "\x1b[1;31m[!] \x1b[0mInclude: \x1b[0;32m${line} \x1b[0mnot found!"
                 return 1
