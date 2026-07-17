@@ -6,6 +6,7 @@
     <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=square&logo=github" />
 </div>
 
+
 # Chprompt
 Chprompt is a tool for managing and customizing Bash prompts easily and efficiently.
 
