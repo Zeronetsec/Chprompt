@@ -1,0 +1,5 @@
+{
+    "Command": "--init",
+    "Args": "<bashrc>",
+    "Description": "injecting the initialization kode into the bashrc"
+}

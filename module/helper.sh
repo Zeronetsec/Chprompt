@@ -1,7 +1,7 @@
 # https://github.com/Zeronetsec/Chprompt
 
 function module::Helper() {
-    local engine="${root}/utils/python/json_parser.py"
+    local engine="${root}/utils/perl/json_parser.pl"
     if [[ -f "${engine}" ]]; then
         utils::banner
         utils::birthday
@@ -14,7 +14,7 @@ function module::Helper() {
             command chmod +x "${engine}"
         }
 
-        command python3 "${engine}"
+        command perl "${engine}"
         return ${?}
     else
         echo -e "${R}[!] ${N}Engine: ${GG}${engine} ${N}not found!"

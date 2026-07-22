@@ -28,7 +28,7 @@ function module::Inject() {
         return 1
     fi
 
-    command cat "${HOME}/.bashrc" | \
+    command cat "${lhome}" | \
         command grep -vE '^\s*chprompt --use */*' \
             > "${PREFIX}/tmp/chprompt_bashrc.tmp"
 
@@ -36,7 +36,7 @@ function module::Inject() {
         >> "${PREFIX}/tmp/chprompt_bashrc.tmp"
 
     command cat "${PREFIX}/tmp/chprompt_bashrc.tmp" \
-        > "${HOME}/.bashrc"
+        > "${lhome}"
 
     command rm -f "${PREFIX}/tmp/chprompt_bashrc.tmp"
 

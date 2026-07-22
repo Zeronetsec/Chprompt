@@ -1,7 +1,7 @@
 # https://github.com/Zeronetsec/Chprompt
 
 function module::Audit() {
-    local engine="${root}/utils/python/audit_plugin.py"
+    local engine="${root}/utils/perl/audit_plugin.pl"
 
     export plugin="${root}/plugin"
     export pattern="${root}/data/patterns.txt"
@@ -10,8 +10,9 @@ function module::Audit() {
         [[ ! -x "${engine}" ]] && {
             command chmod +x "${engine}"
         }
+
         echo -e "${B}[*] ${N}Audit plugin: ${GG}${plugin}/${N}"
-        command python3 "${engine}"
+        command perl "${engine}"
         return ${?}
     else
         echo -e "${R}[!] ${N}Engine: ${GG}${engine} ${N}not found!"

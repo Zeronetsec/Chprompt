@@ -3,7 +3,7 @@
 function utils::cprompt() {
     local cprompt=$(
         command grep -oP \
-        'chprompt --use \K[^ ]+' "${HOME}/.bashrc"
+        'chprompt --use \K[^ ]+' "${lhome}"
     )
     echo -e "${cprompt}"
 }

@@ -2,6 +2,8 @@
 
 function chprompt() {
     export root="$(command chprompt 2>/dev/null)"
+    export lhome=""
+
     local excode=0
     if [[ -z "${root}" ]]; then
         echo -e "\x1b[1;31m[!] \x1b[0mChprompt path not found!"
@@ -10,6 +12,7 @@ function chprompt() {
         source "${root}/utils/include.sh"
         include : '(
             utils/color
+            utils/lhome
             utils/getblock
             utils/missing_argument
             utils/invalid_option
@@ -32,7 +35,11 @@ function chprompt() {
             module/current_prompt
             module/show_ps1
             module/show_source
+            module/init
+            module/chbashrc
         )' || excode=1
+
+        utils::lhome || excode=1
 
         case "${1}" in
             "")
@@ -83,6 +90,14 @@ function chprompt() {
                 module::ShowSource "${@:2}"
                 excode=${?}
                 ;;
+            "--init")
+                module::Init "${@:2}"
+                excode=${?}
+                ;;
+            "--chbashrc")
+                module::Chbashrc "${@:2}"
+                excode=${?}
+                ;;
             "--uwu")
                 module::Uwu
                 excode=${?}
@@ -114,9 +129,11 @@ function chprompt() {
         root
         plugin
         pattern
+        lhome
     )' || excode=1
 
     destroyf : '(
+        utils::lhome
         utils::getblock
         utils::missingArgument
         utils::invalidOption
@@ -137,6 +154,8 @@ function chprompt() {
         module::CurrentPrompt
         module::ShowPS1
         module::ShowSource
+        module::Init
+        module::Chbashrc
     )' || excode=1
 
     unset -f include

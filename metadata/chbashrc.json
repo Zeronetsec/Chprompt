@@ -1,0 +1,5 @@
+{
+    "Command": "--chbashrc",
+    "Args": "<bashrc>",
+    "Description": "change target bashrc"
+}

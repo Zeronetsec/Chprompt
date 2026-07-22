@@ -19,6 +19,18 @@ dir="$(
 )"
 
 export root="$(cd "${dir}/.." && pwd)"
-echo -e "${root}"
+
+if [[ "${1}" == '--init' ]]; then
+    bashrc="${2:-${HOME}/.bashrc}"
+
+    echo -ne "source ${root}/chprompt.sh" \
+        >> "${bashrc}"
+    ex=${?}
+
+    echo -e "${B}[*] ${N}Injected code: ${GG}source ${root}/chprompt.sh ${DG}-> ${GG}${bashrc}${N}"
+    exit ${ex}
+fi
+
+echo -ne "${root}"
 
 # Copyright (c) 2026 Zeronetsec
