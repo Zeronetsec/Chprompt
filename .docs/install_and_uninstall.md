@@ -21,8 +21,6 @@ bash Chprompt/install.sh <options>
 - └── when running the installer with sudo to ensure the target home directory is used instead of `/root`.
 - `--no-remove-code`
 - └── do not remove code from `.bashrc`.
-- `--no-remove-config`
-- └── do not remove `~/.chprompt_bashrc`
 
 ### Usage
 ```bash
