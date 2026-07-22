@@ -29,22 +29,18 @@ include : '(
     .install/getinstall
 )'
 
-__RMBK__=false
 HOME="${HOME}"
 
 while [[ ${#} -gt 0 ]]; do
     case "${1}" in
-        "--remove-backup") export __RMBK__=true ;;
         "--home="*) export HOME="${1#*=}" ;;
     esac
     shift
 done
 
-if [[ "${__RMBK__}" == true ]]; then
-    install::getinstall \
-        "command rm -f ${opt}/chprompt_*.zip.bak" \
-        "Removing all backup..."
-fi
+install::getinstall \
+    "command rm -f ${opt}/chprompt_*.zip.bak" \
+    "Removing all backup..."
 
 install::getinstall \
     "command rm -rf ${opt}/chprompt" \
