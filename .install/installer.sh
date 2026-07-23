@@ -23,10 +23,6 @@ function install::installer() {
         "command mv ${root} ${opt}/chprompt" \
         "Moving: ${GG}${root} ${DG}-> ${GG}${opt}/chprompt${N}"
 
-    install::getinstall \
-        "command chmod +x ${opt}/chprompt/bin/chprompt.sh" \
-        "Set permission for: ${GG}${opt}/chprompt/bin/chprompt.sh"
-
     (
         cd "${opt}/chprompt"
         install::getinstall \
