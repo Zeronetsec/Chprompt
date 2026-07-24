@@ -3,7 +3,9 @@
 <div align="center">
     <img src="https://img.shields.io/badge/Chprompt-Version%200.1-blue?style=square&logo=gnu-bash&v=1" />
     <img src="https://img.shields.io/badge/Supported%20OS-Linux-blue?style=square&logo=linux&v=1" />
-    <img src="https://img.shields.io/badge/License-MIT-blue?style=square&logo=github&v=1" />
+    <a href="LICENSE">
+        <img src="https://img.shields.io/badge/License-MIT-blue?style=square&logo=github&v=1" />
+    </a>
 </div>
 
 # Chprompt
@@ -38,8 +40,5 @@ chprompt --show-source 2/52
 chprompt --show-ps1 2/52
 ```
 And more commands.
-
-## License
-This project is licensed under the MIT License.
 
 <!-- Copyright (c) 2026 Zeronetsec -->
