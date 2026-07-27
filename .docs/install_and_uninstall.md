@@ -2,10 +2,10 @@
 
 # Installation
 `install.sh` optional options (can be used together):
+- `--home=<path>`
+- └── override `$HOME` value.
 - `--backup`
 - └── crete backup of the exiting source installation before replacing it.
-- `--home=<path>`
-- └── when running the installer with sudo to ensure the target home directory is used instead of `/root`.
 
 ### Usage
 ```bash
@@ -15,10 +15,10 @@ bash Chprompt/install.sh <options>
 
 # Uninstallation
 `uninstall.sh` optional options (can be used together):
+- `--home=<path>`
+- └── override `$HOME` value.
 - `--remove-backup`
 - └── remove all backups found.
-- `--home=<path>`
-- └── when running the installer with sudo to ensure the target home directory is used instead of `/root`.
 - `--no-remove-code`
 - └── do not remove code from `.bashrc`.
 

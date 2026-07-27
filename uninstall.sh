@@ -44,37 +44,37 @@ done
 
 if [[ "${__RMBK__}" == true ]]; then
     install::getinstall \
-        "command rm -f ${opt}/chprompt_*.zip.bak" \
+        "command rm -f ${opt}/${targetins}_*.zip.bak" \
         "Removing all backup..."
 fi
 
 install::getinstall \
-    "command rm -rf ${opt}/chprompt" \
-    "Removing: ${GG}${opt}/chprompt${N}"
+    "command rm -rf ${opt}/${targetins}" \
+    "Removing: ${GG}${opt}/${targetins}${N}"
 
 install::getinstall \
-    "command rm -f ${bin}/chprompt" \
-    "Removing: ${GG}${bin}/chprompt${N}"
+    "command rm -f ${bin}/${targetins}" \
+    "Removing: ${GG}${bin}/${targetins}${N}"
 
 if [[ "${__RMC__}" == false ]]; then
     install::getinstall \
         "
             command cat ${HOME}/.bashrc | \
-                command grep -v 'chprompt' \
-                > ${tmp}/chprompt_uninstall
+                command grep -v '${targetins}' \
+                > ${tmp}/${targetins}_uninstall
         " \
-        "Filtering: ${GG}${HOME}/.bashrc ${GG}-> ${GG}${tmp}/chprompt_uninstall"
+        "Filtering: ${GG}${HOME}/.bashrc ${GG}-> ${GG}${tmp}/${targetins}_uninstall"
 
     install::getinstall \
         "
             command mv \
-                ${tmp}/chprompt_uninstall \
+                ${tmp}/${targetins}_uninstall \
                 ${HOME}/.bashrc
         " \
-        "Moving: ${GG}${tmp}/chprompt_uninstall ${DG}-> ${GG}${HOME}/.bashrc${N}"
+        "Moving: ${GG}${tmp}/${targetins}_uninstall ${DG}-> ${GG}${HOME}/.bashrc${N}"
 fi
 
-echo -e "${GG}[+] ${N}Chprompt removed"
+echo -e "${GG}[+] ${N}${targetins^} removed!"
 
 trap - EXIT
 exit ${?}
