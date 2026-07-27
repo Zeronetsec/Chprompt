@@ -1,4 +1,7 @@
 .install/** linguist-vendored
+.gitaction/** linguist-vendored
+
 plugin/** linguist-vendored
+
 install.sh linguist-vendored
 uninstall.sh linguist-vendored
