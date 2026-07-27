@@ -1,0 +1,15 @@
+echo -e "Iflags:
+\x1b[0;32minstall.sh \x1b[0moptional options (can be used together):
+    \x1b[1;90m* \x1b[0;32m--home=<path>\x1b[0m
+    \x1b[1;90m└── \x1b[0;37moverride $HOME value.\x1b[0m
+    \x1b[1;90m* \x1b[0;32m--backup\x1b[0m
+    \x1b[1;90m└── \x1b[0;37mcrete backup of the exiting source installation before replacing it.\x1b[0m
+
+uflags:
+\x1b[0;32muninstall.sh \x1b[0moptional options (can be used together):
+    \x1b[1;90m* \x1b[0;32m--home=<path>\x1b[0m
+    \x1b[1;90m└── \x1b[0;37moverride $HOME value.\x1b[0m
+    \x1b[1;90m* \x1b[0;32m--remove-backup\x1b[0m
+    \x1b[1;90m└── \x1b[0;37mremove all backups found.\x1b[0m
+    \x1b[1;90m* \x1b[0;32m--no-remove-code\x1b[0m
+    \x1b[1;90m└── \x1b[0;37mdo not remove code from .bashrc.\x1b[0m"
