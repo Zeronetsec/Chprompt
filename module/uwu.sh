@@ -1,30 +1,18 @@
 # https://github.com/Zeronetsec/Chprompt
 
 function module::Uwu() {
-    local faces=(
-        "(｡◕‿◕｡)"
-        "(≧◡≦)"
-        "ʕ•ᴥ•ʔ"
-        "(・ω・)"
-        "(๑˃ᴗ˂)ﻭ"
-        "(ง'̀-'́)ง"
-        "(=^･ω･^=)"
-    )
+    local engine="${root}/utils/perl/nyanners.pl"
 
-    local delay=0.2
-    local duration=5
-
-    SECONDS=0
-
-    echo -ne "\x1b[?25l"
-    while (( SECONDS < duration )); do
-        for face in "${faces[@]}"; do
-            (( SECONDS >= duration )) && break
-            printf "\r%s\x1b[K" "${face}"
-            command sleep "${delay}"
-        done
-    done
-    echo -ne "\x1b[?25h\n"
+    if [[ -f "${engine}" ]]; then
+        [[ ! -x "${engine}" ]] && {
+            command chmod +x "${engine}"
+        }
+        command perl "${engine}"
+        return ${?}
+    else
+        echo -e "${R}[!] ${N}Engine: ${GG}${engine} ${N}not found!"
+        return 1
+    fi
 
     return 0
 }
