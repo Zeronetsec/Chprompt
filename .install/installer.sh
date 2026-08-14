@@ -11,6 +11,40 @@ function install::installer() {
         cd
     )
 
+    install::getinstall \
+        "
+            command gcc \
+                -O3 -march=native -flto \
+                -s ${opt}/${targetins}/${targetsyml}.c \
+                -o ${opt}/${targetins}/${targetsyml}
+        " \
+        "Compiling: ${GG}${targetins}${N}"
+
+    local clib
+    command mapfile -t clibs < <(
+        command ls \
+            "${opt}/${targetins}/utils/c/" \
+            --color=never \
+            2>/dev/null
+    )
+
+    local lib
+    for lib in "${clibs[@]}"; do
+        local libname="${lib%%.*}"
+        install::getinstall \
+            "
+                command gcc \
+                    -fPIC -shared -O3 -march=native \
+                    -s ${opt}/${targetins}/utils/c/${libname}.c \
+                    -o ${opt}/${targetins}/utils/c/${libname}.so \
+                    -I${prefix}/include/bash \
+                    -I${prefix}/include/bash/include \
+                    -I${prefix}/include/bash/builtins
+            " \
+            "Compiling: ${GG}${libname}.so${N}"
+    done
+
+
     if [[ ! -f "${HOME}/${__RC__}" ]]; then
         install::getinstall \
             "command touch ${HOME}/${__RC__}" \

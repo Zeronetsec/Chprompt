@@ -1,4 +1,5 @@
 bash
+bash-builtins::bash
 perl
 coreutils
 findutils
@@ -10,3 +11,6 @@ zip
 unzip
 git
 bat
+clang
+gcc::libllvm
+libconfig-dev::libconfig

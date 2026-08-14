@@ -9,4 +9,4 @@ export bkdate="$(
 )"; readonly bkdate
 
 export targetins="chprompt"; readonly targetins
-export targetsyml="bin/${targetins}.sh"; readonly targetsyml
+export targetsyml="bin/${targetins}"; readonly targetsyml

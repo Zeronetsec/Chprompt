@@ -9,15 +9,13 @@ function chprompt() {
         echo -e "\x1b[1;31m[!] \x1b[0mChprompt path not found!"
         excode=1
     else
-        source "${root}/utils/include.sh"
-        include : '(
+        source "${root}/utils/libso.sh"
+        builtin include : '(
             utils/color
             utils/lhome
             utils/getblock
             utils/missing_argument
             utils/invalid_option
-            utils/destroyv
-            utils/destroyf
             utils/birthday
             utils/cprompt
             utils/banner
@@ -117,7 +115,7 @@ function chprompt() {
         esac
     fi
 
-    destroyv : '(
+    builtin destroyv : '(
         N
         R
         B
@@ -132,7 +130,7 @@ function chprompt() {
         lhome
     )' || excode=1
 
-    destroyf : '(
+    builtin destroyf : '(
         utils::lhome
         utils::getblock
         utils::missingArgument
@@ -158,9 +156,9 @@ function chprompt() {
         module::Chbashrc
     )' || excode=1
 
-    unset -f include
-    unset -f destroyv
-    unset -f destroyf
+    enable -n include
+    enable -n destroyv
+    enable -n destroyf
 
     return ${excode}
 }
