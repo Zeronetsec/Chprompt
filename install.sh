@@ -41,11 +41,13 @@ include : '(
 
 HOME="${HOME}"
 __BACKUP__=false
+__RC__=".bashrc"
 
 while [[ ${#} -gt 0 ]]; do
     case "${1}" in
         "--home="*) export HOME="${1#*=}" ;;
         "--backup") export __BACKUP__=true ;;
+        "--rc="*) export __RC__="$(command basename "${1#*=}")" ;;
     esac
     shift
 done

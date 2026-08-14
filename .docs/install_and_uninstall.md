@@ -6,6 +6,8 @@
 - └── override `$HOME` value.
 - `--backup`
 - └── crete backup of the exiting source installation before replacing it.
+- `--rc=<targetrc>`
+- └── override target shell configuration instead of `~/.bashrc`.
 
 ### Usage
 ```bash
@@ -21,6 +23,8 @@ bash Chprompt/install.sh <options>
 - └── remove all backups found.
 - `--no-remove-code`
 - └── do not remove code from `.bashrc`.
+- `--rc=<targetrc>`
+- └── override target shell configuration instead of `~/.bashrc`.
 
 ### Usage
 ```bash

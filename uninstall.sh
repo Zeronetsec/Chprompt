@@ -32,12 +32,14 @@ include : '(
 HOME="${HOME}"
 __RMBK__=false
 __RMC__=false
+__RC__=".bashrc"
 
 while [[ ${#} -gt 0 ]]; do
     case "${1}" in
         "--home="*) export HOME="${1#*=}" ;;
         "--remove-backup") export __RMBK__=true ;;
         "--no-remove-code") export __RMC__=true ;;
+        "--rc="*) export __RC__="$(command basename "${1#*=}")"
     esac
     shift
 done
@@ -59,19 +61,19 @@ install::getinstall \
 if [[ "${__RMC__}" == false ]]; then
     install::getinstall \
         "
-            command cat ${HOME}/.bashrc | \
+            command cat ${HOME}/${__RC__} | \
                 command grep -v '${targetins}' \
                 > ${tmp}/${targetins}_uninstall
         " \
-        "Filtering: ${GG}${HOME}/.bashrc ${GG}-> ${GG}${tmp}/${targetins}_uninstall"
+        "Filtering: ${GG}${HOME}/${__RC__} ${GG}-> ${GG}${tmp}/${targetins}_uninstall"
 
     install::getinstall \
         "
             command mv \
                 ${tmp}/${targetins}_uninstall \
-                ${HOME}/.bashrc
+                ${HOME}/${__RC__}
         " \
-        "Moving: ${GG}${tmp}/${targetins}_uninstall ${DG}-> ${GG}${HOME}/.bashrc${N}"
+        "Moving: ${GG}${tmp}/${targetins}_uninstall ${DG}-> ${GG}${HOME}/${__RC__}${N}"
 fi
 
 echo -e "${GG}[+] ${N}${targetins^} removed!"

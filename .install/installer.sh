@@ -11,34 +11,34 @@ function install::installer() {
         cd
     )
 
-    if [[ ! -f "${HOME}/.bashrc" ]]; then
+    if [[ ! -f "${HOME}/${__RC__}" ]]; then
         install::getinstall \
-            "command touch ${HOME}/.bashrc" \
-            "Create file: ${GG}${HOME}/.bashrc${N}"
+            "command touch ${HOME}/${__RC__}" \
+            "Create file: ${GG}${HOME}/${__RC__}${N}"
     fi
 
     if [[ "${__BACKUP__}" == "true" ]]; then
         install::getinstall \
             "
                 command cp \
-                    ${HOME}/.bashrc \
-                    ${HOME}/.bashrc_${bkdate}.bak
+                    ${HOME}/${__RC__} \
+                    ${HOME}/${__RC__}_${bkdate}.bak
             " \
-            "Backup: ${GG}${HOME}/.bashrc ${DG}-> ${GG}${HOME}/.bashrc_${bkdate}.bak${N}"
+            "Backup: ${GG}${HOME}/${__RC__} ${DG}-> ${GG}${HOME}/${__RC__}_${bkdate}.bak${N}"
     fi
 
     install::getinstall \
         "
-            command cat ${HOME}/.bashrc | \
+            command cat ${HOME}/${__RC__} | \
                 command grep -Ev \
                     'source ${opt}/${targetins}/${targetins}.sh|${targetins} --use' \
-                    > ${HOME}/.bashrc.tmp || true
+                    > ${HOME}/${__RC__}.tmp || true
         " \
-        "Filtering: ${GG}${HOME}/.bashrc${N}"
+        "Filtering: ${GG}${HOME}/${__RC__}${N}"
 
     current_theme="$(
         command grep "${targetins} --use" \
-        "${HOME}/.bashrc" | \
+        "${HOME}/${__RC__}" | \
         command head -n 1 | \
         command sed "s/.*${targetins} --use //"
     )"
@@ -54,15 +54,15 @@ function install::installer() {
                     'source ${opt}/${targetins}/${targetins}.sh'
                 echo -e \
                     '${targetins} --use ${current_theme}'
-            } >> ${HOME}/.bashrc.tmp
+            } >> ${HOME}/${__RC__}.tmp
         " \
-        "Add line: ${GG}source ${opt}/${targetins}/${targetins}.sh ${DG}-> ${GG}${HOME}/.bashrc.tmp${N}"
+        "Add line: ${GG}source ${opt}/${targetins}/${targetins}.sh ${DG}-> ${GG}${HOME}/${__RC__}.tmp${N}"
 
     install::getinstall \
         "
             command mv \
-                ${HOME}/.bashrc.tmp \
-                ${HOME}/.bashrc
+                ${HOME}/${__RC__}.tmp \
+                ${HOME}/${__RC__}
         " \
-        "Moving: ${GG}${HOME}/.bashrc.tmp ${DG}-> ${GG}${HOME}/.bashrc${N}"
+        "Moving: ${GG}${HOME}/${__RC__}.tmp ${DG}-> ${GG}${HOME}/${__RC__}${N}"
 }; readonly -f install::installer
