@@ -14,7 +14,7 @@ function module::Helper() {
             command chmod +x "${engine}"
         }
 
-        command perl "${engine}"
+        "${engine}"
         return ${?}
     else
         echo -e "${R}[!] ${N}Engine: ${GG}${engine} ${N}not found!"

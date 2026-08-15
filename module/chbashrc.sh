@@ -11,7 +11,7 @@ function module::Chbashrc() {
         > "${root}/config/chprompt_bashrc.txt" || \
         return 1
 
-    utils::lhome || return 1
+    builtin lhome || return 1
     echo -e "${B}[*] ${N}Set bashrc: ${GG}${home}${N}"
 }
 

@@ -12,7 +12,6 @@ function chprompt() {
         source "${root}/utils/libso.sh"
         builtin include : '(
             utils/color
-            utils/lhome
             utils/getblock
             utils/missing_argument
             utils/invalid_option
@@ -37,7 +36,7 @@ function chprompt() {
             module/chbashrc
         )' || excode=1
 
-        utils::lhome || excode=1
+        builtin lhome || excode=1
 
         case "${1}" in
             "")
@@ -124,14 +123,12 @@ function chprompt() {
         BB
         CC
         WW
-        root
         plugin
         pattern
         lhome
     )' || excode=1
 
     builtin destroyf : '(
-        utils::lhome
         utils::getblock
         utils::missingArgument
         utils::invalidOption
@@ -156,9 +153,8 @@ function chprompt() {
         module::Chbashrc
     )' || excode=1
 
-    enable -n include
-    enable -n destroyv
-    enable -n destroyf
+    source "${root}/utils/disabler.sh"
+    unset root
 
     return ${excode}
 }

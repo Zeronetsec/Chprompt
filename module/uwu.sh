@@ -7,7 +7,8 @@ function module::Uwu() {
         [[ ! -x "${engine}" ]] && {
             command chmod +x "${engine}"
         }
-        command perl "${engine}"
+
+        "${engine}"
         return ${?}
     else
         echo -e "${R}[!] ${N}Engine: ${GG}${engine} ${N}not found!"

@@ -12,7 +12,7 @@ function module::Audit() {
         }
 
         echo -e "${B}[*] ${N}Audit plugin: ${GG}${plugin}/${N}"
-        command perl "${engine}"
+        "${engine}"
         return ${?}
     else
         echo -e "${R}[!] ${N}Engine: ${GG}${engine} ${N}not found!"

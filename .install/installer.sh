@@ -20,10 +20,10 @@ function install::installer() {
         " \
         "Compiling: ${GG}${targetins}${N}"
 
-    local clib
+    local clibs
     command mapfile -t clibs < <(
         command ls \
-            "${opt}/${targetins}/utils/c/" \
+            "${opt}/${targetins}/utils/libso/" \
             --color=never \
             2>/dev/null
     )
@@ -35,15 +35,14 @@ function install::installer() {
             "
                 command gcc \
                     -fPIC -shared -O3 -march=native \
-                    -s ${opt}/${targetins}/utils/c/${libname}.c \
-                    -o ${opt}/${targetins}/utils/c/${libname}.so \
+                    -s ${opt}/${targetins}/utils/libso/${libname}.c \
+                    -o ${opt}/${targetins}/utils/libso/${libname}.so \
                     -I${prefix}/include/bash \
                     -I${prefix}/include/bash/include \
                     -I${prefix}/include/bash/builtins
             " \
             "Compiling: ${GG}${libname}.so${N}"
     done
-
 
     if [[ ! -f "${HOME}/${__RC__}" ]]; then
         install::getinstall \
