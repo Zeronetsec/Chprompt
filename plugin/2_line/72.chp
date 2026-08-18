@@ -2,29 +2,33 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[1;44;37m%space%
-$(command whoami)@$(command hostname)
-%space%\x1b[49m
-\x1b[1m:
-\x1b[1;46;30m%space%
+\x1b[38;5;244m┌──(
+\x1b[1;31m
+$(command whoami)
+\x1b[38;5;244m(𖤍)
+\x1b[1;31m
+$(command hostname)
+\x1b[38;5;244m)-(
+\x1b[0;33m
 ~/$(command basename "$(pwd)")
-%space%\x1b[49m
-\x1b[0m\n
-$(EXIT_CODE=${?}; if [[ ${EXIT_CODE} -eq 0 ]]; then echo -e "\x1b[1;32mλ"; else echo -e "\x1b[1;31mλ (${EXIT_CODE})"; fi)
-\x1b[37m
+\x1b[38;5;244m)\n
+\x1b[38;5;244m└──
+\x1b[38;5;254m
+$(if [[ "${EUID}" -eq 0 ]]; then echo '#'; else echo '$'; fi)
 \x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[1;44;37m\]%space%\u@\h%space%
-\[\033[49m\]
-\[\033[1m\]:
-\[\033[1;46;30m\]%space%\w%space%
-\[\033[49m\]
-\[\033[0m\]\n
-$(EXIT_CODE=${?}; if [[ ${EXIT_CODE} -eq 0 ]]; then echo -e "\[\033[1;32m\]λ"; else echo -e "\[\033[1;31m\]λ (${EXIT_CODE})"; fi)
-\[\033[37m\]
+\[\033[38;5;244m\]┌──(
+\[\033[1;31m\]\u
+\[\033[38;5;244m\](𖤍)
+\[\033[1;31m\]\h
+\[\033[38;5;244m\])-(
+\[\033[0;33m\]\w
+\[\033[38;5;244m\])\n
+\[\033[38;5;244m\]└──
+\[\033[38;5;254m\]\$
 \[\033[0m\]%space%
 [END]
 

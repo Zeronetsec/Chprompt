@@ -2,22 +2,20 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[38;5;110m∿∿∿%space%
+\x1b[38;5;110m╭─(
 $(command whoami)@$(command hostname)
-%space%∿∿∿\x1b[0m\n
-\x1b[38;5;147m⋰%space%
+)─╮\x1b[0m\n
+\x1b[38;5;147m╰─(
 ~/$(command basename "$(pwd)")
-%space%⋱%space%❯
-\x1b[0m
+)─❯\x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
 \[\033[38;5;110m\]
-∿∿∿%space%\u@\h%space%∿∿∿
+╭─(\u@\h)─╮
 \[\033[0m\]\n
-\[\033[38;5;147m\]
-⋰%space%\w%space%⋱%space%❯
+\[\033[38;5;147m\]╰─(\w)─❯
 \[\033[0m\]
 %space%
 [END]

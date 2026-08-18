@@ -2,24 +2,28 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[1;32mλ%space%
-\x1b[1;34m
+\x1b[1m[
+\x1b[36m
 $(command whoami)@$(command hostname)
-\x1b[0m:
-\x1b[1;36m
+\x1b[37m]
+%space%\x1b[34m
 ~/$(command basename "$(pwd)")
 \x1b[0m\n
-λ
+$(EXIT_CODE=${?}; if [[ ${EXIT_CODE} -eq 0 ]]; then echo -e "\x1b[32m✔"; else echo -e "\x1b[31m✖ (${EXIT_CODE})"; fi)
+%space%\x1b[37m>
+\x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[1;32m\]λ%space%
-\[\033[1;34m\]\u@\h
-\[\033[0m\]:
-\[\033[1;36m\]\w
+\[\033[1m\][
+\[\033[36m\]\u@\h
+\[\033[37m\]]%space%
+\[\033[34m\]\w
 \[\033[0m\]\n
-λ%space%
+$(EXIT_CODE=${?}; if [[ ${EXIT_CODE} -eq 0 ]]; then echo -e "\[\033[32m\]✔"; else echo -e "\[\033[31m\]✖ (${EXIT_CODE})"; fi)
+%space%\[\033[37m\]>
+\[\033[0m\]%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

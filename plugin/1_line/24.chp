@@ -2,15 +2,15 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[0;37mShell
-%space%>
+\x1b[0;37m
+Server%space%>
 \x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[0;37m\]Shell
-%space%>
+\[\033[0;37m\]
+Server%space%>
 \[\033[0m\]%space%
 [END]
 

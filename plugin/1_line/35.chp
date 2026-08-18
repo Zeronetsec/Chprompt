@@ -2,33 +2,21 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[48;5;93m
-\x1b[38;5;255m
-%space%%space%
-$(command whoami)
-%space%\x1b[0m
-\x1b[38;5;93m
-\x1b[48;5;161m
-\x1b[0m
-\x1b[48;5;161m
-\x1b[38;5;255m
-%space%%space%
+\x1b[38;5;240m[
+%space%\x1b[38;5;255m
 ~/$(command basename "$(pwd)")
-%space%\x1b[0m
-\x1b[38;5;161m
+%space%\x1b[38;5;240m]
+%space%\x1b[38;5;160m道
 \x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[48;5;93m\033[38;5;255m\]
-%space%%space%\u%space%
-\[\033[0m\033[38;5;93m\033[48;5;161m\]
-\[\033[0m\033[48;5;161m\033[38;5;255m\]
-%space%%space%\w%space%
-\[\033[0m\033[38;5;161m\]
-\[\033[0m\]
-%space%
+\[\033[38;5;240m\][
+%space%\[\033[38;5;255m\]\w
+%space%\[\033[38;5;240m\]]
+%space%\[\033[38;5;160m\]道
+\[\033[0m\]%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

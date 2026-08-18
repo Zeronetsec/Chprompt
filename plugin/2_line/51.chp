@@ -2,26 +2,30 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[38;5;46m>>>%space%
-USER=$(command whoami)
-%space%|%space%
-HOST=$(command hostname)
-%space%|%space%
-DIR=~/$(command basename "$(pwd)")
-%space%<<<\n
-\x1b[0m>>>%space%❯
+\x1b[48;5;235m\x1b[38;5;153m╭─[
+%space%$(command whoami)@$(command hostname)
+%space%]─╮
+\x1b[48;5;238m\x1b[38;5;219m%space%
+Dir:%space%
+~/$(command basename "$(pwd)")
+\x1b[0m\n
+\x1b[48;5;240m\x1b[38;5;82m╰─❯
+\x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[38;5;46m\]>>>%space%
-USER=\u
-%space%|%space%
-HOST=\h
-%space%|%space%
-DIR=\w
-%space%<<<\n
-\[\033[0m\]>>>%space%❯%space%
+\[\033[48;5;235m\]
+\[\033[38;5;153m\]
+╭─[%space%\u@\h%space%]─╮
+\[\033[48;5;238m\]
+\[\033[38;5;219m\]%space%
+Dir:%space%\w
+\[\033[0m\]\n
+\[\033[48;5;240m\]
+\[\033[38;5;82m\]╰─❯
+\[\033[0m\]
+%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

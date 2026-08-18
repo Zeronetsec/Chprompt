@@ -2,16 +2,24 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[0;37m
-Server%space%>
+\x1b[1;31m$(command whoami)
+\x1b[0m@
+\x1b[1;36m$(command hostname)
+\x1b[0m:
+\x1b[1;33m~/$(command basename "$(pwd)")
 \x1b[0m
+%space%→
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[0;37m\]
-Server%space%>
-\[\033[0m\]%space%
+\[\033[1;31m\]\u
+\[\033[0m\]@
+\[\033[1;36m\]\h
+\[\033[0m\]:
+\[\033[1;33m\]\w
+\[\033[0m\]
+%space%→%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

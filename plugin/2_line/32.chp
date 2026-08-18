@@ -2,27 +2,39 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[48;5;236;97m
-%space%❮%space%
-$(command whoami)@$(command hostname):
+\x1b[38;5;93m
+\x1b[48;5;93m
+\x1b[38;5;255m%space% %space%
+$(command whoami)
+%space%\x1b[0m
+\x1b[38;5;93m
+\x1b[48;5;198m
+\x1b[0m
+\x1b[48;5;198m
+\x1b[38;5;255m%space%%space%
 ~/$(command basename "$(pwd)")
-%space%❯%space%
-\x1b[48;5;240m%space%
-\x1b[48;5;245m%space%
-\x1b[48;5;250m%space%
+%space%\x1b[0m
+\x1b[38;5;198m
 \x1b[0m\n
-→
+\x1b[38;5;198m└─
+\x1b[38;5;81m󰊠%space%
+\x1b[38;5;159m❯
+\x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[48;5;236;97m\]
-%space%❮%space%\u@\h:\w%space%❯%space%
-\[\033[48;5;240m\]%space%
-\[\033[48;5;245m\]%space%
-\[\033[48;5;250m\]%space%
+\[\033[38;5;93m\]
+\[\033[48;5;93m
+\033[38;5;255m\]%space% %space%\u%space%
+\[\033[0m\033[38;5;93m\033[48;5;198m\]
+\[\033[0m\033[48;5;198m\033[38;5;255m\]%space%%space%\w%space%
+\[\033[0m\033[38;5;198m\]
 \[\033[0m\]\n
-→%space%
+\[\033[38;5;198m\]└─
+\[\033[38;5;81m\]󰊠%space%
+\[\033[38;5;159m\]❯
+\[\033[0m\]%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

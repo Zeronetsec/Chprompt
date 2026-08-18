@@ -2,32 +2,22 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[38;5;33m
-\x1b[48;5;33m
-\x1b[38;5;232m
-%space%%space%%space%
-$(command whoami)
-%space%\x1b[48;5;239m
-\x1b[38;5;33m
-\x1b[48;5;239m
-\x1b[38;5;255m%space%
+\x1b[38;5;219m❖
+%space%
+$(command whoami)@$(command hostname)
+%space%|%space%
 ~/$(command basename "$(pwd)")
-%space%\x1b[0m
-\x1b[38;5;239m
+%space%❖%space%➤
 \x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[38;5;33m\]
-\[\033[48;5;33m\033[38;5;232m\]
-%space%%space%%space%\u%space%
-\[\033[48;5;239m\033[38;5;33m\]
-\[\033[48;5;239m\033[38;5;255m\]
-%space%\w%space%
-\[\033[0m\033[38;5;239m\]
-\[\033[0m\]
-%space%
+\[\033[38;5;219m\]❖
+%space%\u@\h
+%space%|%space%\w
+%space%❖%space%➤
+\[\033[0m\]%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

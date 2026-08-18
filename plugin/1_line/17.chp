@@ -2,21 +2,16 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[32m$(command whoami)@$(command hostname)
-\x1b[0m:
-\x1b[34m~/$(command basename "$(pwd)")
-\x1b[0m%space%
-$(if [[ "${EUID}" -eq 0 ]]; then echo '#'; else echo '$'; fi)
+\x1b[0;37mShell
+%space%>
+\x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[32m\]\u@\h
-\[\033[0m\]:
-\[\033[34m\]\w
-\[\033[0m\]
-%space%\$
-%space%
+\[\033[0;37m\]Shell
+%space%>
+\[\033[0m\]%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

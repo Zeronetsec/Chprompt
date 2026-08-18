@@ -2,18 +2,23 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[38;5;244m┌%space%
-~/$(command basename "$(pwd)")\n
-\x1b[38;5;244m└─
-\x1b[38;5;250m»
+\x1b[38;5;46m▌Ξ%space%
+user:$(command whoami)
+%space%host:$(command hostname)
+%space%exit:$?%space%Ξ▌\n
+\x1b[0m▌Ξ%space%
+path:~/$(command basename "$(pwd)")
+%space%Ξ▌❯
 \x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[38;5;244m\]┌%space%\w\n
-\[\033[38;5;244m\]└─
-\[\033[38;5;250m\]»
+\[\033[38;5;46m\]▌Ξ%space%
+user:\u%space%host:\h%space%
+exit:$(echo -e "$?")
+%space%Ξ▌\n
+▌Ξ%space%path:\w%space%Ξ▌❯
 \[\033[0m\]%space%
 [END]
 

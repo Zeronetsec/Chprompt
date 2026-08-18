@@ -2,26 +2,35 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[1;36m(gh0st)
-\x1b[0m%space%
-\x1b[1;32m
+\x1b[90m╭─[%space%
+$(command date +%T)
+%space%]%space%━%space%
+\x1b[1;37m
 $(command whoami)@$(command hostname)
-\x1b[0m%space%::%space%
-\x1b[1;35m
+\x1b[90m\n
+╰─[%space%
+\x1b[1;37m
 ~/$(command basename "$(pwd)")
-\x1b[0m\n
-❯
+\x1b[90m%space%]%space%━%space%
+\x1b[0m
+$(EXIT_CODE=${?}; if [[ ${EXIT_CODE} -eq 0 ]]; then echo -e "\x1b[1;32m✔"; else echo -e "\x1b[1;31m✖ (${EXIT_CODE})"; fi)
+\x1b[90m%space%›
+\x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[1;36m\](gh0st)
+\[\033[90m\]
+╭─[%space%\t%space%]%space%━%space%
+\[\033[1;37m\]\u@\h
+\[\033[90m\]\n
+\[\033[90m\]╰─[%space%
+\[\033[1;37m\]\w
+\[\033[90m\]%space%]%space%━%space%
+\[\033[0m\]
+$(EXIT_CODE=${?}; if [[ ${EXIT_CODE} -eq 0 ]]; then echo -e "\[\033[1;32m\]✔"; else echo -e "\[\033[1;31m\]✖ (${EXIT_CODE})"; fi)
+\[\033[90m\]%space%›
 \[\033[0m\]%space%
-\[\033[1;32m\]\u@\h
-\[\033[0m\]%space%::%space%
-\[\033[1;35m\]\w
-\[\033[0m\]\n
-❯%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

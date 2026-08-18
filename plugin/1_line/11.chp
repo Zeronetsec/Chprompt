@@ -2,25 +2,26 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[48;5;39;38;5;232m
-%space%%space%
-~/$(command basename "$(pwd)")
-%space%\x1b[48;5;208;38;5;232m
-$(command git branch 2>/dev/null | command grep "^*" | command sed "s/* /  /")
+\x1b[35m$(command date +%H:%M)
 \x1b[0m%space%
-\x1b[38;5;39m
-\x1b[0m
+\x1b[32m
+$(command whoami)@$(command hostname)
+\x1b[0m:
+\x1b[34m
+~/$(command basename "$(pwd)")
+\x1b[0m%space%
+$(if [[ "${EUID}" -eq 0 ]]; then echo '#'; else echo '$'; fi)
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[48;5;39;38;5;232m\]
-%space%%space%\w%space%
-\[\033[48;5;208;38;5;232m\]
-$(command git branch 2>/dev/null | command grep "^*" | command sed "s/* /  /")
+\[\033[35m\]\A
 \[\033[0m\]%space%
-\[\033[38;5;39m\]
+\[\033[32m\]\u@\h
+\[\033[0m\]:
+\[\033[34m\]\w
 \[\033[0m\]%space%
+\$%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

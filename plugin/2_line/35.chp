@@ -2,36 +2,22 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[0;36m┌──(
-\x1b[0;32m$(command whoami)
-\x1b[1;90m(/\)
-\x1b[0;32m$(command hostname)
-\x1b[0;36m)-(
-\x1b[0;90m~/$(command basename "$(pwd)")
-\x1b[0;36m)-(
-\x1b[1;31m$(command date +%R)
-\x1b[0;36m)\n
-\x1b[0;36m└──
-\x1b[1;90m
+\x1b[1;35m
+$(command whoami)@$(command hostname)
+\x1b[0m\n
+\x1b[1;32m
+~/$(command basename "$(pwd)")
+\x1b[0m%space%
 $(if [[ "${EUID}" -eq 0 ]]; then echo '#'; else echo '$'; fi)
-\x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[0;36m\]┌──(
-\[\033[0;32m\]\u
-\[\033[1;90m\](/\)
-\[\033[0;32m\]\h
-\[\033[0;36m\])-(
-\[\033[0;90m\]\w
-\[\033[0;36m\])-(
-\[\033[1;31m\]$(command date +%R)
-\[\033[0;36m\])\n
-\[\033[0;36m\]└──
-\[\033[1;90m\]\$
+\[\033[1;35m\]\u@\h
+\[\033[0m\]\n
+\[\033[1;32m\]\w
 \[\033[0m\]
-%space%
+%space%\$%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

@@ -2,10 +2,11 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[1;42;30m%space%
+\x1b[48;5;236;97m%space%
 $(command whoami)@$(command hostname)
-%space%\x1b[0m
-\x1b[1;46;30m%space%
+%space%\x1b[48;5;240m%space%
+\x1b[48;5;245m%space%
+\x1b[48;5;250;30m%space%
 ~/$(command basename "$(pwd)")
 %space%\x1b[0m\n
 →
@@ -13,9 +14,10 @@ $(command whoami)@$(command hostname)
 
 [Execute]
 \[\033[0m\]\n
-\[\033[1;42;30m\]%space%\u@\h%space%
-\[\033[0m\]
-\[\033[1;46;30m\]%space%\w%space%
+\[\033[48;5;236;97m\]%space%\u@\h%space%
+\[\033[48;5;240m\]%space%
+\[\033[48;5;245m\]%space%
+\[\033[48;5;250;30m\]%space%\w%space%
 \[\033[0m\]\n
 →%space%
 [END]
