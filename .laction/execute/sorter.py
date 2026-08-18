@@ -1,3 +1,4 @@
+import re
 import sys
 from pathlib import Path
 
@@ -17,6 +18,9 @@ target_folder = [
     project_root / "plugin" / "6_line",
 ]
 
+def natural_keys(text: str):
+    return [int(c) if c.isdigit() else c.lower() for c in re.split(r"(\d+)", text)]
+
 def rename_files_in_folder(
     folder_path: Path,
     extensions: list[str],
@@ -31,16 +35,14 @@ def rename_files_in_folder(
     files = []
     for ext in extensions:
         files.extend(
-            [f for f in folder_path.glob(
-                f"*{ext}",
-            ) if f.is_file()],
+            [f for f in folder_path.glob(f"*{ext}") if f.is_file()],
         )
-    
-    files.sort(key=lambda x: x.name)
+
     if not files:
         print(f"\x1b[1;33m[!] \x1b[0mNo matching files found in: \x1b[0;32m{folder_path}\x1b[0m")
         return
 
+    files.sort(key=lambda x: natural_keys(x.name))
     already_sorted = True
     for idx, file_path in enumerate(files, start=1):
         expected_name = f"{idx}{file_path.suffix}"
@@ -57,25 +59,21 @@ def rename_files_in_folder(
         temp_name = folder_path / f"__temp_rename_{idx}_{file_path.name}"
         try:
             file_path.rename(temp_name)
-            temp_files.append(
-                (temp_name, file_path.suffix),
-            )
+            temp_files.append((temp_name, file_path.suffix))
         except Exception as e:
             print(f"\x1b[1;31m[!] \x1b[0mFailed to process: \x1b[0;32m{file_path.name} \x1b[1;90m(\x1b[0;32m{e}\x1b[1;90m)\x1b[0m")
             return
 
-    current_counter = 1
-    for temp_path, ext in temp_files:
-        while True:
-            target_file = folder_path / f"{current_counter}{ext}"
-            if not target_file.exists():
-                break
-            current_counter += 1
+    for idx, (temp_path, ext) in enumerate(temp_files, start=1):
+        target_file = folder_path / f"{idx}{ext}"
+        counter = idx
+        while target_file.exists():
+            counter += 1
+            target_file = folder_path / f"{counter}{ext}"
 
         try:
             temp_path.rename(target_file)
             print(f"\x1b[0;32m[+] \x1b[0mRenamed to: \x1b[0;32m{target_file.name}\x1b[0m")
-            current_counter += 1
         except Exception as e:
             print(f"\x1b[1;31m[!] \x1b[0mFailed renaming: \x1b[0;32m{temp_path.name} \x1b[0mto \x1b[0;32m{target_file.name} \x1b[1;90m(\x1b[0;32m{e}\x1b[1;90m)\x1b[0m")
 
