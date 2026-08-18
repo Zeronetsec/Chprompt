@@ -137,7 +137,6 @@ char *include_doc[] = {
     (char *)NULL
 };
 
-
 struct builtin include_struct = {
     "include",
     include_builtin,
