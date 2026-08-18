@@ -2,19 +2,20 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[0m╔═[
-$(command whoami)@$(command hostname)
-]══[%space%
-~/$(command basename "$(pwd)")
-%space%]\n
-╚➤
+\x1b[1;34mDirectory:%space%
+~/$(command basename "$(pwd)")\n
+\x1b[1;32mUser:%space%
+$(command whoami)
+%space%\x1b[1;37m>>
+\x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-╔═[\u@\h]══[%space%\w%space%]\n
-╚➤
-%space%
+\[\033[1;34m\]Directory:%space%\w\n
+\[\033[1;32m\]User:%space%\u%space%
+\[\033[1;37m\]>>
+\[\033[0m\]%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

@@ -2,29 +2,24 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[1;31m$(command whoami)
-\x1b[1;90m@
-\x1b[1;31m$(command hostname)
-\x1b[0m:
-\x1b[1;90m-(
-\x1b[1;34m
+\x1b[38;5;62m⛩️
+%space%%space%
+\x1b[38;5;153m$(command whoami)
+%space%\x1b[38;5;203m❯
+%space%\x1b[38;5;255m
 ~/$(command basename "$(pwd)")
-\x1b[1;90m)-
-\x1b[38;5;252m
-$(if [[ "${EUID}" -eq 0 ]]; then echo '#'; else echo '$'; fi)
+%space%\x1b[38;5;62m❯
 \x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[1;31m\]\u
-\[\033[1;90m\]@
-\[\033[1;31m\]\h
-\[\033[0m\]:
-\[\033[1;90m\]-(
-\[\033[1;34m\]\w
-\[\033[1;90m\])-
-\[\033[38;5;252m\]\$
+\[\033[38;5;62m\]⛩️
+%space%%space%
+\[\033[38;5;153m\]\u
+%space%\[\033[38;5;203m\]❯
+%space%\[\033[38;5;255m\]\w
+%space%\[\033[38;5;62m\]❯
 \[\033[0m\]%space%
 [END]
 

@@ -2,17 +2,17 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[38;5;81m
+\x1b[0;32m
 ~/$(command basename "$(pwd)")
-%space%\x1b[38;5;197m❯
-\x1b[0m
+%space%\x1b[0m
+$(if [[ "${EUID}" -eq 0 ]]; then echo '#'; else echo '$'; fi)
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[38;5;81m\]\w
-%space%\[\033[38;5;197m\]❯
-\[\033[0m\]%space%
+\[\033[0;32m\]\w
+%space%\[\033[0m\]\$
+%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

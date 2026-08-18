@@ -2,22 +2,18 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[38;5;214m󱑒
-%space%$(command date +%T)
-%space%\x1b[38;5;141m
-%space%
+\x1b[38;5;146m●
+%space%\x1b[38;5;110m
 ~/$(command basename "$(pwd)")
-%space%\x1b[38;5;141m
+%space%\x1b[38;5;146m○
 \x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[38;5;214m\]󱑒
-%space%\t%space%
-\[\033[38;5;141m\]
-%space%\w%space%
-\[\033[38;5;141m\]
+\[\033[38;5;146m\]●
+%space%\[\033[38;5;110m\]\w
+%space%\[\033[38;5;146m\]○
 \[\033[0m\]%space%
 [END]
 

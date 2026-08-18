@@ -2,22 +2,30 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[38;5;110m╭─(
+\x1b[1;44;37m%space%
 $(command whoami)@$(command hostname)
-)─╮\x1b[0m\n
-\x1b[38;5;147m╰─(
+%space%\x1b[49m
+\x1b[1m:
+\x1b[1;46;30m%space%
 ~/$(command basename "$(pwd)")
-)─❯\x1b[0m
+%space%\x1b[49m
+\x1b[0m\n
+$(EXIT_CODE=${?}; if [[ ${EXIT_CODE} -eq 0 ]]; then echo -e "\x1b[1;32mλ"; else echo -e "\x1b[1;31mλ (${EXIT_CODE})"; fi)
+\x1b[37m
+\x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[38;5;110m\]
-╭─(\u@\h)─╮
+\[\033[1;44;37m\]%space%\u@\h%space%
+\[\033[49m\]
+\[\033[1m\]:
+\[\033[1;46;30m\]%space%\w%space%
+\[\033[49m\]
 \[\033[0m\]\n
-\[\033[38;5;147m\]╰─(\w)─❯
-\[\033[0m\]
-%space%
+$(EXIT_CODE=${?}; if [[ ${EXIT_CODE} -eq 0 ]]; then echo -e "\[\033[1;32m\]λ"; else echo -e "\[\033[1;31m\]λ (${EXIT_CODE})"; fi)
+\[\033[37m\]
+\[\033[0m\]%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec

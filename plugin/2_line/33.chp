@@ -2,22 +2,30 @@
 
 [Preview]
 \x1b[0m\n
-\x1b[1;42;30m%space%
+\x1b[38;5;46m┌──(
+\x1b[38;5;220m
 $(command whoami)@$(command hostname)
-%space%\x1b[0m
-\x1b[1;46;30m%space%
+\x1b[38;5;46m)─[
+\x1b[0m
 ~/$(command basename "$(pwd)")
-%space%\x1b[0m\n
-→
+\x1b[38;5;46m]\n
+└──╼%space%
+\x1b[38;5;196m
+$(if [[ "${EUID}" -eq 0 ]]; then echo '#'; else echo '$'; fi)
+\x1b[0m
 [END]
 
 [Execute]
 \[\033[0m\]\n
-\[\033[1;42;30m\]%space%\u@\h%space%
+\[\033[38;5;46m\]┌──(
+\[\033[38;5;220m\]\u@\h
+\[\033[38;5;46m\])─[
+\[\033[0m\]\w
+\[\033[38;5;46m\]]\n
+└──╼%space%
+\[\033[38;5;196m\]\$
 \[\033[0m\]
-\[\033[1;46;30m\]%space%\w%space%
-\[\033[0m\]\n
-→%space%
+%space%
 [END]
 
 # Copyright (c) 2026 Zeronetsec
