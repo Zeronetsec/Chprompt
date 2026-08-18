@@ -9,7 +9,7 @@ $(command whoami)@$(command hostname):
 ❯
 [END]
 
-[Preview]
+[Execute]
 \[\033[0m\]\n
 \[\033[0;32m\]
 [\u@\h:\w]
