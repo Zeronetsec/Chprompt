@@ -1,7 +1,7 @@
 <!-- https://github.com/Zeronetsec/Chprompt -->
 
 <div align="center">
-    <img src="https://img.shields.io/badge/Chprompt-Version%200.1-blue?style=square&logo=gnu-bash&v=1" />
+    <img src="https://img.shields.io/badge/Chprompt-Version%200.1-blue?style=square&logo=c&logoColor=blue&v=1" />
     <img src="https://img.shields.io/badge/Supported%20OS-Linux-blue?style=square&logo=linux&v=1" />
     <a href="LICENSE">
         <img src="https://img.shields.io/badge/License-MIT-blue?style=square&logo=github&v=1" />
