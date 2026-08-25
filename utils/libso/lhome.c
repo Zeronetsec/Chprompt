@@ -157,7 +157,7 @@ int lhome_builtin(WORD_LIST *list) {
 }
 
 char *lhome_doc[] = {
-    "Set lhome variable..",
+    "Set lhome variable.",
     (char *)NULL
 };
 

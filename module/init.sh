@@ -1,7 +1,7 @@
 # https://github.com/Zeronetsec/Chprompt
 
 function module::Init() {
-    local bashrc="${2}"
+    local bashrc="${1}"
 
     if [[ -z "${bashrc}" ]]; then
         echo -e "${R}[!] ${N}Bashrc not set!"
@@ -21,6 +21,8 @@ function module::Init() {
     fi
 
     command chprompt --init "${bashrc}"
+    echo "" >> "${bashrc}"
+
     return ${?}
 }
 

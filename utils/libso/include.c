@@ -58,7 +58,12 @@ int include_builtin(WORD_LIST *list) {
     int inside_bracket = 0;
     int status = EXECUTION_SUCCESS;
 
-    char *line = strtok_r(data_copy, "\n", &saveptr);
+    char *line = strtok_r(
+        data_copy,
+        "\n",
+        &saveptr
+    );
+
     while (line != NULL) {
         while (isspace((unsigned char)*line)) line++;
         char *end = line + strlen(line) - 1;
@@ -133,7 +138,7 @@ int include_builtin(WORD_LIST *list) {
 }
 
 char *include_doc[] = {
-    "Include shell modules",
+    "Include shell modules.",
     (char *)NULL
 };
 
