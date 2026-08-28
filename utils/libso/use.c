@@ -101,7 +101,7 @@ int use_builtin(WORD_LIST *list) {
 
             char *p = line;
             while (*p && isspace((unsigned char)*p)) p++;
-            if (*p == '\0' || *p == '#') continue; 
+            if (*p == '\0' || *p == '#') continue;
 
             char *src = line;
             while (*src) {
