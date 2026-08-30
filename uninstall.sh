@@ -78,5 +78,5 @@ fi
 
 echo -e "${color_GG}[+] ${color_N}${targetins^} removed!"
 
-trap - EXIT
+trap - ERR EXIT
 exit ${?}
