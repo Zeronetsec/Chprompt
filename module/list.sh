@@ -10,13 +10,13 @@ function module::List() {
     local l5="$(command ls "${path}/5_line/" | command wc -l)"
     local l6="$(command ls "${path}/6_line/" | command wc -l)"
 
-    echo -e "${N}List available prompts:"
-    echo -e "    ${DG}* ${GG}1${DG}/${GG}1-${l1}${N}"
-    echo -e "    ${DG}* ${GG}2${DG}/${GG}1-${l2}${N}"
-    echo -e "    ${DG}* ${GG}3${DG}/${GG}1-${l3}${N}"
-    echo -e "    ${DG}* ${GG}4${GG}/${GG}1-${l4}${N}"
-    echo -e "    ${DG}* ${GG}5${DG}/${GG}1-${l5}${N}"
-    echo -e "    ${DG}* ${GG}6${DG}/${GG}1-${l6}${N}"
+    echo -e "${color_N}List available prompts:"
+    echo -e "    ${color_DG}* ${color_GG}1${color_DG}/${color_GG}1-${l1}${color_N}"
+    echo -e "    ${color_DG}* ${color_GG}2${color_DG}/${color_GG}1-${l2}${color_N}"
+    echo -e "    ${color_DG}* ${color_GG}3${color_DG}/${color_GG}1-${l3}${color_N}"
+    echo -e "    ${color_DG}* ${color_GG}4${color_GG}/${color_GG}1-${l4}${color_N}"
+    echo -e "    ${color_DG}* ${color_GG}5${color_DG}/${color_GG}1-${l5}${color_N}"
+    echo -e "    ${color_DG}* ${color_GG}6${color_DG}/${color_GG}1-${l6}${color_N}"
 
     return 0
 }

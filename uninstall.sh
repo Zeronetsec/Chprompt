@@ -52,11 +52,11 @@ fi
 
 install::getinstall \
     "command rm -rf ${opt}/${targetins}" \
-    "Removing: ${GG}${opt}/${targetins}${N}"
+    "Removing: ${color_GG}${opt}/${targetins}${color_N}"
 
 install::getinstall \
     "command rm -f ${bin}/${targetins}" \
-    "Removing: ${GG}${bin}/${targetins}${N}"
+    "Removing: ${color_GG}${bin}/${targetins}${color_N}"
 
 if [[ "${__RMC__}" == false ]]; then
     install::getinstall \
@@ -65,7 +65,7 @@ if [[ "${__RMC__}" == false ]]; then
                 command grep -v '${targetins}' \
                 > ${tmp}/${targetins}_uninstall
         " \
-        "Filtering: ${GG}${HOME}/${__RC__} ${GG}-> ${GG}${tmp}/${targetins}_uninstall"
+        "Filtering: ${color_GG}${HOME}/${__RC__} ${color_DG}-> ${color_GG}${tmp}/${targetins}_uninstall${color_N}"
 
     install::getinstall \
         "
@@ -73,10 +73,10 @@ if [[ "${__RMC__}" == false ]]; then
                 ${tmp}/${targetins}_uninstall \
                 ${HOME}/${__RC__}
         " \
-        "Moving: ${GG}${tmp}/${targetins}_uninstall ${DG}-> ${GG}${HOME}/${__RC__}${N}"
+        "Moving: ${color_GG}${tmp}/${targetins}_uninstall ${color_DG}-> ${color_GG}${HOME}/${__RC__}${color_N}"
 fi
 
-echo -e "${GG}[+] ${N}${targetins^} removed!"
+echo -e "${color_GG}[+] ${color_N}${targetins^} removed!"
 
 trap - EXIT
 exit ${?}

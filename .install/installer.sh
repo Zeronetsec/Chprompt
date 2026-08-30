@@ -7,7 +7,7 @@ function install::installer() {
                     plugin_backup.zip \
                     plugin
             " \
-            "Create zip: ${GG}${opt}/${targetins}/plugin ${DG}-> ${GG}${opt}/${targetins}/plugin_backup.zip${N}"
+            "Create zip: ${color_GG}${opt}/${targetins}/plugin ${color_DG}-> ${color_GG}${opt}/${targetins}/plugin_backup.zip${color_N}"
         cd
     )
 
@@ -18,7 +18,7 @@ function install::installer() {
                 -s ${opt}/${targetins}/${targetsyml}.c \
                 -o ${opt}/${targetins}/${targetsyml}
         " \
-        "Compiling: ${GG}${targetins}${N}"
+        "Compiling: ${color_GG}${targetins}${color_N}"
 
     local clibs
     command mapfile -t clibs < <(
@@ -41,13 +41,13 @@ function install::installer() {
                     -I${prefix}/include/bash/include \
                     -I${prefix}/include/bash/builtins
             " \
-            "Compiling: ${GG}${libname}.so${N}"
+            "Compiling: ${color_GG}${libname}.so${color_N}"
     done
 
     if [[ ! -f "${HOME}/${__RC__}" ]]; then
         install::getinstall \
             "command touch ${HOME}/${__RC__}" \
-            "Create file: ${GG}${HOME}/${__RC__}${N}"
+            "Create file: ${color_GG}${HOME}/${__RC__}${color_N}"
     fi
 
     if [[ "${__BACKUP__}" == "true" ]]; then
@@ -57,7 +57,7 @@ function install::installer() {
                     ${HOME}/${__RC__} \
                     ${HOME}/${__RC__}_${bkdate}.bak
             " \
-            "Backup: ${GG}${HOME}/${__RC__} ${DG}-> ${GG}${HOME}/${__RC__}_${bkdate}.bak${N}"
+            "Backup: ${color_GG}${HOME}/${__RC__} ${color_DG}-> ${color_GG}${HOME}/${__RC__}_${bkdate}.bak${color_N}"
     fi
 
     install::getinstall \
@@ -67,7 +67,7 @@ function install::installer() {
                     'source ${opt}/${targetins}/${targetins}.sh|${targetins} --use' \
                     > ${HOME}/${__RC__}.tmp || true
         " \
-        "Filtering: ${GG}${HOME}/${__RC__}${N}"
+        "Filtering: ${color_GG}${HOME}/${__RC__}${color_N}"
 
     current_theme="$(
         command grep "${targetins} --use" \
@@ -89,7 +89,7 @@ function install::installer() {
                     '${targetins} --use ${current_theme}'
             } >> ${HOME}/${__RC__}.tmp
         " \
-        "Add line: ${GG}source ${opt}/${targetins}/${targetins}.sh ${DG}-> ${GG}${HOME}/${__RC__}.tmp${N}"
+        "Add line: ${color_GG}source ${opt}/${targetins}/${targetins}.sh ${color_DG}-> ${color_GG}${HOME}/${__RC__}.tmp${color_N}"
 
     install::getinstall \
         "
@@ -97,5 +97,5 @@ function install::installer() {
                 ${HOME}/${__RC__}.tmp \
                 ${HOME}/${__RC__}
         " \
-        "Moving: ${GG}${HOME}/${__RC__}.tmp ${DG}-> ${GG}${HOME}/${__RC__}${N}"
+        "Moving: ${color_GG}${HOME}/${__RC__}.tmp ${color_DG}-> ${color_GG}${HOME}/${__RC__}${color_N}"
 }; readonly -f install::installer

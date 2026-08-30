@@ -6,11 +6,11 @@ function module::CurrentPrompt() {
     )
 
     if [[ -z "${cprompt}" ]]; then
-        echo -e "${R}[!] ${N}Current prompt not found!"
+        echo -e "${color_R}[!] ${color_N}Current prompt not found!"
         return 1
     fi
 
-    echo -ne "${B}[*] ${N}Current prompt: ${GG}${cprompt}${N}"
+    echo -ne "${color_B}[*] ${color_N}Current prompt: ${color_GG}${cprompt}${color_N}"
     module::Preview "${cprompt}"
 }
 

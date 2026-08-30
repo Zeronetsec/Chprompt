@@ -1,8 +1,8 @@
 # https://github.com/Zeronetsec/Chprompt
 
 function utils::missingArgument() {
-    echo -e "${R}[!] ${N}Missing argument!"
-    echo -e "${R}[!] ${N}Try: ${GG}chprompt --help${N}"
+    echo -e "${color_R}[!] ${color_N}Missing argument!"
+    echo -e "${color_R}[!] ${color_N}Try: ${color_GG}chprompt --help${color_N}"
     return 1
 }
 

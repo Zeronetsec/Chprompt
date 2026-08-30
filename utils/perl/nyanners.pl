@@ -28,7 +28,7 @@ sub uwu {
             last if (
                 time() - $start_time
             ) >= $duration;
-            print "\r$face\x1b[K";
+            print "\r${face}\x1b[K";
             sleep($delay);
         }
     }

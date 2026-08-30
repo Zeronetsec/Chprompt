@@ -6,16 +6,9 @@ use warnings;
 use File::Spec;
 use JSON::PP;
 
-my $N = "\x1b[0m";
-my $R = "\x1b[1;31m";
-my $GG = "\x1b[0;32m";
-my $CC = "\x1b[0;36m";
-my $DG = "\x1b[1;90m";
-my $WW = "\x1b[0;37m";
-
 my $target_metadata = $ENV{'root'};
 if (!$target_metadata) {
-    print "${R}[!] ${N}Variable: ${GG}root ${N}not found!\n";
+    print "\x1b[1;31m[!] \x1b[0mVariable: \x1b[0;32mroot \x1b[0mnot found!\n";
     exit(1);
 }
 
@@ -41,13 +34,13 @@ for my $file_path (glob($metadata_path)) {
 
         my $fullcmd;
         if ($args ne "") {
-            $fullcmd = "${GG}${command} ${CC}${args}${N}";
+            $fullcmd = "\x1b[0;32m${command} \x1b[0;36m${args}\x1b[0m";
         } else {
-            $fullcmd = "${GG}${command}${N}";
+            $fullcmd = "\x1b[0;32m${command}\x1b[0m";
         }
 
-        print "    ${DG}* ${fullcmd}\n";
-        print "    ${DG}└── ${WW}${desc}${N}\n";
+        print "    \x1b[1;90m* ${fullcmd}\n";
+        print "    \x1b[1;90m└── \x1b[0;37m${desc}\x1b[0m\n";
     };
 
     if ($@) {

@@ -6,9 +6,9 @@ function module::Helper() {
         utils::banner
         utils::birthday
 
-        echo -e "${N}Usage: ${GG}chprompt ${CC}<option> [<args>]${N}"
+        echo -e "${color_N}Usage: ${color_GG}chprompt ${color_CC}<option> [<args>]${color_N}"
         printf '\n'
-        echo -e "${N}Available options:"
+        echo -e "${color_N}Available options:"
 
         [[ ! -x "${engine}" ]] && {
             command chmod +x "${engine}"
@@ -17,7 +17,7 @@ function module::Helper() {
         "${engine}"
         return ${?}
     else
-        echo -e "${R}[!] ${N}Engine: ${GG}${engine} ${N}not found!"
+        echo -e "${color_R}[!] ${color_N}Engine: ${color_GG}${engine} ${color_N}not found!"
         return 1
     fi
 

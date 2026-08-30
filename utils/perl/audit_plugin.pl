@@ -6,13 +6,6 @@ use warnings;
 use File::Find;
 use File::Spec;
 
-my $N = "\x1b[0m";
-my $R = "\x1b[1;31m";
-my $B = "\x1b[1;34m";
-my $GG = "\x1b[0;32m";
-my $DG = "\x1b[1;90m";
-my $CC = "\x1b[0;36m";
-
 sub load_patterns {
     my ($pattern_file_path) = @_;
 
@@ -21,14 +14,14 @@ sub load_patterns {
         ! -e $pattern_file_path
     ) {
         my $path_display = $pattern_file_path // "";
-        print "${R}[!] ${N}Pattern file: ${GG}${path_display} ${N}not found!\n";
+        print "\x1b[1;31m[!] \x1b[0mPattern file: \x1b[0;32m${path_display} \x1b[0mnot found!\n";
         exit(1);
     }
 
     my @compiled_patterns;
     open(
         my $fh,'<:encoding(UTF-8)', $pattern_file_path,
-    ) or die "${R}[!] ${N}Cannot open pattern file: $!\n";
+    ) or die "\x1b[1;31m[!] \x1b[0mCannot open pattern file: \x1b[0;32m${!}\x1b[0m\n";
 
     while (my $line = <$fh>) {
         $line =~ s/^\s+|\s+$//g;
@@ -66,7 +59,7 @@ sub scan_plugin {
         ! -d $plugin_dir
     ) {
         my $dir_display = $plugin_dir // "";
-        print "${R}[!] ${N}Plugin directory: ${GG}${dir_display} ${N}not found!\n";
+        print "\x1b[1;31m[!] \x1b[0mPlugin directory: \x1b[0;32m${dir_display} \x1b[0mnot found!\n";
         exit(1);
     }
 
@@ -97,7 +90,7 @@ sub scan_plugin {
                             $match_count++;
                             my $clean_line = $line;
                             $clean_line =~ s/^\s+|\s+$//g;
-                            print "${GG}[+] ${N}Found ${match_count}: ${GG}${file_path} ${DG}(${CC}${clean_line}${DG})${N}\n";
+                            print "\x1b[0;32m[+] \x1b[0mFound ${match_count}: \x1b[0;32m${file_path} \x1b[1;90m(\x1b[0;36m${clean_line}\x1b[1;90m)\x1b[0m\n";
                         }
                     }
                     close($fh);
@@ -106,7 +99,7 @@ sub scan_plugin {
         }, $plugin_dir
     );
 
-    print "\n${B}[*] ${N}Total: ${GG}${match_count} ${N}malicious pattern found\n";
+    print "\n\x1b[1;34m[*] \x1b[0mTotal: \x1b[0;32m${match_count} \x1b[0mmalicious pattern found!\n";
 }
 
 my $PLUGIN_PATH  = $ENV{'plugin'};
@@ -116,7 +109,7 @@ if (
     !$PLUGIN_PATH ||
     !$PATTERN_PATH
 ) {
-    print "${R}[!] ${N}Missing variable: ${GG}plugin ${N}and ${GG}pattern${N}\n";
+    print "\x1b[1;31m[!] \x1b[0mMissing variable: \x1b[0;32mplugin \x1b[0mand \x1b[0;32mpattern\x1b[0m\n";
     exit(1);
 }
 

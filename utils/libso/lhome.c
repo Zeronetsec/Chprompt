@@ -11,13 +11,9 @@
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
-#include <sys/stat.h>
 #include <builtins.h>
 #include <shell.h>
-
-#define R "\x1b[1;31m"
-#define GG "\x1b[0;32m"
-#define N "\x1b[0m"
+#include <sys/stat.h>
 
 static int do_fallback(
     const char *config_file,
@@ -32,8 +28,8 @@ static int do_fallback(
     );
 
     printf(
-        "%s[!] %sFallback to: %s%s%s\n",
-        R, N, GG, fallback_path, N
+        "\x1b[1;31m[!] \x1b[0mFallback to: \x1b[0;32m%s\x1b[0m\n",
+        fallback_path
     );
 
     FILE *f = fopen(config_file, "w");
@@ -72,8 +68,8 @@ int lhome_builtin(WORD_LIST *list) {
 
     if (access(config_file, F_OK) != 0) {
         printf(
-            "%s[!] %sFile: %s%s %snot found!\n",
-            R, N, GG, config_file, N
+            "\x1b[1;31m[!] \x1b[0mFile: \x1b[0;32m%s \x1b[0mnot found!\n",
+            config_file
         );
         return EXECUTION_FAILURE;
     }
@@ -116,8 +112,7 @@ int lhome_builtin(WORD_LIST *list) {
 
     if (!found || strlen(raw_line) == 0) {
         printf(
-            "%s[!] %sBashrc not set!\n",
-            R, N
+            "\x1b[1;31m[!] \x1b[0mBashrc not set!\n"
         );
         return do_fallback(config_file, home);
     }
@@ -147,8 +142,8 @@ int lhome_builtin(WORD_LIST *list) {
 
     if (access(expanded_lhome, F_OK) != 0) {
         printf(
-            "%s[!] %sBashrc: %s%s %snot found!\n",
-            R, N, GG, expanded_lhome, N
+            "\x1b[1;31m[!] \x1b[0mBashrc: \x1b[0;32m%s \x1b[0mnot found!\n",
+            expanded_lhome
         );
         return do_fallback(config_file, home);
     }

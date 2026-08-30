@@ -24,7 +24,7 @@ function module::Inject() {
     fi
 
     if [[ ! -f "${root}/plugin/${folder}_line/${file}.chp" ]]; then
-        echo -e "${R}[!] ${N}Prompt: ${GG}${folder}/${file} ${N}not found!"
+        echo -e "${color_R}[!] ${color_N}Prompt: ${color_GG}${folder}/${file} ${color_N}not found!"
         return 1
     fi
 

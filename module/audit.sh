@@ -11,11 +11,11 @@ function module::Audit() {
             command chmod +x "${engine}"
         }
 
-        echo -e "${B}[*] ${N}Audit plugin: ${GG}${plugin}/${N}"
+        echo -e "${color_B}[*] ${color_N}Audit plugin: ${color_GG}${plugin}/${color_N}"
         "${engine}"
         return ${?}
     else
-        echo -e "${R}[!] ${N}Engine: ${GG}${engine} ${N}not found!"
+        echo -e "${color_R}[!] ${color_N}Engine: ${color_GG}${engine} ${color_N}not found!"
         return 1
     fi
 

@@ -10,11 +10,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <sys/stat.h>
 #include <limits.h>
 #include <ctype.h>
 #include <builtins.h>
 #include <shell.h>
+#include <sys/stat.h>
 #include <builtins/bashgetopt.h>
 #include <builtins/common.h>
 

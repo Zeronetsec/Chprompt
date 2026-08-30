@@ -12,7 +12,7 @@ function module::Chbashrc() {
         return 1
 
     builtin lhome || return 1
-    echo -e "${B}[*] ${N}Set bashrc: ${GG}${home}${N}"
+    echo -e "${color_B}[*] ${color_N}Set bashrc: ${color_GG}${home}${color_N}"
 }
 
 # Copyright (c) 2026 Zeronetsec

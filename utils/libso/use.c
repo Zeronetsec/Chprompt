@@ -11,13 +11,9 @@
 #include <string.h>
 #include <ctype.h>
 #include <unistd.h>
-#include "builtins.h"
-#include "shell.h"
-#include "bashgetopt.h"
-
-#define N "\x1b[0m"
-#define R "\x1b[1;31m"
-#define GG "\x1b[0;32m"
+#include <builtins.h>
+#include <shell.h>
+#include <bashgetopt.h>
 
 int use_builtin(WORD_LIST *list) {
     if (
@@ -36,8 +32,7 @@ int use_builtin(WORD_LIST *list) {
     char *slash = strchr(arg1, '/');
     if (!slash) {
         printf(
-            "%s[!] %sInvalid input!\n",
-            R, N
+            "\x1b[1;31m[!] \x1b[0mInvalid input!\n"
         );
         return EXECUTION_FAILURE;
     }
@@ -64,8 +59,8 @@ int use_builtin(WORD_LIST *list) {
 
     if (access(filepath, F_OK) != 0) {
         printf(
-            "%s[!] %sPrompt: %s%s/%s %snot found!\n",
-            R, N, GG, folder, file, N
+            "\x1b[1;31m[!] \x1b[0mPrompt: \x1b[0;32m%s/%s \x1b[0mnot found!\n",
+            folder, file
         );
         free(folder);
         free(file);

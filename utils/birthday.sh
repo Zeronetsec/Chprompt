@@ -4,7 +4,7 @@ function utils::birthday() {
     local birth_date="03-10"
     local today="$(command date '+%m-%d')"
     if [[ "${today}" == "${birth_date}" ]]; then
-        echo -e "${R}› ${N}Happy birthday for ${GG}Chprompt ${N}🎉"
+        echo -e "${color_R}› ${color_N}Happy birthday for ${color_GG}Chprompt ${color_N}🎉"
         printf '\n'
     fi
 }

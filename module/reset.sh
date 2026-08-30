@@ -2,7 +2,7 @@
 
 function module::Reset() {
     if [[ ! -f "${root}/plugin_backup.zip" ]]; then
-        echo -e "${R}[!] ${N}Plugin backup: ${GG}${root}/plugin_backup.zip ${N}not found!"
+        echo -e "${color_R}[!] ${color_N}Plugin backup: ${color_GG}${root}/plugin_backup.zip ${color_N}not found!"
         return 1
     fi
 
@@ -14,7 +14,7 @@ function module::Reset() {
         "${root}/plugin/"
 
     command unzip -q "${root}/plugin_backup.zip" -d "${root}/" || {
-        echo -e "${R}[!] ${N}Error: ${GG}unzip error with exit code ${GG}${?}${N}"
+        echo -e "${color_R}[!] ${color_N}Error: ${color_GG}unzip error with exit code ${color_GG}${?}${color_N}"
         return 1
     }
 
