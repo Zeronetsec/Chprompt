@@ -37,6 +37,7 @@ include : '(
     .install/backup
     .install/postins
     .install/symlink
+    .install/zsymlink
 )'
 
 HOME="${HOME}"

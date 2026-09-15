@@ -1,12 +1,12 @@
 bash
-bash-builtins-dev::{bash-builtins,bash}
+bash-builtins-dev::{bash-devel,bash-builtins,-}
 perl
 coreutils
 findutils
 inetutils::{inet-utils,hostname}
 sed
 grep
-gawk::awk
+gawk::awk -> awk
 zip
 unzip
 git

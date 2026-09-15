@@ -2,7 +2,7 @@
 
 function module::Version() {
     local name="Chprompt"
-    local version="v0.1"
+    local version="v0.1.16092026"
     local creator="Zeronetsec"
     local homepage="https://github.com/Zeronetsec/Chprompt"
 
